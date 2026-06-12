@@ -1,35 +1,34 @@
-## Tên sản phẩm/dự án: ngắn, dễ nhớ, gợi đúng vấn đề.
+## Giải pháp đề xuất
 
+5Tot AI Portfolio gồm hai không gian sử dụng chính: phía sinh viên và phía Đoàn - Hội.
 
-## Thông tin đội: tên đội, thành viên, vai trò, liên hệ.
+### Phía sinh viên
 
-## Vấn đề cần giải quyết:
+Sinh viên có thể:
 
-### Pain-point
+- Tạo hồ sơ cá nhân và chọn cấp xét danh hiệu.
+- Upload minh chứng ở nhiều định dạng: ảnh, PDF, văn bản, link.
+- Để AI đọc và phân loại minh chứng theo tiêu chí Sinh viên 5 tốt.
+- Nhận báo cáo: tiêu chí đã đạt, tiêu chí còn thiếu, minh chứng chưa đủ rõ, minh chứng cần thay thế.
+- Nhận gợi ý hoạt động/chứng chỉ nên bổ sung theo tiêu chí còn thiếu.
+- Render CV/portfolio Sinh viên 5 tốt từ các minh chứng đã được hệ thống phân loại.
 
-### Người dùng mục tiêu
+### Phía Đoàn - Hội
 
-- Đoàn khoa
-- Sinh viên
+Cán bộ Đoàn - Hội có thể:
 
-### Bối cảnh
+- Xem danh sách hồ sơ theo khoa/lớp/trạng thái/tiêu chí.
+- Kiểm tra từng hồ sơ với các minh chứng đã được AI phân loại.
+- Nhận gợi ý trạng thái: `Đạt sơ bộ`, `Cần bổ sung`, `Không phù hợp`, `Cần kiểm tra thủ công`.
+- Xem lý do AI gợi ý trạng thái, ví dụ: thiếu minh chứng học tập, giấy chứng nhận không có ngày, hoạt động chưa khớp tiêu chí.
+- Gửi phản hồi mẫu cho sinh viên.
+- Xuất báo cáo sơ loại hoặc danh sách hồ sơ cần xử lý tiếp.
 
-### Nhóm chức năng chính
+## Phân công:
 
-#### Phía sinh viên
-- Gợi ý các hoạt động cần thiết để bổ sung chứng chỉ còn thiếu theo tiêu chí
-- Render CV portfolio
-
-#### Phía đoàn hội
-- Phân loại hồ sơ dựa trên tiêu chí
-
-### Số liệu hoặc dẫn chứng
-
-
-Giải pháp đề xuất: sản phẩm làm gì, luồng sử dụng chính, điểm khác biệt.
-Lý do dùng AI: AI tạo giá trị gì mà cách truyền thống khó làm được.
-Thiết kế tổng quan: kiến trúc, các module, API dự kiến tích hợp, luồng dữ liệu.
-Phương hướng triển khai: roadmap MVP, công nghệ dự kiến, dữ liệu, nhân lực, rủi ro.
-Tác động dự kiến: lợi ích xã hội/kinh doanh, nhóm người hưởng lợi, mô hình mở rộng.
-Kế hoạch bảo mật/pháp lý: dữ liệu cá nhân, quyền riêng tư, lưu trữ, phân quyền.
-Phụ lục nếu có: wireframe, user journey, sơ đồ hệ thống, link demo mockup.
+- Trí: 2 + 3 + 5
+- Nhân: 8 + 9
+- Duyên + Kiên: 6 + 7
+- Bảo: 4 + 11
+- Phần 10: chia nhau quay sau khi xong
+- Deadline: Trước buổi họp thứ 2
