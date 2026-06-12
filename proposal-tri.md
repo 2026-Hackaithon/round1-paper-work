@@ -25,7 +25,7 @@
 
 ## 2. Tóm tắt ý tưởng
 
-**AI-5Good** là nền tảng Web App & Mobile App hỗ trợ số hóa và nâng cấp toàn bộ hành trình phấn đấu danh hiệu **Sinh viên 5 tốt**. Sản phẩm giúp sinh viên theo dõi tiến độ theo 5 tiêu chí, nộp minh chứng dễ hơn, được nhắc nhở tiêu chí còn thiếu và chuyển đổi thành tích thành **CV/Portfolio** có thể dùng cho thực tập, tuyển dụng hoặc học bổng.
+**AI-5Good** là nền tảng Web App hỗ trợ số hóa và nâng cấp toàn bộ hành trình phấn đấu danh hiệu **Sinh viên 5 tốt**. Sản phẩm giúp sinh viên theo dõi tiến độ theo 5 tiêu chí, nộp minh chứng dễ hơn, được nhắc nhở tiêu chí còn thiếu và chuyển đổi thành tích thành **CV/Portfolio** có thể dùng cho thực tập, tuyển dụng hoặc học bổng.
 
 Với nhà trường, Đoàn Thanh niên và Hội Sinh viên, AI-5Good giải quyết tình trạng quá tải khi xét duyệt hồ sơ thủ công. Thay vì cán bộ phải đọc từng giấy khen, chứng chỉ và đối chiếu bằng mắt thường, hệ thống sử dụng **OCR/Computer Vision** để đọc minh chứng, đề xuất phân loại theo tiêu chí và hỗ trợ tổng hợp hồ sơ trên dashboard quản lý.
 
