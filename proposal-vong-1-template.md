@@ -204,19 +204,24 @@ Cơ sở dữ liệu / Lưu trữ file
 
 ### 7.1. Phạm vi MVP
 
-MVP cần chứng minh được luồng giá trị chính, không cần làm toàn bộ sản phẩm.
+Thời gian phát triển ở Vòng 2 chỉ có **1 tuần (26/06 - 03/07/2026)**, do đó dự án tập trung chứng minh **luồng giá trị cốt lõi (Core Flow)**: quá trình OCR và tự động phân loại minh chứng bằng AI.
 
 **Chức năng bắt buộc trong MVP:**
 
-- [ ] `<Chức năng 1>`
-- [ ] `<Chức năng 2>`
-- [ ] `<Chức năng 3>`
-- [ ] `<Chức năng 4>`
+- [ ] **Quản lý tài khoản:** Đăng nhập giả lập theo 2 vai trò: Sinh viên và Cán bộ Đoàn/Hội. Sinh viên tạo hồ sơ cá nhân với dữ liệu mock.
+- [ ] **Upload & Xử lý (Core):** Hỗ trợ upload ảnh chụp giấy khen và bảng điểm PDF. Tích hợp API **VNPT SmartReader** để OCR trích xuất nội dung minh chứng.
+- [ ] **Phân loại AI (Core):** Xây dựng logic/prompt AI để tự động phân loại minh chứng vừa đọc được vào đúng 1 trong 5 tiêu chí của Sinh viên 5 tốt.
+- [ ] **Dashboard Sinh viên:** Báo cáo trực quan hiển thị thanh tiến độ (Tiêu chí nào Đạt, tiêu chí nào Thiếu).
+- [ ] **Dashboard Cán bộ:** Giao diện hiển thị danh sách hồ sơ đã nộp và kết quả đề xuất sơ loại từ AI (Duyệt/Từ chối nhanh).
 
 **Chức năng mở rộng nếu còn thời gian:**
 
-- [ ] `<Chức năng mở rộng 1>`
-- [ ] `<Chức năng mở rộng 2>`
+- [ ] RAG Chatbot hỏi đáp quy chế Sinh viên 5 tốt theo từng trường
+- [ ] EKYC xác thực danh tính sinh viên khi cần tăng độ tin cậy của hồ sơ, đối chiếu ảnh/CCCD
+- [ ] Giao diện giọng nói cho sinh viên hỏi đáp chatbot hoặc cán bộ duyệt hồ sơ
+- [ ] Gợi ý hoạt động phù hợp với từng sinh viên
+- [ ] Portfolio Generator: Tự động sinh trang CV/Portfolio từ các thành tích đã được duyệt để xuất file PDF hoặc link chia sẻ.
+- [ ] Theo dõi hành vi sử dụng để cải thiện UI/UX
 
 ### 7.2. Kế hoạch kỹ thuật build/deploy
 
@@ -258,13 +263,33 @@ MVP cần chứng minh được luồng giá trị chính, không cần làm to�
 - Dữ liệu demo sau cuộc thi được xử lý thế nào?
 - Giải pháp có tuân thủ quy định bảo vệ dữ liệu cá nhân tại Việt Nam không?
 
+**Dữ liệu cá nhân nào được thu thập?**
+Tên, MSSV, khoa/lớp, email, SĐT, ảnh CCCD (nếu dùng eKYC), và minh chứng hoạt động (giấy khen, chứng chỉ, bảng điểm).
+
+**Có xin sự đồng ý của người dùng không?**
+Có. Sinh viên phải đồng ý điều khoản sử dụng khi đăng ký và xác nhận consent checkbox khi upload minh chứng. Hệ thống ghi nhận thời điểm đồng ý.
+
+**Ai có quyền xem/sửa/xóa dữ liệu?**
+- Sinh viên: chỉ xem/sửa/xóa hồ sơ và minh chứng của chính mình.
+- Cán bộ Đoàn/Hội: chỉ xem hồ sơ thuộc phạm vi phân quyền (khoa/trường), không sửa minh chứng gốc.
+- Admin: quản lý cấu hình hệ thống, không truy cập nội dung minh chứng trừ khi có lý do kiểm tra.
+
+**API key được lưu ở đâu?**
+Biến môi trường (`.env`), không commit lên repo. Sử dụng `.env.example` làm mẫu. Trên production dùng secret manager của nền tảng deploy.
+
+**Dữ liệu demo sau cuộc thi được xử lý thế nào?**
+Xóa toàn bộ dữ liệu demo bao gồm hồ sơ mẫu, minh chứng giả lập và kết quả AI. Có script clean-up sẵn trong repo.
+
+**Giải pháp có tuân thủ quy định bảo vệ dữ liệu cá nhân tại Việt Nam không?**
+Có. Thiết kế tuân thủ Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân: thu thập có mục đích rõ ràng, có sự đồng ý, có quyền xóa, không chia sẻ cho bên thứ ba ngoài mục đích xét duyệt.
+
 **Cam kết thiết kế:**
 
-- [ ] Không commit API key/token thật lên repo.
-- [ ] Có phân quyền theo vai trò.
-- [ ] Không công khai file/dữ liệu nhạy cảm.
-- [ ] Có cơ chế xóa hoặc ẩn dữ liệu demo.
-- [ ] AI chỉ hỗ trợ/gợi ý, quyết định quan trọng vẫn có người xác nhận.
+- [x] Không commit API key/token thật lên repo.
+- [x] Có phân quyền theo vai trò (sinh viên / cán bộ / admin).
+- [x] Không công khai file/dữ liệu nhạy cảm (signed URL, không public bucket).
+- [x] Có cơ chế xóa hoặc ẩn dữ liệu demo (script clean-up).
+- [x] AI chỉ hỗ trợ/gợi ý, quyết định quan trọng (duyệt/từ chối hồ sơ) vẫn có cán bộ xác nhận.
 
 ### 7.6. Roadmap sau cuộc thi / GTM
 
