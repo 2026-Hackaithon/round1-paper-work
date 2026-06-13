@@ -281,50 +281,53 @@ MVP cần chứng minh được luồng giá trị chính, không cần làm to�
 
 | Nhóm hưởng lợi | Lợi ích cụ thể | Cách đo lường |
 |---|---|---|
-| Sinh viên chuẩn bị hồ sơ Sinh viên 5 tốt | Biết sớm hồ sơ còn thiếu tiêu chí/minh chứng nào, giảm rủi ro nộp thiếu hoặc nộp sai minh chứng; có gợi ý hoạt động/chứng chỉ nên bổ sung theo từng tiêu chí. | Thời gian để sinh viên nhận báo cáo thiếu/đủ sau khi upload; tỷ lệ hồ sơ phải bổ sung lại; khảo sát mức độ dễ hiểu của phản hồi AI. |
-| Cán bộ Đoàn - Hội | Giảm thời gian đọc, phân loại và phản hồi hồ sơ thủ công; tăng tính nhất quán khi sơ loại hồ sơ giữa nhiều người duyệt. | Thời gian sơ loại trung bình/hồ sơ; số hồ sơ xử lý được trong một phiên; tỷ lệ gợi ý AI được cán bộ chấp nhận hoặc chỉnh sửa ít. |
-| Hội Sinh viên/nhà trường | Số hóa quy trình xét chọn, theo dõi được trạng thái hồ sơ và các tiêu chí sinh viên thường thiếu; có dữ liệu để cải thiện truyền thông phong trào Sinh viên 5 tốt. | Dashboard thống kê số hồ sơ theo trạng thái/tiêu chí; tỷ lệ sinh viên hoàn thiện hồ sơ đúng hạn; số báo cáo/danh sách được xuất từ hệ thống. |
-| Nhà tuyển dụng/học bổng/thực tập | Sinh viên có portfolio năng lực đáng tin cậy hơn, được tổng hợp từ minh chứng đã phân loại thay vì chỉ mô tả tự do. | Số portfolio được render/xuất; số sinh viên tái sử dụng portfolio cho học bổng, thực tập, tuyển dụng; phản hồi định tính từ người xem portfolio. |
+| Sinh viên phấn đấu danh hiệu Sinh viên 5 tốt | Được theo dõi tiến độ quanh năm thay vì chỉ gom hồ sơ cuối kỳ; biết mình còn thiếu tiêu chí nào, nhận nhắc nhở deadline và gợi ý hoạt động phù hợp từ AI-5Good. | Tỷ lệ sinh viên hoàn thiện hồ sơ cuối năm; tỷ lệ bỏ cuộc sau khi đăng ký; thời gian để sinh viên biết hồ sơ còn thiếu gì; khảo sát mức độ hài lòng/dễ hiểu. |
+| Cán bộ Đoàn - Hội/Hội Sinh viên | Giảm tải khâu đọc giấy khen, chứng chỉ, bảng điểm và đối chiếu thủ công; AI hỗ trợ OCR, phân loại tiêu chí, tóm tắt hồ sơ và đánh dấu trường hợp cần kiểm tra. | Thời gian xử lý trung bình/hồ sơ; số hồ sơ xử lý được mỗi ngày; tỷ lệ lỗi phân loại/duyệt nhầm; tỷ lệ gợi ý AI được cán bộ chấp nhận sau kiểm tra. |
+| Nhà trường/đơn vị triển khai | Có dashboard tập trung để theo dõi phong trào, phát hiện tiêu chí sinh viên thường thiếu, xuất báo cáo nhanh và chuẩn hóa quy trình xét duyệt giữa các khoa/đơn vị. | Số báo cáo/danh sách được xuất; số khoa/đơn vị sử dụng; tỷ lệ hồ sơ đúng hạn; mức giảm thời gian xét duyệt so với quy trình Google Form/bản cứng. |
+| CLB/Đội/Nhóm tổ chức hoạt động | Tiếp cận đúng nhóm sinh viên đang thiếu tiêu chí tương ứng, tăng hiệu quả truyền thông sự kiện và hỗ trợ phong trào phát triển liên tục trong năm học. | Số sự kiện được đăng; số lượt sinh viên được gợi ý/tham gia; tỷ lệ chuyển đổi từ gợi ý hoạt động sang đăng ký tham gia. |
+| Doanh nghiệp/học bổng/thực tập | Có kênh tham khảo hồ sơ năng lực/portfolio được tổng hợp từ thành tích và minh chứng đã qua kiểm tra, giúp kết nối sinh viên tích cực với cơ hội nghề nghiệp. | Số portfolio được tạo/xuất; số lượt chia sẻ portfolio; số chương trình học bổng/thực tập/doanh nghiệp quan tâm hoặc tham gia pilot. |
 
 ### 8.2. TAM - SAM - SOM hoặc người dùng tiềm năng
 
-Ước tính sơ bộ theo phạm vi người dùng của phong trào Sinh viên 5 tốt. Các con số bên dưới dùng cho proposal vòng 1 và sẽ được thay bằng số liệu khảo sát/đối chiếu thực tế khi triển khai pilot.
+Ước tính sơ bộ theo phạm vi người dùng của phong trào Sinh viên 5 tốt. Các con số dưới đây dùng cho proposal vòng 1, dựa trên quy mô sinh viên đại học/cao đẳng và giả định triển khai theo từng khoa/trường; khi pilot sẽ thay bằng số liệu khảo sát và dữ liệu vận hành thực tế.
 
 | Chỉ số | Định nghĩa trong bài toán | Ước tính | Cơ sở ước tính |
 |---|---|---:|---|
-| TAM | Tổng nhóm sinh viên đại học/cao đẳng và cán bộ Đoàn - Hội có thể tham gia hoặc quản lý hồ sơ Sinh viên 5 tốt trên toàn quốc. | 2.000.000+ sinh viên; hàng trăm trường/đơn vị | Quy mô sinh viên bậc đại học/cao đẳng trên toàn quốc; phong trào Sinh viên 5 tốt có thể triển khai ở nhiều cấp: khoa, trường, thành phố, trung ương. |
-| SAM | Phân khúc có thể tiếp cận trong 1-2 năm đầu: các trường/khoa có hoạt động Hội Sinh viên mạnh, có nhu cầu số hóa xét chọn và sẵn sàng thử nghiệm web app. | 100.000-300.000 sinh viên; 20-50 đơn vị/khoa/trường | Tập trung trước vào các trường/khoa có quy trình xét hồ sơ định kỳ, số lượng hồ sơ đủ lớn và có cán bộ phụ trách sẵn sàng phối hợp pilot. |
-| SOM | Phần có thể đạt được ở giai đoạn đầu sau cuộc thi: pilot tại 1-3 khoa/trường hoặc một cụm đơn vị nhỏ. | 500-3.000 sinh viên; 300-1.000 hồ sơ/mùa xét | Phạm vi phù hợp để kiểm chứng MVP, đo thời gian xử lý hồ sơ, thu phản hồi người dùng và tinh chỉnh bộ tiêu chí trước khi mở rộng. |
+| TAM | Tổng nhóm sinh viên đại học/cao đẳng, cán bộ Đoàn - Hội và đơn vị tổ chức hoạt động có thể tham gia hệ sinh thái Sinh viên 5 tốt trên toàn quốc. | 2.000.000+ sinh viên; hàng trăm trường/đơn vị | Phong trào Sinh viên 5 tốt có thể triển khai ở nhiều cấp: khoa, trường, thành phố, trung ương; dữ liệu đầu vào gồm hồ sơ sinh viên, minh chứng, quy chế và hoạt động phong trào. |
+| SAM | Phân khúc có thể tiếp cận trong 1-2 năm đầu: các trường/khoa có hoạt động Hội Sinh viên mạnh, đang xử lý hồ sơ bằng Google Form/bản cứng và có nhu cầu giảm tải cuối kỳ. | 100.000-300.000 sinh viên; 20-50 khoa/trường/đơn vị | Tập trung vào nhóm có số lượng hồ sơ đủ lớn, có cán bộ phụ trách rõ ràng, sẵn sàng thử nghiệm Web App, OCR, RAG Chatbot và dashboard quản lý. |
+| SOM | Phần có thể đạt được giai đoạn đầu sau cuộc thi: pilot tại 1-3 khoa/trường hoặc một cụm đơn vị nhỏ trong một mùa xét. | 500-3.000 sinh viên; 300-1.000 hồ sơ/mùa xét | Phạm vi phù hợp để kiểm chứng luồng MVP trong 0-3 tháng: upload minh chứng, OCR, phân loại tiêu chí, dashboard cán bộ và báo cáo tiến độ sinh viên. |
 
 ### 8.3. Ưu thế cạnh tranh
 
-- **Tập trung đúng domain Sinh viên 5 tốt:** giải pháp không chỉ là nơi upload file, mà bám vào workflow thực tế của sinh viên và cán bộ Đoàn - Hội: tạo hồ sơ, upload minh chứng, đối chiếu tiêu chí, phản hồi, sơ loại và render portfolio.
-- **AI workflow có giải thích:** hệ thống dùng AI để OCR, bóc tách thông tin, mapping minh chứng với tiêu chí, chỉ ra lý do đạt/chưa đạt và gợi ý bổ sung. Điều này khác với chatbot hỏi đáp chung hoặc hệ thống quản lý hồ sơ chỉ lưu trạng thái.
-- **Hỗ trợ cả hai phía người dùng:** sinh viên được hướng dẫn hoàn thiện hồ sơ, cán bộ được hỗ trợ sơ loại và tạo phản hồi mẫu. Giá trị không nằm ở một tính năng đơn lẻ mà ở luồng xử lý end-to-end.
-- **Triển khai MVP nhanh, chi phí thấp:** có thể bắt đầu bằng web app, dữ liệu mẫu, bộ tiêu chí cấu hình và tích hợp SmartReader/Smartbot; chưa cần tích hợp sâu với hệ thống sinh viên thật trong giai đoạn đầu.
-- **Có khả năng mở rộng sang portfolio năng lực sinh viên:** dữ liệu minh chứng sau khi được phân loại có thể tái sử dụng cho học bổng, thực tập, tuyển dụng hoặc các chương trình ghi nhận hoạt động sinh viên khác.
+- **Đồng hành chủ động, không chỉ thu hồ sơ:** AI-5Good chuyển quy trình từ "cuối năm mới nộp" sang hành trình theo dõi liên tục, nhắc nhở tiêu chí còn thiếu và gợi ý hoạt động phù hợp như một personal coach cho Sinh viên 5 tốt.
+- **AI gắn với đúng điểm nghẽn nghiệp vụ:** hệ thống kết hợp OCR/Computer Vision, RAG Chatbot, eKYC và logic phân loại tiêu chí để xử lý dữ liệu phi cấu trúc, tư vấn quy chế và hỗ trợ sơ loại hồ sơ; không dừng ở chatbot hỏi đáp chung.
+- **Kết nối nhiều bên trong một hệ sinh thái:** sinh viên, cán bộ Đoàn - Hội, CLB/Đội/Nhóm và doanh nghiệp đều có vai trò rõ ràng; dữ liệu thành tích không chỉ phục vụ xét danh hiệu mà còn tạo giá trị cho hoạt động, học bổng, thực tập và tuyển dụng.
+- **Quy chế có thể cấu hình theo từng trường:** RAG Chatbot và bộ tiêu chí được neo vào quy định địa phương của từng đơn vị, giúp câu trả lời và kết quả phân loại sát bối cảnh hơn so với một hệ thống quản lý hồ sơ cố định.
+- **MVP khả thi trong thời gian ngắn:** giai đoạn thi có thể tập trung vào luồng lõi: upload minh chứng, SmartReader OCR, phân loại vào 5 tiêu chí, dashboard sinh viên/cán bộ; các phần eKYC, bản đồ sự kiện và portfolio generator mở rộng theo module.
 
 ### 8.4. Mô hình doanh thu hoặc giá trị mang lại
 
 | Mô hình | Mô tả | Phù hợp giai đoạn nào |
 |---|---|---|
-| Miễn phí/pilot | Cung cấp bản dùng thử cho một khoa/trường hoặc một mùa xét Sinh viên 5 tốt để kiểm chứng giá trị, thu dữ liệu phản hồi và hoàn thiện bộ tiêu chí. | Sau cuộc thi và 0-3 tháng đầu |
-| Thu phí theo đơn vị triển khai | Trường/khoa/Hội Sinh viên trả phí theo gói triển khai, bao gồm cấu hình tiêu chí, tài khoản cán bộ, dashboard, lưu trữ hồ sơ và hỗ trợ kỹ thuật. | Khi sản phẩm ổn định sau pilot |
-| Thu phí theo số người dùng/giao dịch | Tính phí theo số hồ sơ được xử lý, số lượt OCR/minh chứng hoặc số portfolio được xuất; phù hợp khi mở rộng nhiều đơn vị có quy mô khác nhau. | Giai đoạn mở rộng 6-12 tháng |
-| Giá trị phi lợi nhuận/xã hội | Hỗ trợ sinh viên hiểu rõ tiêu chí phát triển toàn diện, tăng tỷ lệ hoàn thiện hồ sơ đúng hạn và giảm tải công việc tình nguyện/thủ công cho cán bộ Đoàn - Hội. | Xuyên suốt, đặc biệt trong pilot với các đơn vị sinh viên |
+| Miễn phí/pilot | Cung cấp bản dùng thử cho một khoa/trường hoặc một mùa xét Sinh viên 5 tốt để kiểm chứng giá trị, đo thời gian xử lý và thu phản hồi từ sinh viên/cán bộ. | Sau cuộc thi và 0-3 tháng đầu |
+| Thu phí theo đơn vị triển khai | Trường/khoa/Hội Sinh viên trả phí theo gói triển khai, gồm cấu hình quy chế, tài khoản cán bộ, dashboard, lưu trữ hồ sơ, báo cáo và hỗ trợ kỹ thuật. | Khi sản phẩm ổn định sau pilot |
+| Thu phí theo số hồ sơ/API usage | Tính phí theo số hồ sơ được xử lý, số lượt OCR minh chứng, số lượt hỏi RAG Chatbot hoặc số portfolio được xuất; phù hợp với đơn vị có quy mô khác nhau. | Giai đoạn mở rộng 6-12 tháng |
+| Hợp tác CLB/doanh nghiệp | CLB/Đội/Nhóm đăng hoạt động đúng tiêu chí; doanh nghiệp/học bổng có thể tài trợ chương trình, ngày hội hoặc kênh kết nối sinh viên có portfolio xác thực. | Giai đoạn mở rộng sau khi có dữ liệu người dùng đủ lớn |
+| Giá trị phi lợi nhuận/xã hội | Tăng tỷ lệ sinh viên theo đuổi danh hiệu đến cuối kỳ, giảm lãng phí nguồn lực xét duyệt, tăng minh bạch và biến danh hiệu thành giá trị nghề nghiệp cụ thể. | Xuyên suốt, đặc biệt trong pilot với các đơn vị sinh viên |
 
 ## 9. Rủi ro và phương án giảm thiểu
 
 | Rủi ro | Mức độ ảnh hưởng | Phương án giảm thiểu |
 |---|---|---|
-| Thiếu dữ liệu thực tế | Cao | Tạo bộ hồ sơ demo hợp lý gồm nhiều loại minh chứng: bảng điểm, giấy chứng nhận hoạt động, chứng chỉ, ảnh/PDF và minh chứng không hợp lệ; phỏng vấn nhanh sinh viên/cán bộ Đoàn - Hội để hiệu chỉnh pain-point và tiêu chí. Khi pilot thật, xin đồng ý sử dụng dữ liệu và ẩn thông tin nhạy cảm. |
-| API lỗi/chậm khi demo | Cao | Thiết kế adapter cho SmartReader/Smartbot, có timeout và thông báo lỗi rõ ràng; lưu cache kết quả OCR/AI cho dữ liệu demo; chuẩn bị fallback bằng dữ liệu đã xử lý trước để demo không bị gián đoạn. |
-| AI trả kết quả sai | Cao | Không cho AI tự động quyết định kết quả cuối cùng; hiển thị confidence score, lý do gợi ý và phần nội dung OCR để cán bộ kiểm tra; cho phép sinh viên/cán bộ chỉnh sửa phân loại minh chứng; ghi nhận phản hồi để cải thiện prompt/bộ luật tiêu chí. |
-| Vấn đề bảo mật/pháp lý | Cao | Không commit API key/token; lưu key bằng biến môi trường; phân quyền theo vai trò sinh viên/cán bộ; sinh viên chỉ xem hồ sơ của mình; file minh chứng không public trực tiếp; log không ghi dữ liệu cá nhân nhạy cảm; có cơ chế xóa/ẩn dữ liệu demo sau cuộc thi. |
-| Không đủ thời gian build MVP | Trung bình | Giới hạn MVP vào một luồng end-to-end: đăng nhập giả lập, tạo hồ sơ, upload minh chứng mẫu, OCR, phân loại tiêu chí, báo cáo thiếu/đủ, dashboard cán bộ và render portfolio cơ bản; các tính năng như eKYC, SmartVoice, export PDF nâng cao đưa vào mở rộng. |
-| Tiêu chí Sinh viên 5 tốt thay đổi theo cấp/năm học | Trung bình | Thiết kế bộ tiêu chí dạng cấu hình thay vì hard-code; trong MVP chỉ chọn một bộ tiêu chí mẫu đủ đại diện; khi mở rộng cho phép quản trị viên cập nhật tiêu chí theo năm học/cấp xét. |
-| Minh chứng chất lượng thấp hoặc sai định dạng | Trung bình | Kiểm tra định dạng/kích thước file khi upload; cảnh báo ảnh mờ hoặc thiếu nội dung; cho phép người dùng nhập/chỉnh sửa thông tin trích xuất thủ công nếu OCR không đủ tin cậy. |
-| Người dùng không tin tưởng gợi ý AI | Trung bình | Trình bày AI như trợ lý hỗ trợ, không thay thế người duyệt; luôn hiển thị lý do, nguồn minh chứng liên quan và bước xác nhận của cán bộ; thu phản hồi trực tiếp sau mỗi gợi ý để cải thiện trải nghiệm. |
+| Thiếu dữ liệu thực tế để huấn luyện/kiểm thử | Cao | Tạo bộ hồ sơ demo có kiểm soát gồm bảng điểm, giấy khen, chứng chỉ, ảnh/PDF, minh chứng hợp lệ và không hợp lệ; phỏng vấn nhanh sinh viên/cán bộ để hiệu chỉnh tiêu chí. Khi pilot thật, chỉ dùng dữ liệu khi có đồng ý và ẩn thông tin nhạy cảm. |
+| API SmartReader/Smartbot/eKYC lỗi hoặc chậm khi demo | Cao | Thiết kế lớp adapter cho từng API, có timeout, retry và thông báo lỗi rõ ràng; cache kết quả OCR/RAG/eKYC với dữ liệu demo; chuẩn bị fallback bằng dữ liệu đã xử lý trước để live-demo không bị gián đoạn. |
+| OCR hoặc AI phân loại sai minh chứng | Cao | Không để AI tự quyết định kết quả cuối cùng; hiển thị nội dung OCR, tiêu chí được gợi ý, confidence score và lý do phân loại; cho phép sinh viên/cán bộ chỉnh sửa; dùng phản hồi của cán bộ để cải thiện prompt/bộ luật tiêu chí. |
+| RAG Chatbot trả lời sai hoặc lệch quy chế từng trường | Cao | Neo chatbot vào bộ tài liệu quy chế đã kiểm duyệt, yêu cầu trích nguồn/điều khoản liên quan, giới hạn câu trả lời ngoài phạm vi; các câu hỏi nhạy cảm hoặc không chắc chắn sẽ chuyển sang gợi ý liên hệ cán bộ phụ trách. |
+| eKYC và dữ liệu cá nhân tạo rủi ro bảo mật/pháp lý | Cao | Chỉ thu thập dữ liệu cần thiết; có consent checkbox khi đăng ký/upload; lưu API key bằng biến môi trường/secret manager; phân quyền sinh viên/cán bộ/admin; file minh chứng dùng signed URL, không public bucket; có script xóa dữ liệu demo sau cuộc thi. |
+| Không đủ thời gian build MVP trong 1 tuần Vòng 2 | Trung bình | Khóa scope MVP vào core flow: đăng nhập giả lập 2 vai trò, tạo hồ sơ mock, upload minh chứng, SmartReader OCR, phân loại vào 5 tiêu chí, dashboard sinh viên và dashboard cán bộ. RAG, eKYC, bản đồ sự kiện, portfolio PDF đưa vào mở rộng nếu còn thời gian. |
+| Tiêu chí Sinh viên 5 tốt thay đổi theo cấp/năm học/trường | Trung bình | Thiết kế bộ tiêu chí và tài liệu RAG dạng cấu hình thay vì hard-code; MVP dùng một bộ tiêu chí mẫu đủ đại diện; khi mở rộng cho phép admin cập nhật tiêu chí theo trường, năm học và cấp xét. |
+| Chưa có cơ sở dữ liệu đối chiếu minh chứng đầy đủ | Trung bình | MVP chỉ mô phỏng CSDL đối chiếu với dữ liệu mẫu và ghi rõ phạm vi; khi triển khai thật cần tích hợp từng bước với dữ liệu hoạt động của trường/CLB, dùng trạng thái "cần kiểm tra thủ công" nếu chưa có nguồn xác thực. |
+| Người dùng chưa tin tưởng hoặc ngại thay đổi quy trình | Trung bình | Trình bày AI-5Good là công cụ hỗ trợ, không thay thế cán bộ; giữ bước xác nhận cuối cùng của con người; thiết kế giao diện giải thích rõ vì sao đạt/chưa đạt; pilot với một khoa/CLB nhỏ trước khi mở rộng toàn trường. |
 
 ## 10. Video thuyết minh
 
