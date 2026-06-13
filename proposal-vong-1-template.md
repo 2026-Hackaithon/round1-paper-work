@@ -281,50 +281,50 @@ MVP cần chứng minh được luồng giá trị chính, không cần làm to�
 
 | Nhóm hưởng lợi | Lợi ích cụ thể | Cách đo lường |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Sinh viên chuẩn bị hồ sơ Sinh viên 5 tốt | Biết sớm hồ sơ còn thiếu tiêu chí/minh chứng nào, giảm rủi ro nộp thiếu hoặc nộp sai minh chứng; có gợi ý hoạt động/chứng chỉ nên bổ sung theo từng tiêu chí. | Thời gian để sinh viên nhận báo cáo thiếu/đủ sau khi upload; tỷ lệ hồ sơ phải bổ sung lại; khảo sát mức độ dễ hiểu của phản hồi AI. |
+| Cán bộ Đoàn - Hội | Giảm thời gian đọc, phân loại và phản hồi hồ sơ thủ công; tăng tính nhất quán khi sơ loại hồ sơ giữa nhiều người duyệt. | Thời gian sơ loại trung bình/hồ sơ; số hồ sơ xử lý được trong một phiên; tỷ lệ gợi ý AI được cán bộ chấp nhận hoặc chỉnh sửa ít. |
+| Hội Sinh viên/nhà trường | Số hóa quy trình xét chọn, theo dõi được trạng thái hồ sơ và các tiêu chí sinh viên thường thiếu; có dữ liệu để cải thiện truyền thông phong trào Sinh viên 5 tốt. | Dashboard thống kê số hồ sơ theo trạng thái/tiêu chí; tỷ lệ sinh viên hoàn thiện hồ sơ đúng hạn; số báo cáo/danh sách được xuất từ hệ thống. |
+| Nhà tuyển dụng/học bổng/thực tập | Sinh viên có portfolio năng lực đáng tin cậy hơn, được tổng hợp từ minh chứng đã phân loại thay vì chỉ mô tả tự do. | Số portfolio được render/xuất; số sinh viên tái sử dụng portfolio cho học bổng, thực tập, tuyển dụng; phản hồi định tính từ người xem portfolio. |
 
 ### 8.2. TAM - SAM - SOM hoặc người dùng tiềm năng
 
-Nếu có thể ước tính thị trường/người dùng, trình bày theo bảng:
+Ước tính sơ bộ theo phạm vi người dùng của phong trào Sinh viên 5 tốt. Các con số bên dưới dùng cho proposal vòng 1 và sẽ được thay bằng số liệu khảo sát/đối chiếu thực tế khi triển khai pilot.
 
 | Chỉ số | Định nghĩa trong bài toán | Ước tính | Cơ sở ước tính |
 |---|---|---:|---|
-| TAM | Tổng thị trường/người dùng có thể phục vụ |  |  |
-| SAM | Phân khúc có thể tiếp cận trong 1-2 năm |  |  |
-| SOM | Phần có thể đạt được giai đoạn đầu |  |  |
-
-Nếu chưa phù hợp TAM-SAM-SOM, có thể thay bằng:
-
-- Tổng số người dùng tiềm năng.
-- Số đơn vị/trường/tổ chức có thể triển khai.
-- Số quy trình/hồ sơ/giao dịch có thể xử lý mỗi năm.
+| TAM | Tổng nhóm sinh viên đại học/cao đẳng và cán bộ Đoàn - Hội có thể tham gia hoặc quản lý hồ sơ Sinh viên 5 tốt trên toàn quốc. | 2.000.000+ sinh viên; hàng trăm trường/đơn vị | Quy mô sinh viên bậc đại học/cao đẳng trên toàn quốc; phong trào Sinh viên 5 tốt có thể triển khai ở nhiều cấp: khoa, trường, thành phố, trung ương. |
+| SAM | Phân khúc có thể tiếp cận trong 1-2 năm đầu: các trường/khoa có hoạt động Hội Sinh viên mạnh, có nhu cầu số hóa xét chọn và sẵn sàng thử nghiệm web app. | 100.000-300.000 sinh viên; 20-50 đơn vị/khoa/trường | Tập trung trước vào các trường/khoa có quy trình xét hồ sơ định kỳ, số lượng hồ sơ đủ lớn và có cán bộ phụ trách sẵn sàng phối hợp pilot. |
+| SOM | Phần có thể đạt được ở giai đoạn đầu sau cuộc thi: pilot tại 1-3 khoa/trường hoặc một cụm đơn vị nhỏ. | 500-3.000 sinh viên; 300-1.000 hồ sơ/mùa xét | Phạm vi phù hợp để kiểm chứng MVP, đo thời gian xử lý hồ sơ, thu phản hồi người dùng và tinh chỉnh bộ tiêu chí trước khi mở rộng. |
 
 ### 8.3. Ưu thế cạnh tranh
 
-- `<Ưu thế 1: dữ liệu/domain insight/đối tác/quy trình>`
-- `<Ưu thế 2: trải nghiệm người dùng/API/AI workflow>`
-- `<Ưu thế 3: khả năng triển khai nhanh/chi phí thấp/mở rộng>`
+- **Tập trung đúng domain Sinh viên 5 tốt:** giải pháp không chỉ là nơi upload file, mà bám vào workflow thực tế của sinh viên và cán bộ Đoàn - Hội: tạo hồ sơ, upload minh chứng, đối chiếu tiêu chí, phản hồi, sơ loại và render portfolio.
+- **AI workflow có giải thích:** hệ thống dùng AI để OCR, bóc tách thông tin, mapping minh chứng với tiêu chí, chỉ ra lý do đạt/chưa đạt và gợi ý bổ sung. Điều này khác với chatbot hỏi đáp chung hoặc hệ thống quản lý hồ sơ chỉ lưu trạng thái.
+- **Hỗ trợ cả hai phía người dùng:** sinh viên được hướng dẫn hoàn thiện hồ sơ, cán bộ được hỗ trợ sơ loại và tạo phản hồi mẫu. Giá trị không nằm ở một tính năng đơn lẻ mà ở luồng xử lý end-to-end.
+- **Triển khai MVP nhanh, chi phí thấp:** có thể bắt đầu bằng web app, dữ liệu mẫu, bộ tiêu chí cấu hình và tích hợp SmartReader/Smartbot; chưa cần tích hợp sâu với hệ thống sinh viên thật trong giai đoạn đầu.
+- **Có khả năng mở rộng sang portfolio năng lực sinh viên:** dữ liệu minh chứng sau khi được phân loại có thể tái sử dụng cho học bổng, thực tập, tuyển dụng hoặc các chương trình ghi nhận hoạt động sinh viên khác.
 
 ### 8.4. Mô hình doanh thu hoặc giá trị mang lại
 
 | Mô hình | Mô tả | Phù hợp giai đoạn nào |
 |---|---|---|
-| Miễn phí/pilot |  |  |
-| Thu phí theo đơn vị triển khai |  |  |
-| Thu phí theo số người dùng/giao dịch |  |  |
-| Giá trị phi lợi nhuận/xã hội |  |  |
+| Miễn phí/pilot | Cung cấp bản dùng thử cho một khoa/trường hoặc một mùa xét Sinh viên 5 tốt để kiểm chứng giá trị, thu dữ liệu phản hồi và hoàn thiện bộ tiêu chí. | Sau cuộc thi và 0-3 tháng đầu |
+| Thu phí theo đơn vị triển khai | Trường/khoa/Hội Sinh viên trả phí theo gói triển khai, bao gồm cấu hình tiêu chí, tài khoản cán bộ, dashboard, lưu trữ hồ sơ và hỗ trợ kỹ thuật. | Khi sản phẩm ổn định sau pilot |
+| Thu phí theo số người dùng/giao dịch | Tính phí theo số hồ sơ được xử lý, số lượt OCR/minh chứng hoặc số portfolio được xuất; phù hợp khi mở rộng nhiều đơn vị có quy mô khác nhau. | Giai đoạn mở rộng 6-12 tháng |
+| Giá trị phi lợi nhuận/xã hội | Hỗ trợ sinh viên hiểu rõ tiêu chí phát triển toàn diện, tăng tỷ lệ hoàn thiện hồ sơ đúng hạn và giảm tải công việc tình nguyện/thủ công cho cán bộ Đoàn - Hội. | Xuyên suốt, đặc biệt trong pilot với các đơn vị sinh viên |
 
 ## 9. Rủi ro và phương án giảm thiểu
 
 | Rủi ro | Mức độ ảnh hưởng | Phương án giảm thiểu |
 |---|---|---|
-| Thiếu dữ liệu thực tế | Cao/Trung bình/Thấp |  |
-| API lỗi/chậm khi demo | Cao/Trung bình/Thấp |  |
-| AI trả kết quả sai | Cao/Trung bình/Thấp |  |
-| Vấn đề bảo mật/pháp lý | Cao/Trung bình/Thấp |  |
-| Không đủ thời gian build MVP | Cao/Trung bình/Thấp |  |
+| Thiếu dữ liệu thực tế | Cao | Tạo bộ hồ sơ demo hợp lý gồm nhiều loại minh chứng: bảng điểm, giấy chứng nhận hoạt động, chứng chỉ, ảnh/PDF và minh chứng không hợp lệ; phỏng vấn nhanh sinh viên/cán bộ Đoàn - Hội để hiệu chỉnh pain-point và tiêu chí. Khi pilot thật, xin đồng ý sử dụng dữ liệu và ẩn thông tin nhạy cảm. |
+| API lỗi/chậm khi demo | Cao | Thiết kế adapter cho SmartReader/Smartbot, có timeout và thông báo lỗi rõ ràng; lưu cache kết quả OCR/AI cho dữ liệu demo; chuẩn bị fallback bằng dữ liệu đã xử lý trước để demo không bị gián đoạn. |
+| AI trả kết quả sai | Cao | Không cho AI tự động quyết định kết quả cuối cùng; hiển thị confidence score, lý do gợi ý và phần nội dung OCR để cán bộ kiểm tra; cho phép sinh viên/cán bộ chỉnh sửa phân loại minh chứng; ghi nhận phản hồi để cải thiện prompt/bộ luật tiêu chí. |
+| Vấn đề bảo mật/pháp lý | Cao | Không commit API key/token; lưu key bằng biến môi trường; phân quyền theo vai trò sinh viên/cán bộ; sinh viên chỉ xem hồ sơ của mình; file minh chứng không public trực tiếp; log không ghi dữ liệu cá nhân nhạy cảm; có cơ chế xóa/ẩn dữ liệu demo sau cuộc thi. |
+| Không đủ thời gian build MVP | Trung bình | Giới hạn MVP vào một luồng end-to-end: đăng nhập giả lập, tạo hồ sơ, upload minh chứng mẫu, OCR, phân loại tiêu chí, báo cáo thiếu/đủ, dashboard cán bộ và render portfolio cơ bản; các tính năng như eKYC, SmartVoice, export PDF nâng cao đưa vào mở rộng. |
+| Tiêu chí Sinh viên 5 tốt thay đổi theo cấp/năm học | Trung bình | Thiết kế bộ tiêu chí dạng cấu hình thay vì hard-code; trong MVP chỉ chọn một bộ tiêu chí mẫu đủ đại diện; khi mở rộng cho phép quản trị viên cập nhật tiêu chí theo năm học/cấp xét. |
+| Minh chứng chất lượng thấp hoặc sai định dạng | Trung bình | Kiểm tra định dạng/kích thước file khi upload; cảnh báo ảnh mờ hoặc thiếu nội dung; cho phép người dùng nhập/chỉnh sửa thông tin trích xuất thủ công nếu OCR không đủ tin cậy. |
+| Người dùng không tin tưởng gợi ý AI | Trung bình | Trình bày AI như trợ lý hỗ trợ, không thay thế người duyệt; luôn hiển thị lý do, nguồn minh chứng liên quan và bước xác nhận của cán bộ; thu phản hồi trực tiếp sau mỗi gợi ý để cải thiện trải nghiệm. |
 
 ## 10. Video thuyết minh
 
