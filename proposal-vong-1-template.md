@@ -154,28 +154,139 @@ Tiêu chí đạt khi chứng minh không có sản phẩm tương tự hoặc k
 
 ### 6.1. Kiến trúc hệ thống
 
-Chèn sơ đồ kiến trúc hoặc mô tả bằng text.
+Kiến trúc được thiết kế theo hướng web app gồm 2 không gian sử dụng: **Sinh viên** và **Cán bộ Đoàn - Hội**. Toàn bộ lời gọi đến API AI/VNPT đi qua backend để kiểm soát phân quyền, bảo vệ API key, ghi log và lưu kết quả xử lý. Hệ thống có thêm cache để lưu session/role, bộ tiêu chí, kết quả OCR/AI tạm thời, giúp demo ổn định hơn và giảm số lần gọi API ngoài. MVP tập trung vào luồng cốt lõi: đăng nhập 2 vai trò, tạo hồ sơ, upload minh chứng, OCR, phân loại theo 5 tiêu chí Sinh viên 5 tốt, hiển thị dashboard sinh viên và dashboard cán bộ.
 
-```text
-Người dùng
-    |
-    v
-Ứng dụng Web/Mobile/Chatbot
-    |
-    v
-Backend/API
-    |
-    +-- Module nghiệp vụ
-    +-- Module AI
-    +-- Module quản lý dữ liệu
-    +-- Module báo cáo/dashboard
-    |
-    v
-Cơ sở dữ liệu / Lưu trữ file
-    |
-    +-- API/AI service của BTC
-    +-- Dịch vụ bên ngoài nếu có
+```mermaid
+flowchart TB
+    %% Hai lane người dùng được đặt song song để dễ phân biệt luồng Sinh viên và luồng Cán bộ.
+    subgraph StudentLane ["Luồng Sinh viên"]
+        direction TB
+        S(["Sinh viên"])
+        FE_S["Frontend Sinh viên\nTạo hồ sơ, upload minh chứng,\nxem thiếu/đủ, tạo CV"]
+        S -->|"Truy cập web"| FE_S
+    end
+
+    subgraph OfficerLane ["Luồng Cán bộ Đoàn - Hội"]
+        direction TB
+        A(["Cán bộ Đoàn - Hội"])
+        FE_A["Frontend Cán bộ\nDanh sách hồ sơ, kiểm tra minh chứng,\nduyệt/yêu cầu bổ sung"]
+        A -->|"Truy cập dashboard"| FE_A
+    end
+
+    subgraph Entry ["Lớp API vào hệ thống"]
+        direction TB
+        Nginx{"Nginx Reverse Proxy"}
+        API("API Gateway & Core Logic")
+        Nginx <--> API
+    end
+
+    subgraph Backend ["Hệ thống Backend (Node.js + NestJS)"]
+        direction TB
+        Auth("Auth & Role-based Access\nSinh viên / Cán bộ")
+        Profile("Profile Service\nHồ sơ sinh viên")
+        Evidence("Evidence Service\nUpload, OCR text, file minh chứng")
+        Criteria("Criteria Service\n5 tiêu chí Sinh viên 5 tốt")
+        EvalService("AI Evaluation Engine\nPhân loại minh chứng & gợi ý trạng thái")
+        Review("Review Service\nCán bộ duyệt / yêu cầu bổ sung")
+        Portfolio("Portfolio Service\nRender CV/Portfolio")
+        VoiceChat("Voice/Chat Service\nHỏi đáp bằng giọng nói")
+        UX("Analytics/UX Service\nTheo dõi hành vi sử dụng")
+    end
+
+    subgraph VNPT_AI ["Tích hợp API Ban Tổ Chức (VNPT)"]
+        direction TB
+        OCR[["VNPT SmartReader: OCR & Bóc tách thông tin giấy tờ"]]
+        LLM[["VNPT Smartbot (Dịch vụ nâng cao): Hỏi đáp & Phân tích bằng LLM"]]
+        EKYC[["VNPT eKYC: Xác thực danh tính sinh viên (mở rộng)"]]
+        Voice[["VNPT SmartVoice: Giao diện giọng nói (mở rộng)"]]
+        SmartUX[["VNPT SmartUX: Hành vi sử dụng & cải thiện UX (mở rộng)"]]
+    end
+
+    subgraph Storage ["Lưu trữ"]
+        direction TB
+        DB[("Database (PostgreSQL/SQL Server)\nHồ sơ, tiêu chí, OCR text, kết quả AI, trạng thái duyệt")]
+        S3[("Object Storage\nFile minh chứng gốc: ảnh/PDF")]
+        Cache[("Redis Cache\nSession/role, bộ tiêu chí,\nkết quả OCR/AI tạm thời")]
+    end
+
+    %% Luồng gọi API từ 2 không gian giao diện
+    FE_S <-->|"REST API"| Nginx
+    FE_A <-->|"REST API"| Nginx
+
+    %% Mọi request đi qua Auth/Role Guard trước khi vào module nghiệp vụ
+    API <--> Auth
+    Auth <--> Profile
+    Auth <--> Evidence
+    Auth <--> Criteria
+    Auth <--> EvalService
+    Auth <--> Review
+    Auth <--> Portfolio
+    Auth <--> VoiceChat
+    Auth <--> UX
+
+    %% Luồng lõi MVP: hồ sơ -> minh chứng -> AI đánh giá -> cán bộ duyệt -> portfolio
+    Profile --> Evidence
+    Evidence --> EvalService
+    Criteria --> EvalService
+    EvalService --> Review
+    Review --> Portfolio
+
+    %% Lưu trữ dữ liệu
+    Profile <-->|"Đọc/Ghi hồ sơ"| DB
+    Criteria <-->|"Đọc/Ghi bộ tiêu chí"| DB
+    Evidence -->|"Lưu file gốc"| S3
+    Evidence <-->|"Lưu OCR text & metadata"| DB
+    EvalService <-->|"Lưu kết quả phân loại, confidence, gợi ý"| DB
+    Review <-->|"Lưu quyết định cán bộ & phản hồi"| DB
+    Portfolio <-->|"Đọc dữ liệu đã duyệt để render CV"| DB
+    UX -->|"Ghi sự kiện sử dụng"| DB
+    Auth <-->|"Cache session/role"| Cache
+    Criteria <-->|"Cache bộ tiêu chí"| Cache
+    Evidence <-->|"Cache OCR result"| Cache
+    EvalService <-->|"Cache AI result"| Cache
+
+    %% Tích hợp AI giải quyết bài toán cốt lõi
+    Evidence -->|"Gửi ảnh/PDF minh chứng"| OCR
+    OCR -->|"Trả về dữ liệu text đã bóc tách"| Evidence
+
+    EvalService -->|"OCR text + bộ tiêu chí + prompt đánh giá"| LLM
+    LLM -->|"Phân loại tiêu chí, gợi ý bổ sung, giải thích lý do"| EvalService
+
+    %% API mở rộng
+    Auth -.->|"Xác thực nâng cao nếu cần"| EKYC
+    VoiceChat -.->|"Speech-to-text / Text-to-speech nếu mở rộng"| Voice
+    UX -.->|"Đẩy dữ liệu UX nếu mở rộng"| SmartUX
+
+    classDef student fill:#E8F3FF,stroke:#2563EB,color:#0F172A
+    classDef officer fill:#F1F5F9,stroke:#475569,color:#0F172A
+    classDef backend fill:#ECFDF5,stroke:#059669,color:#0F172A
+    classDef ai fill:#FFF7ED,stroke:#EA580C,color:#0F172A
+    classDef storage fill:#F8FAFC,stroke:#64748B,color:#0F172A
+    classDef optional fill:#FAF5FF,stroke:#9333EA,color:#0F172A,stroke-dasharray: 5 5
+
+    class S,FE_S student
+    class A,FE_A officer
+    class Nginx,API,Auth,Profile,Evidence,Criteria,EvalService,Review,Portfolio,VoiceChat,UX backend
+    class OCR,LLM ai
+    class DB,S3,Cache storage
+    class EKYC,Voice,SmartUX optional
 ```
+
+
+![alt text](./images/architecture-diagram.png)
+
+**Đối chiếu với phạm vi MVP ở mục 7.1:**
+
+| Yêu cầu MVP 7.1 | Thành phần kiến trúc đáp ứng |
+|---|---|
+| Đăng nhập giả lập 2 vai trò, sinh viên tạo hồ sơ | `Auth`, `Profile`, `FE_S`, `FE_A` |
+| Upload ảnh giấy khen/PDF bảng điểm | `Evidence`, `S3/Object Storage`, `FE_S` |
+| OCR bằng VNPT SmartReader | `Evidence` gọi `VNPT SmartReader` |
+| Phân loại minh chứng vào 5 tiêu chí Sinh viên 5 tốt | `Criteria`, `AI Evaluation Engine`, `VNPT Smartbot` |
+| Dashboard sinh viên xem tiêu chí đạt/thiếu | `FE_S`, `Profile`, `EvalService`, `DB` |
+| Dashboard cán bộ xem hồ sơ và đề xuất sơ loại | `FE_A`, `Review`, `EvalService`, `DB` |
+| Cán bộ duyệt/từ chối/yêu cầu bổ sung | `Review Service` |
+| RAG chatbot, eKYC, giọng nói, portfolio, UX tracking nếu mở rộng | `VNPT Smartbot`, `eKYC`, `SmartVoice`, `Portfolio`, `Analytics/UX` |
 
 ### 6.2. Các module chính
 
@@ -228,7 +339,7 @@ Thời gian phát triển ở Vòng 2 chỉ có **1 tuần (26/06 - 03/07/2026)*
 | Thành phần | Công nghệ dự kiến | Lý do chọn |
 |---|---|---|
 | Frontend |  |  |
-| Backend |  |  |
+| Backend | Node.js + NestJS | Có cấu trúc module/service rõ ràng, phù hợp API nhiều nghiệp vụ, dễ tích hợp OCR/AI, triển khai MVP nhanh |
 | Database |  |  |
 | AI/API |  |  |
 | Deploy |  |  |
