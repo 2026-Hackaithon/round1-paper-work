@@ -81,43 +81,40 @@ Trình bày pain-point theo cấu trúc: **vấn đề - bằng chứng - hậu 
 
 ### 4.1. Giải pháp đề xuất
 
-Mô tả sản phẩm sẽ làm gì và giải quyết pain-point như thế nào.
+**AI-5Good (5T Assistant)** là một nền tảng Web App tích hợp AI đóng vai trò như một trợ lý ảo 24/7, đồng hành cùng sinh viên trong suốt quá trình phấn đấu danh hiệu "Sinh viên 5 tốt". Sản phẩm số hóa toàn bộ hành trình từ việc tìm hiểu quy chế, theo dõi tiến độ, thu thập minh chứng cho đến lúc nộp hồ sơ xét duyệt. Thay vì để sinh viên tự xoay sở một cách thụ động, hệ thống chủ động hướng dẫn, đánh giá sơ bộ và nhắc nhở họ hoàn thiện các tiêu chí còn thiếu.
 
-`<Viết 2-4 đoạn mô tả giải pháp tổng thể. Nên nói rõ sản phẩm là web app, mobile app, chatbot, dashboard, API platform hay công cụ nội bộ.>`
+Với giải pháp này, bài toán quá tải ở phía Hội Sinh viên được giải quyết triệt để thông qua một Dashboard quản lý tập trung. Các nghiệp vụ thủ công như đọc, đối chiếu giấy khen, kiểm tra thông tin sinh viên đều được tự động hóa bằng AI (OCR và eKYC). Cán bộ Hội thay vì mất hàng tuần để rà soát hàng ngàn hồ sơ bản cứng, nay chỉ cần kiểm tra lại các trường hợp bất thường đã được AI đánh dấu và xuất báo cáo danh sách đề xuất khen thưởng một cách nhanh chóng.
 
 ### 4.2. Nhóm chức năng chính
 
 | Nhóm chức năng | Người dùng | Mô tả | Giá trị mang lại |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| **Trợ lý 5 Tốt (Chatbot 24/7)** | Sinh viên | Giải đáp thắc mắc về quy chế, điều kiện xét chọn của từng trường. Nhắc nhở deadline, hướng dẫn sinh viên bổ sung hồ sơ. | Giúp sinh viên hiểu rõ tiêu chí, luôn có người hướng dẫn bất kỳ lúc nào, giảm sai sót hồ sơ từ đầu nguồn. |
+| **Bản đồ sự kiện & Gợi ý hoạt động** | Sinh viên, CLB/Đội/Nhóm | Hợp tác với các CLB/Đoàn/Hội để tổng hợp danh sách sự kiện trên hệ thống. Dựa trên tiêu chí sinh viên đang thiếu, AI cá nhân hóa và đề xuất sự kiện phù hợp nhất để tham gia. | Giúp sinh viên dễ dàng tìm hoạt động bù đắp tiêu chí thiếu; giúp các CLB tiếp cận đúng tệp sinh viên mục tiêu. |
+| **Quản lý tiến độ & Tự động chấm điểm** | Sinh viên | Hệ thống tự động tính toán điểm sơ bộ (ví dụ: Đạt 4/5 tiêu chí). Cho phép sinh viên upload minh chứng và theo dõi hành trình cá nhân. | Khắc phục tình trạng sinh viên quên hoặc không biết mình còn thiếu gì, tăng tỷ lệ sinh viên theo đuổi danh hiệu đến cùng. |
+| **Xử lý minh chứng tự động (OCR & eKYC)** | Cán bộ Hội, Sinh viên | Bóc tách thông tin từ ảnh giấy khen, chứng chỉ PDF. Xác thực khuôn mặt với CCCD/thẻ sinh viên để chống giả mạo. | Giảm 60-70% thời gian nhập liệu thủ công; chuẩn hóa dữ liệu đầu vào. |
+| **Đối chiếu chéo CSDL (Auto Cross-check)** | Cán bộ Hội | Tự động truy vấn thông tin minh chứng vừa bóc tách và đối chiếu với Cơ sở dữ liệu tập trung (từ Trung ương/Trường). Trùng khớp là Pass. | Loại bỏ hoàn toàn khâu duyệt thật/giả thủ công; giải quyết triệt để vấn đề gian lận giấy tờ; duyệt hồ sơ tính bằng giây. |
+| **Dashboard Tổng hợp & Phân tích** | Cán bộ Hội | Quản lý toàn bộ hồ sơ đăng ký. AI tóm tắt nhanh hồ sơ, lọc và phân loại sinh viên đạt/chưa đạt chuẩn. Xuất báo cáo tổng hợp. | Xóa bỏ tình trạng quá tải cuối kỳ, giúp cán bộ theo dõi sát sao phong trào trong toàn trường và ra quyết định nhanh, chính xác. |
 
 ### 4.3. Luồng sử dụng chính
 
-1. `<Bước 1: Người dùng làm gì?>`
-2. `<Bước 2: Hệ thống xử lý gì?>`
-3. `<Bước 3: AI/API tham gia ở đâu?>`
-4. `<Bước 4: Người dùng nhận kết quả gì?>`
-5. `<Bước 5: Quy trình kết thúc hoặc chuyển sang bước tiếp theo thế nào?>`
+1. **Bước 1: Tìm hiểu & Đăng ký:** Sinh viên truy cập ứng dụng, trò chuyện với VNPT Smartbot để hiểu về quy chế. Sau đó, sinh viên tạo hồ sơ và xác thực danh tính qua VNPT eKYC.
+2. **Bước 2: Cập nhật tiến độ & Tự đánh giá:** Có 2 hình thức ghi nhận: (1) Với các hoạt động nội bộ (vd: Thanh niên khỏe), dữ liệu từ Ban tổ chức sẽ được **tự động đồng bộ**. Trường hợp sinh viên đã tham gia nhưng hệ thống chưa ghi nhận (do lỗi điểm danh/sai mã SV), sinh viên sử dụng nút **"Khiếu nại/Yêu cầu cập nhật"** kèm ảnh check-in để cán bộ rà soát lại. (2) Với chứng chỉ bên ngoài (vd: IELTS), sinh viên upload ảnh, VNPT SmartReader bóc tách thông tin và tự động đối chiếu CSDL để xác thực "Pass".
+3. **Bước 3: Nhắc nhở & Bổ sung:** Hệ thống liên tục so sánh tiến độ với quy chế. Nếu thiếu, Smartbot sẽ gửi thông báo nhắc nhở và tự động kết nối dữ liệu từ các CLB/Đoàn/Hội đối tác để gợi ý những sự kiện đang mở đơn phù hợp nhất, giúp sinh viên bù đắp tiêu chí.
+4. **Bước 4: Nộp hồ sơ xét duyệt:** Cuối kỳ, hệ thống chấm điểm sơ bộ. Sinh viên chỉ cần kiểm tra lại và bấm "Nộp hồ sơ" với tập dữ liệu đã được số hóa, chuẩn hóa.
+5. **Bước 5: Duyệt và xuất kết quả:** Cán bộ Hội mở Dashboard, xem danh sách hồ sơ đã được AI tóm tắt và phân loại sẵn. Cán bộ chỉ cần duyệt xác nhận cuối cùng và xuất danh sách khen thưởng dễ dàng.
 
 ### 4.4. Vì sao cần AI?
 
 Giải thích rõ AI tạo giá trị gì mà cách truyền thống khó làm được.
 
-| Tác vụ | Nếu không dùng AI | Khi dùng AI | Giá trị tạo ra |
+| Tác vụ | Nếu không dùng AI | Khi dùng AI (VNPT SmartReader, Smartbot, eKYC) | Giá trị tạo ra |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-
-**Gợi ý viết:**
-
-- AI giúp đọc hiểu dữ liệu phi cấu trúc.
-- AI giúp phân loại, dự đoán, gợi ý hoặc cá nhân hóa.
-- AI giúp giảm thời gian xử lý thủ công.
-- AI giúp tạo phản hồi tự nhiên, dễ hiểu.
-- AI giúp phát hiện bất thường hoặc hỗ trợ ra quyết định.
+| **Kiểm tra và nhập liệu minh chứng** | Cán bộ phải đọc từng tờ giấy khen, gõ lại tên, ngày tháng, nội dung vào file Excel. Dễ hoa mắt, nhập sai. | SmartReader bóc tách tức thì (tên, điểm số, ngày cấp) từ ảnh/PDF và tự động điền vào hệ thống. | Tiết kiệm hàng trăm giờ làm việc (giảm 60-70% thời gian), độ chính xác cao, chuẩn hóa dữ liệu. |
+| **Tư vấn và hướng dẫn sinh viên** | Sinh viên phải nhắn tin hỏi Fanpage Đoàn/Hội, đợi admin trả lời hoặc tự đọc văn bản quy chế dài hàng chục trang. | Smartbot (LLM) trả lời tự nhiên, tức thời 24/7 theo đúng ngữ cảnh và quy chế riêng của trường. | Trải nghiệm thân thiện, sinh viên nắm rõ thông tin, cán bộ Hội không bị quá tải tin nhắn hỗ trợ. |
+| **Xác minh danh tính** | Cán bộ phải nhìn ảnh thẻ trên hồ sơ và đối chiếu bằng mắt với thẻ sinh viên thực tế (hoặc dễ dàng bị bỏ qua do quá tải). | Hệ thống dùng eKYC so sánh khuôn mặt lúc làm hồ sơ với ảnh trên CCCD/Thẻ SV tự động. | Ngăn chặn gian lận hồ sơ, tăng tính minh bạch và uy tín cho toàn bộ hệ thống xét duyệt. |
+| **Tổng hợp và đánh giá hồ sơ** | Cán bộ tự phân loại thủ công, xem sinh viên này thiếu tiêu chí nào, đạt hay chưa đạt để duyệt. | Logic hệ thống kết hợp AI đánh giá sơ bộ, đưa ra kết luận "Đạt/Không đạt" và tóm tắt lý do. | Rút ngắn thời gian ra quyết định, hỗ trợ duyệt hồ sơ hàng loạt một cách nhanh chóng, tránh sai sót thủ công. |
+| **Xác minh thật/giả của minh chứng** | Cán bộ soi từng dấu mộc, chữ ký bằng mắt thường, không thể phát hiện nếu PTS tinh vi. Dễ để lọt hồ sơ giả mạo. | Nhờ AI (OCR) đọc dữ liệu từ ảnh sang dạng text, hệ thống mới có thể lấy text đó tự động truy vấn đối chiếu với CSDL. | Đảm bảo tính chính xác 100%, tự động hóa khâu chống gian lận, không để lọt giấy tờ giả mạo. |
 
 ## 5. Tính đổi mới và khác biệt
 
