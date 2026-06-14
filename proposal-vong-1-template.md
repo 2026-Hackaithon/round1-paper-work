@@ -33,7 +33,7 @@
 3. **Cấp thành phố/tỉnh**
 4. **Cấp Trung ương**
 
-Mỗi năm, hệ thống mở 4 đợt xét tương ứng với 4 cấp: khoa -> trường -> thành phố/tỉnh -> Trung ương. Ở mỗi đợt, sinh viên đủ điều kiện được nộp, chỉnh sửa hoặc bổ sung hồ sơ trong thời gian cho phép. Khi đến deadline, cổng hồ sơ khóa lại; cán bộ cấp tương ứng đăng nhập theo đúng đơn vị triển khai để xét duyệt. AI hỗ trợ đọc minh chứng, phân loại theo 5 nhóm tốt, phát hiện thiếu sót, tóm tắt hồ sơ và gợi ý trạng thái, nhưng **quyết định cuối cùng vẫn thuộc về cán bộ phụ trách**.
+Mỗi năm, hệ thống mở 4 đợt xét tương ứng với 4 cấp: khoa -> trường -> thành phố/tỉnh -> Trung ương. Ở mỗi đợt, sinh viên đủ điều kiện được nộp, chỉnh sửa hoặc bổ sung hồ sơ trong thời gian cho phép. Khi đến deadline, cổng hồ sơ khóa lại; cán bộ cấp tương ứng đăng nhập theo đúng đơn vị triển khai để xét duyệt. Ngoài thời gian nộp hồ sơ, sinh viên vẫn có thể cập nhật thành tích và lưu minh chứng vào kho cá nhân từ sớm để khi đến mùa xét chỉ cần chọn minh chứng còn hiệu lực đưa vào hồ sơ. AI hỗ trợ đọc minh chứng, phân loại theo 5 nhóm tốt, phát hiện thiếu sót, tóm tắt hồ sơ, gợi ý trạng thái và đề xuất hoạt động phù hợp với tiêu chí sinh viên còn thiếu, nhưng **quyết định cuối cùng vẫn thuộc về cán bộ phụ trách**. Sau khi có minh chứng/danh hiệu được duyệt, sinh viên có thể tạo **CV/portfolio Sinh viên 5 tốt** từ dữ liệu đã xác thực để phục vụ ứng tuyển, học bổng, trao đổi quốc tế hoặc giới thiệu hành trình phấn đấu cá nhân.
 
 Điểm cốt lõi của 5-Star Eco là mô hình tổ chức dạng cây:
 
@@ -54,7 +54,7 @@ Cán bộ cấp thành phố Hồ Chí Minh chỉ xử lý hồ sơ thuộc TP.H
 
 Phong trào **Sinh viên 5 tốt** là một trong những phong trào quan trọng của sinh viên Việt Nam, khuyến khích sinh viên phát triển toàn diện ở 5 nhóm tốt: đạo đức, học tập, thể lực, tình nguyện và hội nhập. Trên thực tế, quy trình xét danh hiệu không chỉ diễn ra ở một cấp. Sinh viên thường phải đi qua hành trình nhiều tầng: xét cấp khoa, đạt cấp khoa mới xét cấp trường, đạt cấp trường mới xét cấp thành phố/tỉnh, đạt cấp thành phố/tỉnh mới xét cấp Trung ương.
 
-Quy trình này trở nên rườm rà vì mỗi cấp có thời gian mở cổng, biểu mẫu, cách nhận minh chứng và điều kiện đạt khác nhau. Một sinh viên có thể đã nộp hồ sơ ở cấp khoa nhưng khi xét cấp trường hoặc cấp thành phố/tỉnh vẫn phải bổ sung thêm minh chứng, nộp lại quyết định/danh hiệu cấp cũ, theo dõi deadline mới và kiểm tra xem bộ điều kiện của cấp mới có khác gì so với cấp trước.
+Quy trình này trở nên rườm rà vì mỗi cấp có thời gian mở cổng, biểu mẫu, cách nhận minh chứng và điều kiện đạt khác nhau. Một sinh viên có thể đã nộp hồ sơ ở cấp khoa nhưng khi xét cấp trường hoặc cấp thành phố/tỉnh vẫn phải bổ sung thêm minh chứng, nộp lại quyết định/danh hiệu cấp cũ, theo dõi deadline mới và kiểm tra xem bộ điều kiện của cấp mới có khác gì so với cấp trước. Nếu không có nơi lưu thành tích từ sớm, sinh viên thường chỉ gom minh chứng sát deadline, dễ thiếu file, mất giấy tờ hoặc nộp nhầm minh chứng đã quá thời gian được công nhận.
 
 Ở phía cán bộ Đoàn - Hội, áp lực cũng tăng theo từng cấp. Cán bộ cấp khoa xử lý hồ sơ của sinh viên trong khoa; cán bộ cấp trường tổng hợp hồ sơ từ nhiều khoa; cán bộ cấp thành phố/tỉnh nhận hồ sơ từ nhiều trường; cán bộ Trung ương tiếp nhận danh sách và hồ sơ từ nhiều tỉnh/thành hoặc đơn vị trực thuộc. Nếu vẫn dùng Google Form, Excel và file rời, quá trình đối chiếu minh chứng, tổng hợp danh sách, trả hồ sơ bổ sung và lưu lịch sử xét duyệt dễ phát sinh sai sót.
 
@@ -65,7 +65,7 @@ Bài toán này phù hợp để ứng dụng AI vì dữ liệu đầu vào có
 | Nhóm | Mô tả | Pain-point chính | Nhu cầu |
 |---|---|---|---|
 | Đơn vị triển khai phong trào | Trung ương Hội Sinh viên Việt Nam, Hội Sinh viên cấp thành phố/tỉnh, trường, khoa/viện/bộ môn | Quy trình xét duyệt phân tán, khó chuẩn hóa, khó theo dõi trạng thái liên cấp | Nền tảng quản lý tập trung, phân quyền theo cây tổ chức, cấu hình được bộ điều kiện theo từng đơn vị |
-| Sinh viên | Người phấn đấu danh hiệu Sinh viên 5 tốt | Không biết mình đủ điều kiện cấp nào, thiếu minh chứng gì, deadline nào đang mở | Cổng hồ sơ thống nhất, gợi ý bổ sung, tái sử dụng hồ sơ cấp cũ, theo dõi danh hiệu đã đạt |
+| Sinh viên | Người phấn đấu danh hiệu Sinh viên 5 tốt | Không biết mình đủ điều kiện cấp nào, thiếu minh chứng gì, deadline nào đang mở; khó lưu trữ thành tích từ sớm | Cổng hồ sơ thống nhất, kho thành tích/minh chứng cá nhân, gợi ý bổ sung, tái sử dụng hồ sơ cấp cũ, theo dõi danh hiệu đã đạt |
 | Cán bộ cấp khoa | Cán bộ phụ trách phong trào tại khoa/viện/bộ môn | Xét hồ sơ ban đầu với nhiều minh chứng rời rạc, dễ sót minh chứng hoặc sai biểu mẫu | Dashboard theo khoa, AI đọc minh chứng, lọc hồ sơ thiếu/đủ và chốt danh sách cấp khoa |
 | Cán bộ cấp trường | Hội Sinh viên trường hoặc Đoàn trường nếu chưa có Hội Sinh viên | Tổng hợp hồ sơ từ nhiều khoa, kiểm tra điều kiện đã đạt cấp khoa | Dashboard theo trường, kiểm tra điều kiện đầu vào, xét cấp trường, gửi danh sách lên thành phố/tỉnh |
 | Cán bộ cấp thành phố/tỉnh | Hội Sinh viên cấp thành phố/tỉnh | Nhận hồ sơ từ nhiều trường, tiêu chí địa phương có thể khác nhau, cần chốt danh sách lên Trung ương | Dashboard theo địa bàn, tổng hợp danh sách chính thức, quản lý hồ sơ đủ điều kiện xét Trung ương |
@@ -76,6 +76,7 @@ Bài toán này phù hợp để ứng dụng AI vì dữ liệu đầu vào có
 | Pain-point | Số liệu/dẫn chứng sơ bộ | Hậu quả nếu không giải quyết |
 |---|---|---|
 | Hồ sơ rời rạc và nộp lặp lại nhiều lần | Một sinh viên có thể phải nộp/bổ sung hồ sơ qua 4 cấp trong cùng một chu kỳ xét | Mất thời gian, dễ thất lạc minh chứng, sinh viên không biết hồ sơ cấp cũ còn dùng được hay không |
+| Không có kho lưu thành tích từ sớm | Sinh viên thường tham gia hoạt động rải rác trong năm nhưng chỉ gom minh chứng khi cổng xét mở | Dễ quên hoạt động đã tham gia, thiếu file minh chứng, nộp trễ hoặc nộp minh chứng đã quá thời gian hợp lệ |
 | Cán bộ quá tải khi xét duyệt thủ công | Với trường quy mô 20.000 sinh viên, mỗi mùa xét có thể cần hàng chục cán bộ xử lý hồ sơ trong nhiều tuần | Dễ duyệt nhầm, sót hồ sơ, chậm công bố kết quả, khó truy vết trách nhiệm |
 | Tiêu chí triển khai khác nhau theo đơn vị | Cùng 5 nhóm tốt nhưng mỗi khoa/trường/tỉnh có thể có ngưỡng điểm, minh chứng, deadline, biểu mẫu riêng | Nếu hard-code một bộ tiêu chí chung, hệ thống không phản ánh đúng thực tế vận hành |
 | Thiếu minh bạch khi chuyển hồ sơ lên cấp cao hơn | Hồ sơ cấp thành phố/tỉnh gửi lên Trung ương cần danh sách chính thức, văn bản đề nghị và lịch sử xét duyệt | Nếu thiếu audit log và gói hồ sơ chuẩn, việc kiểm tra lại rất tốn công |
@@ -85,13 +86,13 @@ Bài toán này phù hợp để ứng dụng AI vì dữ liệu đầu vào có
 
 ### 4.1. Giải pháp đề xuất
 
-5-Star Eco đề xuất một nền tảng Web App liên cấp, trong đó mỗi sinh viên có một hồ sơ nền xuyên suốt quá trình phấn đấu Sinh viên 5 tốt. Hồ sơ này được tái sử dụng qua từng cấp xét, cho phép sinh viên bổ sung minh chứng mới khi lên cấp cao hơn thay vì phải nộp lại từ đầu.
+5-Star Eco đề xuất một nền tảng Web App liên cấp, trong đó mỗi sinh viên có một hồ sơ nền xuyên suốt quá trình phấn đấu Sinh viên 5 tốt. Hồ sơ này không chỉ dùng khi đến mùa xét, mà còn là **kho thành tích/minh chứng cá nhân** để sinh viên cập nhật giấy khen, chứng chỉ, hoạt động, điểm rèn luyện, hoạt động tình nguyện hoặc hội nhập ngay khi phát sinh. Khi một đợt xét mở ra, sinh viên chọn các minh chứng còn hiệu lực từ kho cá nhân để đưa vào hồ sơ nộp chính thức, tái sử dụng hồ sơ cấp cũ và bổ sung minh chứng mới khi lên cấp cao hơn thay vì phải nộp lại từ đầu. Từ các minh chứng và danh hiệu đã được duyệt, hệ thống có thể tự tạo CV/portfolio Sinh viên 5 tốt theo mẫu chuẩn, giúp sinh viên biến quá trình tham gia phong trào thành hồ sơ năng lực có thể chia sẻ.
 
-Hệ thống quản lý cây tổ chức với root là Trung ương, dưới đó là các thành phố/tỉnh, dưới mỗi thành phố/tỉnh là các trường, dưới mỗi trường là các khoa/viện/bộ môn. Mỗi tài khoản cán bộ được gắn với một đơn vị cụ thể và chỉ nhìn thấy hồ sơ trong phạm vi được phân quyền. Ví dụ, cán bộ cấp thành phố Hồ Chí Minh nhìn thấy hồ sơ từ các trường thuộc TP.HCM; cán bộ Trường Đại học Khoa học Tự nhiên nhìn thấy hồ sơ thuộc trường; cán bộ Khoa Công nghệ thông tin của trường đó chỉ nhìn thấy sinh viên thuộc khoa mình.
+Hệ thống quản lý cây tổ chức với gốc là Trung ương, dưới đó là các thành phố/tỉnh, dưới mỗi thành phố/tỉnh là các trường, dưới mỗi trường là các khoa/viện/bộ môn. Mỗi tài khoản cán bộ được gắn với một đơn vị cụ thể và chỉ nhìn thấy hồ sơ trong phạm vi được phân quyền. Ví dụ, cán bộ cấp thành phố Hồ Chí Minh nhìn thấy hồ sơ từ các trường thuộc TP.HCM; cán bộ Trường Đại học Khoa học Tự nhiên nhìn thấy hồ sơ thuộc trường; cán bộ Khoa Công nghệ thông tin của trường đó chỉ nhìn thấy sinh viên thuộc khoa mình.
 
-Mỗi năm, admin hoặc đơn vị có thẩm quyền tạo chu kỳ xét gồm 4 đợt: cấp khoa, cấp trường, cấp thành phố/tỉnh và cấp Trung ương. Mỗi đợt có thời gian mở cổng, deadline, bộ điều kiện đạt, biểu mẫu và phạm vi đơn vị riêng. Khi cổng mở, sinh viên đủ điều kiện được nộp hoặc bổ sung hồ sơ. Khi cổng khóa, sinh viên không thể tự chỉnh sửa, trừ trường hợp cán bộ/admin mở lại theo quy trình đặc biệt.
+Mỗi năm, admin hoặc đơn vị có thẩm quyền tạo chu kỳ xét gồm 4 đợt: cấp khoa, cấp trường, cấp thành phố/tỉnh và cấp Trung ương. Mỗi đợt có thời gian mở cổng, deadline, bộ điều kiện đạt, biểu mẫu và phạm vi đơn vị riêng. Khi đợt xét đầu tiên của năm mở ở cấp khoa, admin cấu hình thêm khoảng thời gian minh chứng khả dụng, ví dụ `evidence_valid_from` và `evidence_valid_to`. Hệ thống chỉ cho phép đưa các minh chứng nằm trong khoảng thời gian này vào hồ sơ xét; các minh chứng cũ không còn khả dụng sẽ được đánh dấu hết hạn và đưa vào cơ chế dọn dẹp/xóa tự động theo chính sách lưu trữ để giảm dung lượng Object Storage. Khi cổng mở, sinh viên đủ điều kiện được nộp hoặc bổ sung hồ sơ. Khi cổng khóa, sinh viên không thể tự chỉnh sửa, trừ trường hợp cán bộ/admin mở lại theo quy trình đặc biệt.
 
-AI đóng vai trò trợ lý xử lý hồ sơ: OCR minh chứng, trích xuất thông tin, phân loại minh chứng vào 5 nhóm tốt, so sánh với bộ điều kiện đúng cấp/đúng đơn vị/đúng năm, tóm tắt hồ sơ cho cán bộ và cảnh báo trường hợp thiếu minh chứng cấp cũ. Tuy nhiên, AI không tự cấp danh hiệu. Mọi quyết định duyệt, từ chối hoặc yêu cầu bổ sung đều do cán bộ phụ trách xác nhận và được lưu audit log.
+AI đóng vai trò trợ lý xử lý hồ sơ và trợ lý đồng hành trước khi nộp: OCR minh chứng, trích xuất thông tin, phân loại minh chứng vào 5 nhóm tốt, so sánh với bộ điều kiện đúng cấp/đúng đơn vị/đúng năm, tóm tắt hồ sơ cho cán bộ, cảnh báo trường hợp thiếu minh chứng cấp cũ và gợi ý hoạt động phù hợp để sinh viên bù tiêu chí còn thiếu. Tuy nhiên, AI không tự cấp danh hiệu. Mọi quyết định duyệt, từ chối hoặc yêu cầu bổ sung đều do cán bộ phụ trách xác nhận và được lưu audit log.
 
 ### 4.2. Nhóm chức năng chính
 
@@ -101,8 +102,11 @@ AI đóng vai trò trợ lý xử lý hồ sơ: OCR minh chứng, trích xuất 
 | Quản lý chu kỳ và đợt xét | Admin, cán bộ có thẩm quyền | Tạo năm xét, 4 đợt xét, thời gian mở/khóa cổng, trạng thái từng đợt | Chuẩn hóa quy trình xét danh hiệu theo từng năm |
 | Bộ điều kiện đạt phân cấp | Admin, cán bộ các cấp | Quản lý 5 nhóm tốt cố định và bộ điều kiện đạt thay đổi theo cấp/đơn vị/năm | Phản ánh đúng thực tế mỗi đơn vị triển khai khác nhau |
 | Hồ sơ sinh viên liên cấp | Sinh viên | Tạo hồ sơ nền, upload minh chứng, tái sử dụng hồ sơ cấp cũ, bổ sung minh chứng khi lên cấp cao hơn | Giảm nộp lặp lại, giúp sinh viên theo dõi hành trình rõ ràng |
+| Kho thành tích/minh chứng cá nhân | Sinh viên, admin | Sinh viên cập nhật thành tích quanh năm; admin cấu hình thời gian minh chứng khả dụng khi mở đợt xét đầu tiên; hệ thống đánh dấu hết hạn và dọn dẹp minh chứng cũ không thể sử dụng | Giúp sinh viên chuẩn bị từ sớm, giảm thất lạc minh chứng và tối ưu dung lượng lưu trữ |
+| Tạo CV/portfolio Sinh viên 5 tốt | Sinh viên | Render CV/portfolio từ thông tin cá nhân, minh chứng đã duyệt, danh hiệu đạt được theo từng cấp và các hoạt động nổi bật | Tạo đầu ra hữu ích cho sinh viên sau quá trình phấn đấu; hạn chế tự khai thiếu kiểm chứng |
 | Xử lý minh chứng bằng AI | Sinh viên, cán bộ | VNPT SmartReader OCR ảnh/PDF, trích xuất metadata, gợi ý nhóm tốt, confidence score | Giảm thời gian nhập liệu và phân loại thủ công |
 | Trợ lý hỏi đáp/RAG | Sinh viên, cán bộ | VNPT Smartbot/LLM trả lời theo bộ điều kiện đúng cấp, đúng đơn vị, đúng năm | Giảm nhầm lẫn khi tiêu chí mỗi đơn vị khác nhau |
+| Gợi ý hoạt động bù tiêu chí | Sinh viên | RAG thu thập, lập chỉ mục và truy xuất thông tin từ các nguồn hoạt động được phép sử dụng như website Hội Sinh viên, fanpage Hội Sinh viên, fanpage hoạt động của trường/khoa/CLB; sau đó gợi ý hoạt động phù hợp với nhóm tốt sinh viên còn thiếu | Giúp sinh viên biết nên tham gia hoạt động nào trước deadline thay vì chỉ biết hồ sơ còn thiếu |
 | Dashboard xét duyệt theo cấp | Cán bộ khoa, trường, thành phố/tỉnh, Trung ương | Lọc hồ sơ theo trạng thái, đơn vị, nhóm tốt thiếu/đủ; duyệt, từ chối, yêu cầu bổ sung | Tăng tốc độ xét duyệt và giữ người duyệt cuối là cán bộ |
 | Cấp danh hiệu và mở khóa cấp tiếp theo | Cán bộ, hệ thống | Khi hồ sơ được duyệt, hệ thống tạo `Award` cấp hiện tại và mở quyền nộp cấp cao hơn | Đảm bảo sinh viên đạt cấp dưới mới được xét cấp trên |
 | Gói hồ sơ và danh sách chính thức | Cán bộ thành phố/tỉnh, Trung ương | Tổng hợp hồ sơ số hóa, danh sách chính thức, văn bản đề nghị, lịch sử xét duyệt | Phù hợp quy trình gửi hồ sơ lên cấp Trung ương |
@@ -111,14 +115,20 @@ AI đóng vai trò trợ lý xử lý hồ sơ: OCR minh chứng, trích xuất 
 ### 4.3. Luồng sử dụng chính
 
 1. **Khởi tạo chu kỳ:** Admin tạo năm xét và cây tổ chức mẫu gồm Trung ương, TP.HCM, Trường Đại học Khoa học Tự nhiên, Khoa Công nghệ thông tin.
-2. **Cấu hình điều kiện:** Mỗi cấp cấu hình bộ điều kiện đạt cho 5 nhóm tốt theo phạm vi đơn vị mình.
-3. **Mở đợt cấp khoa:** Sinh viên thuộc khoa đăng nhập, xem bộ điều kiện cấp khoa, upload minh chứng và nộp hồ sơ trước deadline.
-4. **AI xử lý sơ bộ:** VNPT SmartReader OCR minh chứng; Smartbot/LLM phân loại vào 5 nhóm tốt, chỉ ra minh chứng thiếu và tóm tắt hồ sơ.
-5. **Cán bộ cấp khoa duyệt:** Cán bộ Khoa Công nghệ thông tin của đúng trường đăng nhập, xem hồ sơ trong phạm vi khoa, duyệt/từ chối/yêu cầu bổ sung.
-6. **Mở quyền cấp trường:** Nếu đạt cấp khoa, hệ thống tạo danh hiệu cấp khoa và cho phép sinh viên nộp cấp trường khi đợt trường mở.
-7. **Lặp lại ở cấp trường và thành phố/tỉnh:** Sinh viên tái sử dụng hồ sơ cấp cũ, bổ sung minh chứng mới, cán bộ đúng đơn vị xét duyệt.
-8. **Xét cấp Trung ương:** Chỉ hồ sơ đã đạt cấp thành phố/tỉnh được nộp cấp Trung ương. Cán bộ Trung ương xem lịch sử liên cấp, minh chứng, danh sách chính thức và quyết định cuối.
-9. **Công bố kết quả:** Sinh viên xem danh hiệu đã đạt theo từng cấp. Nếu không đạt cấp cao hơn, sinh viên vẫn giữ danh hiệu cấp thấp đã đạt trong chu kỳ đó.
+2. **Cấu hình điều kiện và thời gian minh chứng hợp lệ:** Mỗi cấp cấu hình bộ điều kiện đạt cho 5 nhóm tốt theo phạm vi đơn vị mình. Khi mở đợt xét đầu tiên ở cấp khoa, admin cấu hình khoảng thời gian minh chứng khả dụng cho chu kỳ xét; hệ thống dùng mốc này để lọc minh chứng được phép đưa vào hồ sơ và dọn dẹp minh chứng cũ không còn sử dụng.
+3. **Sinh viên tích lũy thành tích quanh năm:** Sinh viên có thể đăng nhập bất cứ lúc nào để cập nhật thành tích, upload minh chứng vào kho cá nhân, xem OCR/AI phân loại sơ bộ và lưu lại để dùng khi cổng xét mở.
+4. **Mở đợt cấp khoa:** Sinh viên thuộc khoa đăng nhập, xem bộ điều kiện cấp khoa, thời gian mở/khóa cổng, khoảng thời gian minh chứng hợp lệ và trạng thái hồ sơ của mình.
+5. **Sinh viên hỏi đáp với AI:** Sinh viên dùng VNPT Smartbot/LLM để hỏi các câu như "em còn thiếu gì để đạt cấp khoa?", "minh chứng này thuộc nhóm tốt nào?", "điều kiện Học tập tốt của khoa em là gì?". Chatbot trả lời dựa trên bộ điều kiện đúng cấp, đúng đơn vị, đúng năm xét.
+6. **AI gợi ý hoạt động phù hợp:** Khi phát hiện sinh viên còn thiếu tiêu chí, hệ thống dùng RAG để truy xuất dữ liệu từ các nguồn hoạt động được phép sử dụng như website Hội Sinh viên, fanpage Hội Sinh viên, fanpage hoạt động của trường/khoa/CLB. AI gợi ý các hoạt động đang mở hoặc sắp diễn ra, giải thích hoạt động đó có thể hỗ trợ nhóm tốt nào, deadline đăng ký ra sao và minh chứng cần lưu lại sau khi tham gia.
+7. **Sinh viên chọn minh chứng và tự kiểm tra hồ sơ:** Sinh viên chọn minh chứng còn hiệu lực từ kho cá nhân hoặc upload bổ sung; VNPT SmartReader OCR ảnh/PDF, trích xuất thông tin và hệ thống gợi ý minh chứng đang đáp ứng nhóm tốt nào, còn thiếu điều kiện nào trước khi bấm nộp.
+8. **Sinh viên xem trước CV/portfolio:** Từ thông tin cá nhân, minh chứng đã duyệt ở các đợt trước và minh chứng đang chờ xét, hệ thống tạo bản xem trước CV/portfolio Sinh viên 5 tốt; các mục chưa được cán bộ duyệt được đánh dấu rõ là "chờ xác nhận" để tránh tự khai sai.
+9. **AI xử lý sơ bộ sau khi nộp:** Smartbot/LLM phân loại minh chứng vào 5 nhóm tốt, so sánh với `CriteriaSet` của cấp/đơn vị, kiểm tra thời gian minh chứng khả dụng, tạo tóm tắt hồ sơ, confidence score, danh sách minh chứng thiếu và các điểm cần cán bộ kiểm tra kỹ.
+10. **Hệ thống sàng lọc cho cán bộ:** Dashboard cán bộ tự động gom hồ sơ theo trạng thái như đủ điều kiện sơ bộ, thiếu minh chứng, minh chứng hết hạn, nghi ngờ sai thông tin, cần kiểm tra thủ công. Cán bộ có thể lọc theo nhóm tốt, mức độ thiếu, confidence score hoặc cảnh báo AI.
+11. **Cán bộ dùng AI để phân tích/kiểm duyệt:** Cán bộ Khoa Công nghệ thông tin của đúng trường đăng nhập, xem hồ sơ trong phạm vi khoa, đọc tóm tắt AI, đối chiếu OCR text với file gốc, yêu cầu AI giải thích lý do gợi ý đạt/chưa đạt, sau đó duyệt/từ chối/yêu cầu bổ sung. Quyết định cuối cùng vẫn do cán bộ xác nhận.
+12. **Mở quyền cấp trường:** Nếu đạt cấp khoa, hệ thống tạo danh hiệu cấp khoa và cho phép sinh viên nộp cấp trường khi đợt trường mở.
+13. **Lặp lại ở cấp trường và thành phố/tỉnh:** Sinh viên tái sử dụng hồ sơ cấp cũ, hỏi AI về bộ điều kiện cấp mới, nhận gợi ý hoạt động phù hợp để bù tiêu chí còn thiếu, bổ sung minh chứng mới; cán bộ đúng đơn vị dùng dashboard và AI để sàng lọc, phân tích, xét duyệt.
+14. **Xét cấp Trung ương:** Chỉ hồ sơ đã đạt cấp thành phố/tỉnh được nộp cấp Trung ương. AI hỗ trợ kiểm tra lịch sử liên cấp, minh chứng danh hiệu cấp cũ, danh sách chính thức và tóm tắt hồ sơ; cán bộ Trung ương xem xét và quyết định cuối.
+15. **Công bố kết quả và xuất CV/portfolio:** Sinh viên xem danh hiệu đã đạt theo từng cấp. Nếu không đạt cấp cao hơn, sinh viên vẫn giữ danh hiệu cấp thấp đã đạt trong chu kỳ đó. Sinh viên có thể xuất CV/portfolio bản PDF hoặc link chia sẻ, chỉ hiển thị các minh chứng/danh hiệu đã được xác nhận.
 
 ### 4.4. Vì sao cần AI?
 
@@ -127,6 +137,7 @@ AI đóng vai trò trợ lý xử lý hồ sơ: OCR minh chứng, trích xuất 
 | Đọc minh chứng | Cán bộ phải mở từng ảnh/PDF, đọc và nhập lại thông tin | VNPT SmartReader OCR giấy khen, chứng chỉ, bảng điểm, quyết định công nhận | Giảm thời gian nhập liệu, chuẩn hóa dữ liệu đầu vào |
 | Phân loại minh chứng | Cán bộ tự xác định minh chứng thuộc nhóm tốt nào | LLM gợi ý minh chứng thuộc Đạo đức tốt, Học tập tốt, Thể lực tốt, Tình nguyện tốt hoặc Hội nhập tốt | Tăng tốc độ kiểm tra, giảm bỏ sót |
 | Hỏi đáp quy định | Sinh viên đọc nhiều văn bản, dễ nhầm bộ điều kiện của đơn vị khác | VNPT Smartbot/RAG trả lời theo đúng `criteria_set` của cấp, đơn vị và năm xét | Hướng dẫn cá nhân hóa theo bối cảnh thật |
+| Gợi ý hoạt động phù hợp | Sinh viên tự theo dõi nhiều fanpage/website, dễ bỏ lỡ hoạt động đúng tiêu chí hoặc đăng ký quá trễ | RAG truy xuất các bài đăng/sự kiện từ website Hội Sinh viên, fanpage Hội Sinh viên và trang hoạt động của trường/khoa/CLB để gợi ý hoạt động theo tiêu chí còn thiếu | Chuyển hệ thống từ "chờ nộp hồ sơ" sang đồng hành giúp sinh viên hoàn thiện tiêu chí trước deadline |
 | Kiểm tra hồ sơ cấp cao | Cán bộ phải tự kiểm tra sinh viên đã đạt cấp dưới chưa | Hệ thống kiểm tra `Award` cấp cũ và AI cảnh báo thiếu minh chứng danh hiệu cấp dưới | Đảm bảo đúng quy tắc chuyển cấp |
 | Tóm tắt cho cán bộ | Cán bộ đọc toàn bộ hồ sơ dài và nhiều file | LLM tóm tắt điểm mạnh, điểm thiếu, minh chứng cần xem kỹ | Giảm tải nhưng vẫn giữ cán bộ duyệt cuối |
 | Xác thực danh tính | Kiểm tra thủ công thẻ sinh viên/CCCD nếu cần | VNPT eKYC hỗ trợ xác thực danh tính sinh viên ở các bước nhạy cảm | Tăng độ tin cậy, giảm rủi ro giả mạo |
@@ -209,9 +220,12 @@ flowchart TB
             Profile("Profile Service\nHồ sơ sinh viên")
             Application("Application Service\nHồ sơ nộp theo từng đợt/cấp")
             Evidence("Evidence Service\nUpload, OCR text, metadata")
+            EvidenceVault("Evidence Vault & Retention Service\nKho thành tích, thời gian hợp lệ, dọn dẹp file cũ")
             Eval("AI Evaluation Service\nPhân loại, tóm tắt, cảnh báo thiếu sót")
+            Activity("Activity/RAG Source Service\nThu thập nguồn hoạt động & gợi ý bù tiêu chí")
             Review("Review Workflow Service\nDuyệt, từ chối, yêu cầu bổ sung")
             Award("Award Service\nGhi nhận danh hiệu & mở quyền cấp tiếp theo")
+            Portfolio("Portfolio/CV Service\nRender CV/portfolio từ minh chứng đã duyệt")
             Package("Official Document/Submission Package Service\nDanh sách chính thức, văn bản đề nghị")
             Notify("Notification Service\nDeadline, yêu cầu bổ sung, kết quả")
             Audit("Audit Log Service\nLịch sử thao tác liên cấp")
@@ -225,6 +239,13 @@ flowchart TB
         EKYC[["VNPT eKYC\nXác thực danh tính sinh viên"]]
         Voice[["VNPT SmartVoice\nGiao diện giọng nói mở rộng"]]
         SmartUX[["VNPT SmartUX\nPhân tích hành vi sử dụng"]]
+    end
+
+    subgraph ActivitySources ["Nguồn hoạt động được phép sử dụng"]
+        direction TB
+        HSVWeb[["Website Hội Sinh viên / Đoàn - Hội"]]
+        HSVFanpage[["Fanpage Hội Sinh viên / Đoàn - Hội"]]
+        SchoolPages[["Trang hoạt động của trường, khoa, CLB"]]
     end
 
     subgraph Storage ["Lưu trữ"]
@@ -252,37 +273,54 @@ flowchart TB
     Auth <--> Profile
     Auth <--> Application
     Auth <--> Evidence
+    Auth <--> EvidenceVault
     Auth <--> Eval
+    Auth <--> Activity
     Auth <--> Review
     Auth <--> Award
+    Auth <--> Portfolio
     Auth <--> Package
     Auth <--> Notify
     Auth <--> Audit
 
     Org --> Cycle
     Cycle --> Criteria
+    Cycle --> EvidenceVault
     Profile --> Application
+    Profile --> EvidenceVault
+    EvidenceVault --> Evidence
+    EvidenceVault --> Application
     Application --> Evidence
     Evidence --> Eval
     Criteria --> Eval
+    Criteria --> Activity
+    Activity --> Eval
     Eval --> Review
     Review --> Award
     Award --> Application
+    Application --> Portfolio
+    Award --> Portfolio
     Award --> Package
+    Portfolio --> Audit
     Review --> Audit
     Package --> Audit
     Notify --> Audit
 
     Org <-->|"Cây đơn vị & scope"| DB
-    Cycle <-->|"Đợt xét, deadline, trạng thái"| DB
+    Cycle <-->|"Đợt xét, deadline, thời gian minh chứng hợp lệ"| DB
     Criteria <-->|"5 nhóm tốt & điều kiện đạt"| DB
     Profile <-->|"Hồ sơ sinh viên"| DB
     Application <-->|"Hồ sơ nộp theo cấp"| DB
     Evidence -->|"Lưu file gốc"| S3
     Evidence <-->|"OCR text & metadata"| DB
+    EvidenceVault <-->|"Kho thành tích, hạn sử dụng minh chứng, retention policy"| DB
+    EvidenceVault -->|"Xóa/dọn file cũ hết hạn"| S3
     Eval <-->|"Kết quả AI, confidence, gợi ý"| DB
+    Activity <-->|"Hoạt động, nguồn, tiêu chí liên quan"| DB
     Review <-->|"Quyết định duyệt & phản hồi"| DB
     Award <-->|"Danh hiệu đã đạt"| DB
+    Portfolio <-->|"Template, bản render, link chia sẻ"| DB
+    Portfolio -->|"Lưu CV/portfolio PDF"| S3
     Package <-->|"Danh sách/văn bản"| DB
     Package -->|"Lưu file xuất"| S3
     Audit -->|"Log thao tác"| DB
@@ -291,13 +329,22 @@ flowchart TB
     Auth <-->|"Cache session/role/scope"| Cache
     Criteria <-->|"Cache bộ điều kiện"| Cache
     Evidence <-->|"Cache OCR result"| Cache
+    EvidenceVault <-->|"Cache danh sách minh chứng khả dụng"| Cache
     Eval <-->|"Cache AI result"| Cache
+    Activity <-->|"Cache activity index/RAG chunks"| Cache
 
     Evidence -->|"Ảnh/PDF minh chứng"| OCR
     OCR -->|"Text, trường thông tin, metadata"| Evidence
 
     Eval -->|"OCR text + criteria set + prompt"| LLM
     LLM -->|"Phân loại, tóm tắt, lý do, gợi ý bổ sung"| Eval
+
+    Activity -->|"Nguồn hoạt động + tiêu chí còn thiếu"| LLM
+    LLM -->|"Gợi ý hoạt động phù hợp, lý do, deadline"| Activity
+
+    HSVWeb -.->|"Crawl/API/RSS hoặc nhập tay có kiểm soát"| Activity
+    HSVFanpage -.->|"Bài đăng công khai/được cấp quyền"| Activity
+    SchoolPages -.->|"Sự kiện trường/khoa/CLB"| Activity
 
     Auth -.->|"Xác thực nâng cao nếu cần"| EKYC
     Notify -.->|"Thông báo/tra cứu giọng nói mở rộng"| Voice
@@ -310,14 +357,17 @@ flowchart TB
 |---|---|---|
 | Auth & Role-based Access | Đăng nhập, phân quyền theo vai trò và đơn vị | Dùng `organization_id`, `level`, `scope`, JWT/session |
 | Organization Service | Quản lý cây Trung ương -> tỉnh/thành -> trường -> khoa | Có `parent_id` để truy vấn phạm vi cấp dưới |
-| Review Cycle/Round Service | Quản lý năm xét, 4 đợt xét, thời gian mở/khóa cổng | Trạng thái: upcoming, open, locked, reviewing, completed |
+| Review Cycle/Round Service | Quản lý năm xét, 4 đợt xét, thời gian mở/khóa cổng và khoảng thời gian minh chứng hợp lệ | Trạng thái: upcoming, open, locked, reviewing, completed; có `evidence_valid_from`, `evidence_valid_to` |
 | Criteria Set Inheritance Service | Quản lý 5 nhóm tốt cố định và bộ điều kiện đạt theo cấp/đơn vị/năm | Cho phép kế thừa từ cấp trên và bổ sung điều kiện riêng |
 | Profile Service | Quản lý thông tin sinh viên, trường, khoa, lớp, liên hệ | Gắn sinh viên với khoa/trường cụ thể |
 | Application Service | Quản lý hồ sơ nộp theo từng đợt/cấp | Có `source_application_id`, `previous_award_id` để tái sử dụng hồ sơ |
 | Evidence Service | Upload minh chứng, lưu file, OCR text, metadata | Tích hợp Object Storage và VNPT SmartReader |
+| Evidence Vault & Retention Service | Quản lý kho thành tích/minh chứng cá nhân, lọc minh chứng còn hiệu lực theo chu kỳ xét, đánh dấu hết hạn và dọn dẹp minh chứng cũ | Giúp sinh viên lưu từ sớm nhưng vẫn kiểm soát dung lượng và tính hợp lệ của minh chứng |
 | AI Evaluation Service | Phân loại minh chứng, tóm tắt hồ sơ, phát hiện thiếu sót | Tích hợp VNPT Smartbot/LLM, cache kết quả AI |
+| Activity/RAG Source Service | Thu thập, lập chỉ mục và truy xuất thông tin hoạt động từ nguồn được phép sử dụng; gợi ý hoạt động phù hợp với tiêu chí còn thiếu | MVP có thể dùng dữ liệu mẫu/nhập tay; bản mở rộng dùng crawl/API/RSS hoặc quyền truy cập fanpage hợp lệ |
 | Review Workflow Service | Duyệt, từ chối, yêu cầu bổ sung, khóa hồ sơ | Cán bộ là người quyết định cuối |
 | Award Service | Ghi nhận danh hiệu đã đạt theo cấp | Dùng để mở quyền xét cấp tiếp theo |
+| Portfolio/CV Service | Render CV/portfolio từ hồ sơ sinh viên, minh chứng đã duyệt, danh hiệu và hoạt động nổi bật | Chỉ đưa vào bản chính thức các dữ liệu đã được xác nhận; MVP có thể xuất PDF hoặc link chia sẻ |
 | Official Document/Submission Package Service | Tạo danh sách chính thức, văn bản đề nghị, gói hồ sơ gửi cấp trên | Đặc biệt quan trọng cho cấp thành phố/tỉnh gửi Trung ương |
 | Notification Service | Nhắc deadline, thông báo yêu cầu bổ sung, kết quả | Có thể mở rộng SMS/email/Zalo |
 | Audit Log Service | Ghi log thao tác, quyết định, thời điểm, người thực hiện | Tăng minh bạch và truy vết |
@@ -327,11 +377,12 @@ flowchart TB
 | Dịch vụ/API | Cách sử dụng trong 5-Star Eco | Phạm vi MVP |
 |---|---|---|
 | VNPT SmartReader | OCR giấy khen, chứng chỉ, bảng điểm, quyết định công nhận danh hiệu cấp cũ | Core MVP |
-| VNPT Smartbot/LLM | RAG hỏi đáp theo bộ điều kiện đúng đơn vị; phân tích, tóm tắt hồ sơ | Core MVP |
+| VNPT Smartbot/LLM | RAG hỏi đáp theo bộ điều kiện đúng đơn vị; phân tích, tóm tắt hồ sơ; gợi ý hoạt động phù hợp với tiêu chí còn thiếu | Core MVP |
 | VNPT eKYC | Xác thực danh tính sinh viên khi tạo hồ sơ hoặc trước khi nộp cấp cao | Có thể demo hoặc đưa vào mở rộng |
 | VNPT SmartVoice | Hỏi đáp bằng giọng nói cho sinh viên/cán bộ | Mở rộng nếu còn thời gian |
 | VNPT SmartUX | Phân tích hành vi sử dụng, phát hiện bước sinh viên hay bỏ dở | Mở rộng sau MVP |
-| Object Storage API | Lưu minh chứng gốc, file văn bản đề nghị, danh sách xuất | Core MVP |
+| Object Storage API | Lưu minh chứng gốc, file văn bản đề nghị, danh sách xuất, CV/portfolio PDF; hỗ trợ lifecycle/cleanup cho minh chứng hết hạn | Core MVP |
+| Activity Source Connector | Thu thập bài đăng/sự kiện từ website Hội Sinh viên, fanpage Hội Sinh viên, trang hoạt động trường/khoa/CLB bằng nguồn công khai hoặc nguồn được cấp quyền | MVP dùng dữ liệu mẫu hoặc nhập tay để tránh phụ thuộc quyền truy cập |
 | Notification API | Gửi email/thông báo deadline và yêu cầu bổ sung | Mô phỏng trong MVP |
 
 ### 6.4. Dữ liệu sử dụng
@@ -341,17 +392,70 @@ flowchart TB
 | Hồ sơ sinh viên | MSSV, họ tên, khoa, trường, lớp, email, số điện thoại | Sinh viên tự cung cấp hoặc dữ liệu demo đã ẩn thông tin |
 | Cây tổ chức | Trung ương, thành phố/tỉnh, trường, khoa, quan hệ cha-con | Tạo dữ liệu mẫu cho demo; khi triển khai lấy từ đơn vị vận hành |
 | Bộ điều kiện đạt | 5 nhóm tốt, ngưỡng đạt, minh chứng yêu cầu, deadline, biểu mẫu | Nhập từ kế hoạch/quy chế của từng cấp, từng đơn vị |
-| Minh chứng | Giấy khen, chứng chỉ, bảng điểm, ảnh/PDF hoạt động, quyết định đạt cấp cũ | Sinh viên upload với sự đồng ý; MVP dùng file mẫu |
+| Nguồn hoạt động | Tên hoạt động, đơn vị tổ chức, thời gian, deadline đăng ký, link nguồn, nhóm tốt liên quan, loại minh chứng sau khi tham gia | Website/fanpage Hội Sinh viên, Đoàn - Hội, trường, khoa, CLB; MVP dùng dữ liệu mẫu hoặc nguồn được đơn vị cho phép |
+| Minh chứng | Giấy khen, chứng chỉ, bảng điểm, ảnh/PDF hoạt động, quyết định đạt cấp cũ, thời điểm phát sinh, trạng thái còn hiệu lực/hết hạn | Sinh viên upload với sự đồng ý; MVP dùng file mẫu |
+| Chính sách thời gian minh chứng | `evidence_valid_from`, `evidence_valid_to`, rule đánh dấu hết hạn, rule dọn dẹp/xóa file cũ | Admin cấu hình khi mở đợt xét đầu tiên của chu kỳ; hệ thống tự áp dụng |
 | Kết quả AI | OCR text, metadata, nhóm tốt được gợi ý, confidence, tóm tắt | Sinh ra từ VNPT SmartReader/Smartbot |
 | Quyết định xét duyệt | Duyệt, từ chối, yêu cầu bổ sung, lý do, người duyệt, thời gian | Cán bộ nhập trên dashboard |
 | Danh hiệu/Award | Cấp đạt, đơn vị cấp, thời điểm, quyết định/chứng nhận | Tạo khi cán bộ duyệt đạt |
+| CV/portfolio | Mẫu hiển thị, dữ liệu đã xác nhận, file PDF/link chia sẻ, thời điểm render | Sinh ra từ Profile, Evidence, Application và Award đã được duyệt |
 | Audit log | Lịch sử đăng nhập, nộp hồ sơ, khóa/mở cổng, duyệt/từ chối | Hệ thống tự ghi |
 
 ## 7. Phương hướng triển khai
 
-### 7.1. Phạm vi MVP
+Theo thể lệ Bảng B - Challenger, **Vòng 1** yêu cầu đội thi nộp bản miêu tả ý tưởng, trong đó có phần **phương hướng triển khai** để chứng minh tính khả thi. MVP có thể trình diễn và kiểm thử là trọng tâm của **Vòng 2** sau khi ý tưởng được chọn. Vì vậy, phần này trình bày theo 2 lớp: hướng triển khai **full product thực tế** nếu áp dụng vào hệ thống phong trào Sinh viên 5 tốt và phạm vi **MVP Vòng 2** để demo trong thời gian HackAIthon.
 
-MVP HackAIthon tập trung chứng minh logic liên cấp nhưng không cần triển khai đầy đủ mọi nghiệp vụ hành chính ở quy mô toàn quốc. Demo đề xuất dùng một cây tổ chức mẫu:
+### 7.1. Định hướng triển khai theo yêu cầu Vòng 1
+
+Trong Vòng 1, 5-Star Eco chưa cần chứng minh bằng một sản phẩm hoàn chỉnh, nhưng cần thể hiện rõ:
+
+- Ý tưởng bám đúng đề bài: dùng AI và hệ sinh thái API của Ban Tổ chức để hỗ trợ công tác Hội, phong trào sinh viên và tối ưu quy trình quản lý, đánh giá, xét chọn danh hiệu Sinh viên 5 tốt.
+- Có kiến trúc tổng quan, module chính, dữ liệu sử dụng và luồng nghiệp vụ rõ ràng.
+- Có lý do "vì sao AI" cho từng điểm nghẽn: OCR minh chứng, hỏi đáp theo tiêu chí, RAG gợi ý hoạt động, phân tích/sàng lọc hồ sơ, tóm tắt cho cán bộ.
+- Có phương án triển khai khả thi về nhân sự, kỹ thuật, chi phí, bảo mật, pháp lý và lộ trình sau cuộc thi.
+- Có phạm vi MVP Vòng 2 đủ nhỏ để demo được trong thời gian 26/6 - 03/7/2026, nhưng vẫn chứng minh được khác biệt cốt lõi của hệ sinh thái liên cấp.
+
+### 7.2. Triển khai full product thực tế
+
+Full product của 5-Star Eco hướng tới một nền tảng multi-tenant dùng được cho nhiều đơn vị triển khai phong trào Sinh viên 5 tốt trên toàn quốc. Hệ thống vận hành theo cây tổ chức:
+
+```text
+Trung ương Hội Sinh viên Việt Nam
+-> Hội Sinh viên Thành phố/Tỉnh
+-> Trường đại học/Cao đẳng/Học viện
+-> Khoa/Viện/Bộ môn
+```
+
+Ở bản triển khai thực tế, mỗi đơn vị có tài khoản cán bộ, bộ điều kiện đạt, biểu mẫu, deadline và phạm vi dữ liệu riêng. Trung ương quản lý khung chung và cấp Trung ương; thành phố/tỉnh triển khai theo địa bàn; trường triển khai theo trường; khoa/viện/bộ môn triển khai cấp cơ sở gần sinh viên nhất.
+
+Các năng lực full product cần có:
+
+- **Quản trị tổ chức liên cấp:** tạo/sửa cây tổ chức, gán cán bộ theo `organization_id`, `parent_id`, `level`, `scope`, giới hạn dữ liệu theo đúng đơn vị.
+- **Quản lý chu kỳ xét hằng năm:** tạo 4 đợt xét khoa -> trường -> thành phố/tỉnh -> Trung ương, cấu hình thời gian mở cổng, deadline, trạng thái khóa/mở, điều kiện chuyển cấp.
+- **Quản lý bộ điều kiện đạt linh hoạt:** giữ 5 nhóm tốt cố định nhưng cho phép mỗi cấp/đơn vị cấu hình điều kiện, minh chứng, ngưỡng đạt, biểu mẫu và hoạt động được công nhận riêng.
+- **Hồ sơ sinh viên xuyên suốt:** sinh viên có một hồ sơ nền, tái sử dụng minh chứng đã nộp, bổ sung minh chứng mới khi xét cấp cao hơn, lưu lịch sử danh hiệu đã đạt.
+- **Kho thành tích/minh chứng cập nhật quanh năm:** sinh viên có thể upload và phân loại minh chứng từ sớm; khi đợt xét mở, hệ thống lọc các minh chứng còn nằm trong khoảng thời gian hợp lệ để đưa vào hồ sơ.
+- **Quản lý vòng đời minh chứng:** admin cấu hình thời gian minh chứng khả dụng khi mở đợt xét đầu tiên; hệ thống đánh dấu hết hạn, nhắc sinh viên thay thế nếu cần và dọn dẹp/xóa minh chứng cũ không thể sử dụng theo chính sách lưu trữ.
+- **CV/portfolio Sinh viên 5 tốt:** tự tạo hồ sơ năng lực từ dữ liệu đã được xác nhận, có thể xuất PDF/link chia sẻ; bản xem trước có thể hiển thị mục chờ duyệt nhưng bản chính thức chỉ dùng minh chứng/danh hiệu đã đạt.
+- **AI hỗ trợ sinh viên:** Smartbot/LLM trả lời câu hỏi theo đúng cấp/đơn vị/năm xét; RAG gợi ý hoạt động phù hợp với tiêu chí còn thiếu từ website/fanpage/nguồn hoạt động được phép sử dụng.
+- **AI hỗ trợ cán bộ:** SmartReader OCR minh chứng, Smartbot/LLM phân loại minh chứng, tóm tắt hồ sơ, chỉ ra tiêu chí thiếu, cảnh báo hồ sơ cần kiểm tra kỹ và giải thích lý do gợi ý.
+- **Quy trình duyệt có người chịu trách nhiệm:** AI chỉ đưa ra gợi ý; cán bộ đúng cấp/đúng đơn vị là người duyệt, từ chối hoặc yêu cầu bổ sung.
+- **Gói hồ sơ chính thức:** khi chuyển cấp, hệ thống tạo danh sách đề nghị, văn bản/gói hồ sơ, lịch sử xét duyệt, danh hiệu cấp cũ và minh chứng đi kèm.
+- **Audit log và báo cáo:** ghi nhận thao tác nộp, sửa, khóa/mở cổng, duyệt, từ chối, yêu cầu bổ sung; hỗ trợ báo cáo theo cấp, đơn vị, mùa xét, nhóm tiêu chí.
+- **Tích hợp mở rộng:** eKYC để xác thực danh tính sinh viên, SmartVoice cho giao diện giọng nói, SmartUX để phân tích hành vi sử dụng và tối ưu quy trình.
+
+Lộ trình full product thực tế:
+
+| Giai đoạn | Mục tiêu | Đầu ra chính |
+|---|---|---|
+| Pilot đơn vị nhỏ | Kiểm chứng tại 1 khoa/trường hoặc một cây tổ chức mẫu | Luồng nộp/duyệt 4 cấp, OCR/AI cơ bản, dashboard sinh viên và cán bộ |
+| Mở rộng trong trường/thành phố | Triển khai nhiều khoa hoặc nhiều trường trong một địa bàn | Phân quyền đa đơn vị, cấu hình tiêu chí riêng, báo cáo tổng hợp |
+| Chuẩn hóa cấp thành phố/tỉnh | Hỗ trợ gói hồ sơ gửi cấp cao hơn | Danh sách chính thức, văn bản đề nghị, lịch sử xét duyệt liên cấp |
+| Hướng tới toàn quốc | Mở rộng multi-tenant cho nhiều tỉnh/thành và trường | Hạ tầng ổn định, tài liệu vận hành, bảo mật và audit hoàn chỉnh |
+
+### 7.3. Sản phẩm Vòng 2 - MVP trình diễn
+
+MVP Vòng 2 tập trung chứng minh logic liên cấp và năng lực AI cốt lõi, không triển khai đầy đủ mọi nghiệp vụ hành chính ở quy mô toàn quốc. Demo đề xuất dùng một cây tổ chức mẫu:
 
 ```text
 Trung ương Hội Sinh viên Việt Nam
@@ -360,13 +464,16 @@ Trung ương Hội Sinh viên Việt Nam
 -> Khoa Công nghệ thông tin
 ```
 
-MVP bắt buộc:
+MVP Vòng 2 cần có:
 
 - Đăng nhập giả lập theo vai trò: sinh viên, cán bộ khoa, cán bộ trường, cán bộ thành phố/tỉnh, cán bộ Trung ương, admin.
 - Mỗi cán bộ chỉ thấy dữ liệu trong đúng phạm vi đơn vị của mình.
 - Tạo 1 chu kỳ xét với 4 đợt: khoa, trường, thành phố/tỉnh, Trung ương.
 - Tạo bộ điều kiện đạt mẫu khác nhau cho từng cấp/đơn vị nhưng cùng bám 5 nhóm tốt cố định.
-- Sinh viên nộp hồ sơ cấp khoa, upload minh chứng, nhận phân tích AI.
+- Admin cấu hình khoảng thời gian minh chứng hợp lệ cho chu kỳ xét; hệ thống đánh dấu minh chứng ngoài khoảng thời gian này là hết hạn.
+- Sinh viên cập nhật thành tích/minh chứng vào kho cá nhân trước khi nộp; khi đợt cấp khoa mở, sinh viên chọn minh chứng còn hiệu lực để tạo hồ sơ nộp chính thức, nhận phân tích AI và nhận gợi ý hoạt động phù hợp với tiêu chí còn thiếu.
+- Sinh viên xem trước và xuất CV/portfolio từ các minh chứng/danh hiệu đã được duyệt trong dữ liệu demo.
+- Tạo dữ liệu hoạt động mẫu từ website/fanpage Hội Sinh viên hoặc trang hoạt động của trường/khoa/CLB để demo RAG gợi ý hoạt động.
 - Cổng hồ sơ khóa sau deadline.
 - Cán bộ cấp khoa duyệt; nếu đạt, hệ thống tạo danh hiệu cấp khoa và mở quyền nộp cấp trường.
 - Lặp lại luồng nộp/bổ sung/duyệt ở cấp trường và thành phố/tỉnh.
@@ -379,59 +486,64 @@ Phần có thể mô phỏng:
 - Danh sách chính thức cấp thành phố/tỉnh gửi Trung ương.
 - Chứng nhận/danh hiệu cấp cũ dạng file.
 - CSDL đối chiếu minh chứng bên ngoài.
+- Kết nối tự động tới Facebook/web thật; MVP có thể dùng dữ liệu mẫu hoặc dữ liệu đã được đơn vị cho phép thu thập.
 
-### 7.2. Kế hoạch kỹ thuật build/deploy
+### 7.4. Kế hoạch kỹ thuật build/deploy
 
 | Thành phần | Công nghệ đề xuất | Ghi chú |
 |---|---|---|
-| Frontend | React/Next.js hoặc Vite + React | Giao diện sinh viên, dashboard cán bộ, admin console |
-| Backend | Node.js + NestJS | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Review, Award |
+| Frontend | React/Next.js hoặc Vite + React | Giao diện sinh viên, dashboard cán bộ, admin console, màn hình CV/portfolio |
+| Backend | Node.js + NestJS | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Evidence Vault/Retention, Review, Award, Portfolio |
 | Reverse Proxy | Nginx | Routing API, cấu hình deploy |
 | Database | PostgreSQL hoặc SQL Server | Lưu dữ liệu quan hệ: tổ chức, tiêu chí, hồ sơ, award, audit log |
 | Cache | Redis | Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời |
-| File Storage | S3-compatible Object Storage | Lưu minh chứng, văn bản, danh sách xuất |
+| File Storage | S3-compatible Object Storage | Lưu minh chứng, văn bản, danh sách xuất; hỗ trợ chính sách dọn dẹp file minh chứng hết hạn |
 | AI/API Adapter | Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX | Dễ mock khi API lỗi hoặc demo offline |
-| Deploy | Vercel cho frontend; VPS/Cloud VM/Docker cho backend | MVP có thể chạy bằng Docker Compose |
+| Deploy | Vercel cho frontend; VPS/Cloud VM/Docker cho backend | MVP Vòng 2 có thể chạy bằng Docker Compose; full product tách môi trường staging/production |
 
 Kế hoạch triển khai kỹ thuật:
 
-1. Thiết kế database cho `Organization`, `User`, `Role`, `ReviewCycle`, `ReviewRound`, `CriteriaSet`, `Application`, `Evidence`, `Award`, `ReviewDecision`, `AuditLog`.
+1. Thiết kế database cho `Organization`, `User`, `Role`, `ReviewCycle`, `ReviewRound`, `CriteriaSet`, `Application`, `Evidence`, `EvidenceRetentionPolicy`, `Award`, `Portfolio`, `ReviewDecision`, `AuditLog`.
 2. Xây backend NestJS với guard phân quyền theo `organization_id`, `level`, `scope`.
 3. Xây frontend 3 không gian chính: sinh viên, cán bộ, admin.
 4. Tích hợp VNPT SmartReader cho OCR minh chứng; xây adapter mock fallback.
-5. Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt và hỏi đáp RAG.
-6. Hoàn thiện flow demo 4 cấp với dữ liệu mẫu.
-7. Kiểm thử phân quyền, khóa deadline, điều kiện chuyển cấp và người duyệt cuối.
+5. Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt, hỏi đáp RAG và gợi ý hoạt động theo tiêu chí còn thiếu.
+6. Xây Activity/RAG Source Service với dữ liệu hoạt động mẫu; bản mở rộng hỗ trợ connector tới website/fanpage được phép sử dụng.
+7. Xây Portfolio/CV Service để render CV/portfolio từ dữ liệu đã duyệt và xuất PDF/link chia sẻ trong demo.
+8. Hoàn thiện flow demo 4 cấp với dữ liệu mẫu cho Vòng 2.
+9. Kiểm thử phân quyền, khóa deadline, điều kiện chuyển cấp, thời gian minh chứng hợp lệ, dọn dẹp minh chứng hết hạn, gợi ý hoạt động, xuất CV/portfolio và người duyệt cuối.
+10. Sau Vòng 2, mở rộng dần từ dữ liệu demo sang dữ liệu được đơn vị cho phép, tăng cường bảo mật, logging, báo cáo và khả năng vận hành nhiều đơn vị.
 
-### 7.3. Nguồn lực nhân sự
+### 7.5. Nguồn lực nhân sự
 
 | Vai trò | Nhiệm vụ |
 |---|---|
 | Product/Research | Chốt flow nghiệp vụ 4 cấp, mô hình cây tổ chức, nội dung proposal và pitch |
 | Backend | Thiết kế database, NestJS API, phân quyền theo đơn vị, tích hợp AI/API |
 | Frontend/UI/UX | Xây giao diện sinh viên, dashboard cán bộ, admin console |
-| AI/Data/Prompt | Thiết kế prompt phân loại minh chứng, RAG theo bộ điều kiện, kịch bản OCR |
+| AI/Data/Prompt | Thiết kế prompt phân loại minh chứng, RAG theo bộ điều kiện, RAG gợi ý hoạt động từ nguồn Hội Sinh viên/trường/khoa/CLB, kịch bản OCR |
 | QA/Demo/Pitch | Tạo dữ liệu demo, kiểm thử luồng 4 cấp, chuẩn bị video/thuyết trình |
 
-### 7.4. Ước tính chi phí hạ tầng và vận hành
+### 7.6. Ước tính chi phí hạ tầng và vận hành
 
-| Hạng mục | Chi phí MVP dự kiến | Ghi chú |
-|---|---:|---|
-| Frontend hosting | 0 - 300.000 VNĐ/tháng | Vercel/Netlify/free tier |
-| Backend server | 200.000 - 800.000 VNĐ/tháng | VPS nhỏ hoặc cloud free credit |
-| Database | 0 - 500.000 VNĐ/tháng | PostgreSQL managed/free tier hoặc self-host |
-| Redis | 0 - 300.000 VNĐ/tháng | Free tier hoặc chạy cùng server demo |
-| Object Storage | 0 - 300.000 VNĐ/tháng | Tùy dung lượng minh chứng |
-| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | MVP cần cache và fallback để kiểm soát chi phí |
-| Domain/SSL | 0 - 300.000 VNĐ/năm | Có thể dùng domain tạm cho demo |
+| Hạng mục | MVP Vòng 2 dự kiến | Full product/pilot thực tế | Ghi chú |
+|---|---:|---:|---|
+| Frontend hosting | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Vercel/Netlify/free tier cho demo; production cần domain, môi trường ổn định |
+| Backend server | 200.000 - 800.000 VNĐ/tháng | 1.000.000 - 5.000.000 VNĐ/tháng | MVP dùng VPS nhỏ/Docker Compose; full product cần tách môi trường và backup |
+| Database | 0 - 500.000 VNĐ/tháng | 1.000.000 - 4.000.000 VNĐ/tháng | PostgreSQL/SQL Server managed hoặc self-host có backup |
+| Redis | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Cache session/role, criteria, OCR/AI result |
+| Object Storage | 0 - 300.000 VNĐ/tháng | Theo dung lượng minh chứng | Cần signed URL và phân quyền truy cập file |
+| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Theo số lượt OCR, hỏi đáp, phân tích | Cần cache, rate limit và fallback để kiểm soát chi phí |
+| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Full product cần logging, monitoring, alert |
 
-### 7.5. An toàn, bảo mật và pháp lý
+### 7.7. An toàn, bảo mật và pháp lý
 
 Nguyên tắc thiết kế:
 
 - Thu thập dữ liệu cá nhân có mục đích rõ ràng và có sự đồng ý của sinh viên.
 - Phân quyền theo vai trò và đơn vị triển khai; cán bộ chỉ xem dữ liệu trong phạm vi được giao.
 - Không public file minh chứng; sử dụng signed URL hoặc cơ chế truy cập có thời hạn.
+- Có chính sách vòng đời dữ liệu minh chứng: minh chứng hết thời gian khả dụng được đánh dấu hết hạn, thông báo cho sinh viên và dọn dẹp/xóa theo rule do admin cấu hình; các dữ liệu đã gắn với quyết định xét duyệt hoặc audit log được xử lý theo chính sách lưu trữ riêng.
 - Không lưu API key/token trong mã nguồn; dùng biến môi trường hoặc secret manager.
 - Ghi audit log cho thao tác nộp, sửa, khóa/mở cổng, duyệt, từ chối và yêu cầu bổ sung.
 - AI chỉ đưa ra gợi ý; quyết định danh hiệu là của cán bộ phụ trách.
@@ -445,9 +557,10 @@ Nguyên tắc thiết kế:
 - [x] Có log thao tác xét duyệt liên cấp.
 - [x] Không công khai file/dữ liệu nhạy cảm.
 - [x] Có cơ chế khóa hồ sơ sau deadline.
+- [x] Có cơ chế kiểm soát thời gian minh chứng khả dụng và dọn dẹp minh chứng hết hạn.
 - [x] AI không tự quyết định kết quả cuối cùng.
 
-### 7.6. Roadmap sau cuộc thi / GTM
+### 7.8. Roadmap sau cuộc thi / GTM
 
 | Giai đoạn | Thời gian | Mục tiêu | Đầu ra |
 |---|---|---|---|
@@ -462,7 +575,7 @@ Nguyên tắc thiết kế:
 
 | Nhóm hưởng lợi | Lợi ích cụ thể | Cách đo lường |
 |---|---|---|
-| Sinh viên | Biết mình đủ điều kiện cấp nào, còn thiếu gì, deadline nào đang mở; tái sử dụng hồ sơ cấp cũ | Tỷ lệ hoàn thiện hồ sơ đúng hạn, thời gian phát hiện thiếu minh chứng, mức hài lòng |
+| Sinh viên | Biết mình đủ điều kiện cấp nào, còn thiếu gì, deadline nào đang mở; lưu thành tích từ sớm; tái sử dụng hồ sơ cấp cũ; được gợi ý hoạt động phù hợp để bù tiêu chí còn thiếu; có CV/portfolio từ minh chứng và danh hiệu đã được xác nhận | Tỷ lệ hoàn thiện hồ sơ đúng hạn, thời gian phát hiện thiếu minh chứng, tỷ lệ sinh viên tham gia hoạt động được gợi ý, số CV/portfolio được xuất, mức hài lòng |
 | Cán bộ cấp khoa/trường | Giảm thời gian đọc minh chứng, lọc hồ sơ, tổng hợp danh sách | Thời gian xử lý trung bình/hồ sơ, số hồ sơ xử lý/ngày, tỷ lệ hồ sơ bị trả bổ sung |
 | Cán bộ cấp thành phố/tỉnh | Nhận hồ sơ từ nhiều trường có cấu trúc chuẩn, dễ tổng hợp danh sách chính thức | Thời gian chốt danh sách, số lỗi khi gửi lên cấp cao hơn |
 | Cán bộ Trung ương | Xem được lịch sử xét duyệt liên cấp, hồ sơ số hóa và danh sách chính thức | Thời gian kiểm tra hồ sơ cấp Trung ương, tỷ lệ hồ sơ có đủ lịch sử/minh chứng |
@@ -483,6 +596,9 @@ Nguyên tắc thiết kế:
 - **Phân quyền theo cây tổ chức:** giải quyết bài toán mỗi cán bộ chỉ được xem hồ sơ thuộc đơn vị mình.
 - **Tiêu chí linh hoạt nhưng có khung chung:** 5 nhóm tốt cố định, bộ điều kiện đạt cấu hình theo đơn vị và có thể kế thừa từ cấp trên.
 - **AI không tách rời nghiệp vụ:** OCR, RAG, tóm tắt, phân loại và cảnh báo thiếu minh chứng nằm trong workflow xét duyệt.
+- **Chủ động giúp sinh viên hoàn thiện tiêu chí:** hệ thống không chỉ báo "thiếu" mà còn gợi ý hoạt động đang mở từ nguồn Hội Sinh viên/trường/khoa/CLB để sinh viên kịp bổ sung trước deadline.
+- **Tích lũy thành tích từ sớm:** sinh viên không cần chờ tới mùa xét mới gom hồ sơ; kho thành tích giúp lưu minh chứng liên tục, còn hệ thống tự lọc minh chứng hợp lệ theo chu kỳ xét.
+- **Tạo giá trị sau khi xét duyệt:** CV/portfolio được tạo từ dữ liệu đã xác nhận giúp danh hiệu và minh chứng không chỉ nằm trong hồ sơ xét, mà trở thành tài sản năng lực của sinh viên.
 - **Dễ mở rộng:** MVP có thể demo một cây tổ chức nhỏ, sau đó mở rộng nhiều trường, nhiều tỉnh/thành và cấp Trung ương.
 - **Minh bạch và truy vết:** có audit log, lịch sử duyệt, danh hiệu đã đạt và gói hồ sơ gửi cấp trên.
 
@@ -504,7 +620,9 @@ Nguyên tắc thiết kế:
 | Bộ điều kiện đạt khác nhau giữa các cấp/đơn vị | Cao | Dùng `CriteriaSet` cấu hình theo cấp, đơn vị, năm; 5 nhóm tốt cố định nhưng điều kiện đạt linh hoạt |
 | OCR hoặc AI phân loại sai | Cao | Hiển thị OCR text, confidence, lý do gợi ý; cán bộ duyệt cuối; cho phép chỉnh sửa và ghi nhận phản hồi |
 | SmartReader/Smartbot/eKYC lỗi hoặc chậm khi demo | Cao | Có adapter, timeout, retry, cache kết quả và dữ liệu mock fallback |
+| Nguồn hoạt động từ fanpage/website thiếu ổn định hoặc chưa có quyền sử dụng | Trung bình | MVP dùng dữ liệu mẫu hoặc dữ liệu được đơn vị cho phép; khi triển khai thật ưu tiên nguồn công khai, API/RSS hợp lệ, hoặc cơ chế nhập tay từ cán bộ phụ trách; lưu link nguồn và thời điểm thu thập để truy vết |
 | Hồ sơ cấp cao thiếu minh chứng/danh hiệu cấp cũ | Cao | Kiểm tra `Award` cấp dưới trước khi mở quyền nộp cấp trên; AI cảnh báo thiếu file quyết định/chứng nhận |
+| Xóa nhầm minh chứng còn cần dùng hoặc còn giá trị truy vết | Cao | Không xóa ngay dữ liệu đã gắn với hồ sơ đã nộp, quyết định duyệt hoặc audit log; dùng trạng thái hết hạn, thông báo trước cho sinh viên, soft delete và retention window trước khi xóa vật lý khỏi Object Storage |
 | Sinh viên muốn sửa sau deadline | Trung bình | Khóa hồ sơ theo đợt; chỉ cán bộ/admin có quyền mở lại trong trường hợp đặc biệt và có audit log |
 | Gói hồ sơ gửi Trung ương chưa đủ nghiệp vụ hành chính | Trung bình | MVP mô phỏng danh sách/văn bản; roadmap bổ sung mẫu biểu, số văn bản, ký số hoặc upload văn bản chính thức |
 | Dữ liệu cá nhân nhạy cảm | Cao | Consent, phân quyền, signed URL, không public bucket, ẩn/xóa dữ liệu demo, tuân thủ quy định bảo vệ dữ liệu |
@@ -520,7 +638,7 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 1. Giới thiệu đội và tên sản phẩm **5-Star Eco - Hệ sinh thái phong trào Sinh viên 5 tốt**.
 2. Nêu pain-point bằng ví dụ sinh viên phải xét qua khoa, trường, thành phố/tỉnh và Trung ương.
 3. Mô tả mô hình cây tổ chức và cách cán bộ đăng nhập theo đơn vị.
-4. Demo luồng sinh viên nộp hồ sơ cấp khoa, AI OCR/phân loại, cán bộ duyệt và mở quyền lên cấp trường.
+4. Demo luồng sinh viên nộp hồ sơ cấp khoa, AI OCR/phân loại, cán bộ duyệt, mở quyền lên cấp trường và sinh viên xuất CV/portfolio từ dữ liệu đã duyệt.
 5. Chỉ rõ VNPT SmartReader, Smartbot/LLM, eKYC, SmartVoice, SmartUX được dùng ở đâu.
 6. Nêu tác động: giảm tải cán bộ, minh bạch liên cấp, giữ người duyệt cuối là cán bộ.
 
@@ -531,12 +649,50 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 ### 11.1. Wireframe/Figma
 
 - Link Figma: `<Dán link>`
-- Ảnh minh họa màn hình chính:
-  - Màn hình 1: Dashboard sinh viên theo 4 cấp danh hiệu
-  - Màn hình 2: Upload minh chứng và kết quả OCR/AI
-  - Màn hình 3: Dashboard cán bộ theo đơn vị
-  - Màn hình 4: Admin cấu hình cây tổ chức và bộ điều kiện đạt
-  - Màn hình 5: Gói hồ sơ/danh sách chính thức gửi cấp trên
+- Các trang website cần thiết:
+
+**Trang chung**
+
+1. Trang đăng nhập
+2. Trang chọn vai trò/đơn vị sau đăng nhập
+3. Trang lỗi ngoài phạm vi quyền truy cập
+
+**Sinh viên**
+
+1. Dashboard sinh viên
+2. Trang hồ sơ cá nhân sinh viên
+3. Trang kho thành tích/minh chứng cá nhân
+4. Trang upload minh chứng
+5. Trang chi tiết minh chứng và kết quả OCR/AI
+6. Trang trợ lý AI hỏi đáp/RAG
+7. Trang gợi ý hoạt động bù tiêu chí
+8. Trang tạo hồ sơ xét danh hiệu
+9. Trang kiểm tra hồ sơ trước khi nộp
+10. Trang theo dõi trạng thái hồ sơ sau khi nộp
+11. Trang kết quả và danh hiệu đã đạt
+12. Trang CV/portfolio Sinh viên 5 tốt
+
+**Cán bộ các cấp**
+
+1. Dashboard cán bộ theo đơn vị
+2. Trang danh sách hồ sơ cần xét
+3. Trang chi tiết hồ sơ kiểm duyệt
+4. Trang sàng lọc/phân tích hồ sơ bằng AI
+5. Trang duyệt/từ chối/yêu cầu bổ sung hồ sơ
+6. Trang chốt danh sách danh hiệu cấp hiện tại
+7. Trang gói hồ sơ gửi cấp trên
+
+**Admin**
+
+1. Dashboard admin hệ thống
+2. Trang quản lý cây tổ chức
+3. Trang quản lý tài khoản và phân quyền
+4. Trang cấu hình bộ điều kiện đạt
+5. Trang quản lý chu kỳ/đợt xét
+6. Trang cấu hình thời gian minh chứng khả dụng
+7. Trang quản lý nguồn RAG hoạt động
+8. Trang chính sách lưu trữ/dọn dẹp minh chứng
+9. Trang báo cáo/thống kê và SmartUX
 
 ### 11.2. Sơ đồ kiến trúc
 
@@ -575,6 +731,7 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 - [x] Kỹ thuật build/deploy khả thi với Node.js + NestJS, web frontend, PostgreSQL/SQL Server, Redis, Object Storage.
 - [x] Có ước tính chi phí hạ tầng và vận hành.
 - [x] Có phương án bảo mật và pháp lý.
+- [x] Có chính sách thời gian minh chứng khả dụng và vòng đời lưu trữ minh chứng.
 - [x] Có roadmap/GTM sau cuộc thi.
 
 ### 12.4. Tác động dự kiến

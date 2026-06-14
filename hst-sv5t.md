@@ -8,7 +8,7 @@
 
 Tagline đề xuất:
 
-> 5-Star Eco là một nền tảng liên cấp giúp sinh viên theo dõi, nộp, bổ sung và xét duyệt hồ sơ Sinh viên 5 tốt qua các tầng khoa, trường, thành phố/tỉnh và Trung ương.
+> 5-Star Eco là một nền tảng liên cấp giúp sinh viên tích lũy thành tích từ sớm, theo dõi, nộp, bổ sung và xét duyệt hồ sơ Sinh viên 5 tốt qua các tầng khoa, trường, thành phố/tỉnh và Trung ương.
 
 ## 2. Tóm tắt ý tưởng
 
@@ -21,7 +21,7 @@ Tagline đề xuất:
 
 Trong đó, **cấp khoa/viện/bộ môn** là cấp xét danh hiệu đầu tiên và gần sinh viên nhất. Khoa không chỉ truyền thông kế hoạch hoặc hỗ trợ sơ duyệt, mà có thể mở đợt xét riêng, cấu hình điều kiện đạt chi tiết, tiếp nhận hồ sơ, xét duyệt và công nhận danh hiệu Sinh viên 5 tốt cấp khoa. Sinh viên đạt cấp khoa mới đủ điều kiện tiếp tục xét cấp trường.
 
-Hằng năm, hệ thống mở 4 đợt xét tương ứng với 4 cấp danh hiệu: khoa, trường, thành phố/tỉnh và Trung ương. Ở mỗi đợt, sinh viên được nộp, chỉnh sửa hoặc bổ sung hồ sơ trong thời gian cho phép. Khi đến deadline, cổng hồ sơ khóa lại; cán bộ phụ trách cấp tương ứng đăng nhập để xét duyệt. AI hỗ trợ đọc minh chứng, phân loại tiêu chí, phát hiện thiếu sót và gợi ý trạng thái, nhưng **quyết định cuối cùng vẫn thuộc về cán bộ phụ trách**.
+Hằng năm, hệ thống mở 4 đợt xét tương ứng với 4 cấp danh hiệu: khoa, trường, thành phố/tỉnh và Trung ương. Ở mỗi đợt, sinh viên được nộp, chỉnh sửa hoặc bổ sung hồ sơ trong thời gian cho phép. Ngoài thời gian xét duyệt, sinh viên vẫn có thể cập nhật thành tích và upload minh chứng vào kho cá nhân để chuẩn bị từ sớm. Khi đợt xét đầu tiên ở cấp khoa mở ra, admin cấu hình phạm vi thời gian minh chứng khả dụng cho chu kỳ xét; hệ thống chỉ cho phép đưa các minh chứng còn hiệu lực vào hồ sơ nộp chính thức và tự động đánh dấu/dọn dẹp minh chứng cũ không thể sử dụng để giảm dung lượng lưu trữ. Khi đến deadline, cổng hồ sơ khóa lại; cán bộ phụ trách cấp tương ứng đăng nhập để xét duyệt. AI hỗ trợ đọc minh chứng, phân loại tiêu chí, phát hiện thiếu sót và gợi ý trạng thái, nhưng **quyết định cuối cùng vẫn thuộc về cán bộ phụ trách**.
 
 Điểm quan trọng của hệ sinh thái là **5 nhóm “tốt” luôn cố định, nhưng điều kiện để đạt từng nhóm tốt có thể khác nhau theo cấp và theo đơn vị triển khai**. Năm nhóm tốt gồm: **Đạo đức tốt, Học tập tốt, Thể lực tốt, Tình nguyện tốt và Hội nhập tốt**. Trung ương có bộ điều kiện chung; các thành phố/tỉnh triển khai kế hoạch theo bối cảnh địa phương nên có thể có ngưỡng đạt, yêu cầu minh chứng, biểu mẫu hoặc hoạt động được công nhận khác nhau; mỗi trường trong cùng thành phố cũng có thể có cách triển khai riêng; và mỗi khoa trong một trường cũng có thể có yêu cầu chi tiết hoặc hoạt động ưu tiên khác nhau.
 
@@ -59,6 +59,8 @@ Vì vậy, bài toán không chỉ là “AI xét hồ sơ” mà là **số hó
 - Quản lý cây tổ chức nhiều tầng: khoa, trường, thành phố/tỉnh, Trung ương.
 - Quản lý 4 đợt xét danh hiệu hằng năm: khoa, trường, thành phố/tỉnh, Trung ương.
 - Cho phép mỗi đơn vị cấu hình điều kiện đạt cho từng nhóm tốt, biểu mẫu, deadline phụ và yêu cầu minh chứng riêng theo quyền được phân cấp.
+- Cho phép sinh viên cập nhật kho thành tích/minh chứng cá nhân quanh năm, không phải chờ đến mùa xét mới gom hồ sơ.
+- Cho phép admin cấu hình thời gian minh chứng khả dụng theo chu kỳ xét và tự động dọn dẹp/xóa minh chứng cũ không thể sử dụng theo chính sách lưu trữ.
 - Cho phép sinh viên tái sử dụng hồ sơ cấp cũ và bổ sung minh chứng mới khi xét cấp cao hơn.
 - Tự động kiểm tra điều kiện đầu vào: chỉ sinh viên đã đạt cấp dưới mới được nộp cấp trên.
 - Hỗ trợ cán bộ từng cấp xét duyệt theo đúng phạm vi tổ chức của mình.
@@ -91,12 +93,13 @@ Mỗi năm hệ thống có một **chu kỳ xét Sinh viên 5 tốt** gồm 4 �
 Ở mỗi đợt:
 
 1. Admin/cán bộ có thẩm quyền mở cổng hồ sơ.
-2. Sinh viên đủ điều kiện được nộp hoặc bổ sung hồ sơ.
-3. Hệ thống cho phép chỉnh sửa trong thời gian cổng mở.
-4. Đến deadline, cổng khóa lại.
-5. Cán bộ cấp tương ứng bắt đầu xét duyệt.
-6. Kết quả được ghi nhận vào hồ sơ danh hiệu của sinh viên.
-7. Sinh viên đạt cấp hiện tại được quyền xét ở cấp cao hơn trong đợt sau.
+2. Ở đợt đầu tiên cấp khoa, admin cấu hình khoảng thời gian minh chứng khả dụng cho chu kỳ xét.
+3. Sinh viên đủ điều kiện chọn minh chứng còn hiệu lực từ kho cá nhân hoặc bổ sung minh chứng mới để nộp hồ sơ.
+4. Hệ thống cho phép chỉnh sửa trong thời gian cổng mở.
+5. Đến deadline, cổng khóa lại.
+6. Cán bộ cấp tương ứng bắt đầu xét duyệt.
+7. Kết quả được ghi nhận vào hồ sơ danh hiệu của sinh viên.
+8. Sinh viên đạt cấp hiện tại được quyền xét ở cấp cao hơn trong đợt sau.
 
 ### 6.1. Nguyên tắc tiêu chí phân cấp
 
@@ -130,13 +133,19 @@ Thiết kế hệ thống cần cho phép:
 Sinh viên tạo hồ sơ nền
         |
         v
+Sinh viên cập nhật kho thành tích/minh chứng quanh năm
+        |
+        v
+Admin cấu hình thời gian minh chứng khả dụng cho chu kỳ xét
+        |
+        v
 Đợt cấp khoa mở cổng
         |
         v
 Sinh viên theo dõi điều kiện đạt của khoa
         |
         v
-Sinh viên nộp hồ sơ + minh chứng cấp khoa
+Sinh viên chọn minh chứng còn hiệu lực và nộp hồ sơ cấp khoa
         |
         v
 AI hỗ trợ OCR, phân loại theo 5 nhóm tốt và bộ điều kiện cấp khoa
@@ -186,19 +195,22 @@ AI hỗ trợ OCR, phân loại theo 5 nhóm tốt và bộ điều kiện cấp
 
 Một sinh viên Khoa Công nghệ thông tin, Trường Đại học Khoa học Tự nhiên thuộc Thành phố Hồ Chí Minh tham gia chu kỳ xét:
 
-1. **Đợt cấp khoa:** Khoa Công nghệ thông tin nhận kế hoạch từ trường, cấu hình deadline và điều kiện/minh chứng chi tiết cho cấp khoa. Sinh viên nộp hồ sơ trước deadline cấp khoa. Cán bộ cấp khoa xét duyệt với AI hỗ trợ đọc minh chứng, phân loại tiêu chí và chỉ ra điểm cần kiểm tra.
-2. **Nếu đạt cấp khoa:** Sinh viên được ghi nhận danh hiệu Sinh viên 5 tốt cấp khoa và được quyền tham gia đợt cấp trường.
-3. **Đợt cấp trường:** Khi Trường Đại học Khoa học Tự nhiên mở cổng xét cấp trường, sinh viên có thể tái sử dụng hồ sơ cấp khoa và bổ sung minh chứng nếu cần. Hệ thống chuyển sang bộ điều kiện cấp trường, đồng thời yêu cầu đính kèm hoặc tự động xác thực minh chứng đã đạt cấp khoa.
-4. **Nếu đạt cấp trường:** Sinh viên được ghi nhận danh hiệu Sinh viên 5 tốt cấp trường và được quyền tham gia đợt cấp thành phố.
-5. **Đợt cấp thành phố:** Khi Thành phố Hồ Chí Minh mở cổng xét cấp thành phố, sinh viên tiếp tục bổ sung hồ sơ nếu cần. Hệ thống chuyển sang bộ điều kiện cấp Thành phố Hồ Chí Minh, đồng thời xác thực minh chứng đã đạt cấp trường.
-6. **Cán bộ cấp thành phố xét duyệt:** Cán bộ Thành phố Hồ Chí Minh chỉ thấy các hồ sơ đủ điều kiện thuộc địa bàn. Nếu sinh viên không đạt cấp thành phố, sinh viên vẫn giữ danh hiệu cấp trường nhưng không được xét tiếp cấp Trung ương.
-7. **Đợt cấp Trung ương:** Chỉ các sinh viên đã đạt cấp thành phố/tỉnh mới được tham gia. Hệ thống chuyển sang bộ điều kiện chung cấp Trung ương cho 5 nhóm tốt. Cán bộ Trung ương xét hồ sơ từ nhiều tỉnh/thành và chốt danh sách đạt cấp Trung ương.
+1. **Trước mùa xét:** Sinh viên cập nhật giấy khen, chứng chỉ, hoạt động tình nguyện, hoạt động hội nhập hoặc thành tích học tập vào kho minh chứng cá nhân ngay khi phát sinh. AI có thể OCR và phân loại sơ bộ để sinh viên biết minh chứng có khả năng phục vụ nhóm tốt nào.
+2. **Đợt cấp khoa:** Khoa Công nghệ thông tin nhận kế hoạch từ trường, cấu hình deadline, điều kiện/minh chứng chi tiết cho cấp khoa và phạm vi thời gian minh chứng khả dụng. Sinh viên chọn minh chứng còn hiệu lực từ kho cá nhân để nộp hồ sơ trước deadline cấp khoa. Cán bộ cấp khoa xét duyệt với AI hỗ trợ đọc minh chứng, phân loại tiêu chí và chỉ ra điểm cần kiểm tra.
+3. **Nếu đạt cấp khoa:** Sinh viên được ghi nhận danh hiệu Sinh viên 5 tốt cấp khoa và được quyền tham gia đợt cấp trường.
+4. **Đợt cấp trường:** Khi Trường Đại học Khoa học Tự nhiên mở cổng xét cấp trường, sinh viên có thể tái sử dụng hồ sơ cấp khoa và bổ sung minh chứng nếu cần. Hệ thống chuyển sang bộ điều kiện cấp trường, đồng thời yêu cầu đính kèm hoặc tự động xác thực minh chứng đã đạt cấp khoa.
+5. **Nếu đạt cấp trường:** Sinh viên được ghi nhận danh hiệu Sinh viên 5 tốt cấp trường và được quyền tham gia đợt cấp thành phố.
+6. **Đợt cấp thành phố:** Khi Thành phố Hồ Chí Minh mở cổng xét cấp thành phố, sinh viên tiếp tục bổ sung hồ sơ nếu cần. Hệ thống chuyển sang bộ điều kiện cấp Thành phố Hồ Chí Minh, đồng thời xác thực minh chứng đã đạt cấp trường.
+7. **Cán bộ cấp thành phố xét duyệt:** Cán bộ Thành phố Hồ Chí Minh chỉ thấy các hồ sơ đủ điều kiện thuộc địa bàn. Nếu sinh viên không đạt cấp thành phố, sinh viên vẫn giữ danh hiệu cấp trường nhưng không được xét tiếp cấp Trung ương.
+8. **Đợt cấp Trung ương:** Chỉ các sinh viên đã đạt cấp thành phố/tỉnh mới được tham gia. Hệ thống chuyển sang bộ điều kiện chung cấp Trung ương cho 5 nhóm tốt. Cán bộ Trung ương xét hồ sơ từ nhiều tỉnh/thành và chốt danh sách đạt cấp Trung ương.
 
 ## 9. Nhóm chức năng chính
 
 ### 9.1. Phía sinh viên
 
 - Tạo hồ sơ cá nhân nền cho toàn bộ chu kỳ Sinh viên 5 tốt.
+- Cập nhật thành tích và upload minh chứng vào kho cá nhân quanh năm.
+- Xem minh chứng nào còn hiệu lực/hết hạn theo chu kỳ xét hiện tại.
 - Theo dõi tiến độ theo 5 nhóm tốt và từng điều kiện đạt.
 - Xem các đợt xét đang mở và điều kiện được nộp.
 - Nộp hồ sơ cấp khoa.
@@ -261,6 +273,8 @@ Một sinh viên Khoa Công nghệ thông tin, Trường Đại học Khoa học
 - Tạo năm xét/chu kỳ xét.
 - Cấu hình 4 đợt xét: khoa, trường, thành phố/tỉnh, Trung ương.
 - Cấu hình thời gian mở/đóng cổng.
+- Cấu hình thời gian minh chứng khả dụng khi mở đợt xét đầu tiên.
+- Quản lý chính sách đánh dấu hết hạn, dọn dẹp hoặc xóa minh chứng cũ không thể sử dụng.
 - Cấu hình điều kiện đạt theo cấp, đơn vị, năm và đợt xét.
 - Quản lý quan hệ kế thừa điều kiện đạt giữa Trung ương, thành phố/tỉnh, trường và khoa.
 - Quản lý cây tổ chức: khoa, trường, tỉnh/thành, Trung ương.
@@ -418,6 +432,9 @@ central_rejected
 - `year`
 - `name`
 - `status`
+- `evidence_valid_from`
+- `evidence_valid_to`
+- `evidence_retention_policy_id`
 
 ### 12.7. ReviewRound
 
@@ -450,16 +467,30 @@ central_rejected
 ### 12.9. Evidence
 
 - `id`
+- `student_id`
 - `application_id`
 - `file_url`
 - `file_type`
+- `issued_at`
+- `valid_status`: `valid`, `expired`, `pending_review`
 - `ocr_text`
 - `metadata`
 - `suggested_criteria`
 - `confidence_score`
 - `verified_status`
+- `deleted_at`
 
-### 12.10. Award
+### 12.10. EvidenceRetentionPolicy
+
+- `id`
+- `cycle_id`
+- `valid_from`
+- `valid_to`
+- `soft_delete_after_days`
+- `hard_delete_after_days`
+- `created_by_admin_id`
+
+### 12.11. Award
 
 - `id`
 - `student_id`
@@ -470,7 +501,7 @@ central_rejected
 - `decision_number`
 - `certificate_file_url`
 
-### 12.11. ReviewDecision
+### 12.12. ReviewDecision
 
 - `id`
 - `application_id`
@@ -499,6 +530,7 @@ Backend API
     +-- Profile Service
     +-- Application Service
     +-- Evidence Service
+    +-- Evidence Vault & Retention Service
     +-- Criteria Service
     +-- AI Evaluation Service
     +-- Review Workflow Service
@@ -536,7 +568,9 @@ Vì thời gian thi ngắn, MVP nên chứng minh được logic liên cấp nh�
 - Tạo cây tổ chức mẫu: 1 khoa, 1 trường, 1 thành phố/tỉnh, Trung ương.
 - Tạo bộ điều kiện đạt mẫu khác nhau cho khoa, trường, thành phố/tỉnh và Trung ương.
 - Tạo 4 đợt xét danh hiệu: khoa, trường, thành phố/tỉnh, Trung ương.
-- Sinh viên nộp hồ sơ cấp khoa trong thời gian cổng mở.
+- Admin cấu hình thời gian minh chứng hợp lệ cho chu kỳ xét.
+- Sinh viên upload minh chứng vào kho cá nhân và hệ thống đánh dấu minh chứng còn hiệu lực/hết hạn.
+- Sinh viên chọn minh chứng còn hiệu lực để nộp hồ sơ cấp khoa trong thời gian cổng mở.
 - Sau deadline, hồ sơ bị khóa.
 - Cán bộ cấp khoa duyệt hồ sơ có AI hỗ trợ.
 - Nếu đạt, hệ thống cấp danh hiệu cấp khoa và mở quyền nộp cấp trường.
@@ -601,6 +635,7 @@ Vì thời gian thi ngắn, MVP nên chứng minh được logic liên cấp nh�
 | AI OCR hoặc phân loại sai | Hiển thị OCR text, confidence score, lý do gợi ý; cán bộ duyệt cuối |
 | Sinh viên bổ sung sau deadline | Hệ thống khóa hồ sơ theo đợt; chỉ admin có quyền mở lại trong trường hợp đặc biệt |
 | Hồ sơ cấp cao thiếu minh chứng cấp cũ | Hệ thống kiểm tra `Award` cấp cũ trước khi cho nộp cấp mới |
+| Xóa nhầm minh chứng còn cần dùng | Dùng trạng thái hết hạn, thông báo trước, soft delete và retention window; không xóa ngay minh chứng đã gắn với hồ sơ đã nộp, quyết định duyệt hoặc audit log |
 | Dữ liệu cá nhân nhạy cảm | Phân quyền theo cấp tổ chức, signed URL cho file, log truy cập, xóa dữ liệu demo |
 | MVP quá rộng | Demo 1 sinh viên, 1 khoa, 1 trường, 1 thành phố, 1 chu kỳ xét với 4 đợt liên tiếp |
 
