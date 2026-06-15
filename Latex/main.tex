@@ -1,0 +1,72 @@
+
+
+\documentclass[a4paper]{article}
+
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{tocloft}
+\usepackage{bm}
+\usepackage{forest}
+\usepackage{algorithm}
+\usepackage{tikz}
+\usepackage[super]{nth}
+\usepackage{algpseudocode}
+\usepackage[left=3.5cm,right=2.5cm,top=2cm,bottom=2cm]{geometry} 
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{longtable}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+\setlength{\parindent}{0pt}
+\usepackage{graphicx} 
+\usepackage{subcaption}
+\usepackage[utf8]{vietnam}
+%\usepackage{wallpaper}
+%\usepackage[firstpage]{draftwatermark} 
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{tikz} 
+\usepackage{scrextend}
+\changefontsizes{11pt}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{adjustbox}
+\usepackage{tabularray}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{references.bib}
+\usepackage{paracol}
+\usepackage{setspace}
+\usepackage{array}
+
+\usetikzlibrary{calc}
+
+
+\usepackage[vietnamese]{babel}
+
+% \usepackage[english]{babel} 
+\begin{document}
+
+\include{title.tex}
+
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{10pt}
+\include{table-of-content.tex}
+
+\include{part1.tex}
+\include{part2.tex}
+%\include{part3.tex}
+%\include{part4.tex}
+%\include{part5.tex}
+
+\printbibliography % Print the bibliography
+
+\end{document}
