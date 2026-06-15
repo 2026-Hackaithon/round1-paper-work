@@ -493,7 +493,7 @@ Phần có thể mô phỏng:
 | Thành phần | Công nghệ đề xuất | Ghi chú |
 |---|---|---|
 | Frontend | React + Vite + TypeScript | Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. React phù hợp với dashboard nhiều trạng thái, Vite giúp build nhanh và tối ưu trải nghiệm phát triển |
-| Backend | Node.js | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Evidence Vault/Retention, Review, Award, Portfolio |
+| Backend | Node.js + Express.js + TypeScript | Xây dựng REST API cho các module Auth, Organization, Criteria, Application, Evidence, Review, Award và Portfolio. Express đơn giản, dễ học và phù hợp phát triển MVP nhanh. TypeScript giúp tăng tính an toàn khi phát triển và bảo trì mã nguồn. |
 | Reverse Proxy | Nginx | Định tuyến request giữa frontend và backend, cấu hình SSL, gzip, caching và hỗ trợ triển khai production. |
 | Database | PostgreSQL | Lưu trữ dữ liệu quan hệ như người dùng, tổ chức, tiêu chí xét duyệt, hồ sơ ứng tuyển, kết quả đánh giá, audit log và portfolio. Hỗ trợ transaction và truy vấn phức tạp tốt. |
 | Cache | Redis | Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời |
@@ -504,7 +504,7 @@ Phần có thể mô phỏng:
 Kế hoạch triển khai kỹ thuật:
 
 1. Thiết kế database cho `Organization`, `User`, `Role`, `ReviewCycle`, `ReviewRound`, `CriteriaSet`, `Application`, `Evidence`, `EvidenceRetentionPolicy`, `Award`, `Portfolio`, `ReviewDecision`, `AuditLog`.
-2. Xây backend NestJS với guard phân quyền theo `organization_id`, `level`, `scope`.
+2. Xây dựng backend Node.js + Express.js + TypeScript, tổ chức theo các module nghiệp vụ; triển khai cơ chế xác thực JWT và phân quyền theo organization_id, level, scope.
 3. Xây frontend 3 không gian chính: sinh viên, cán bộ, admin.
 4. Tích hợp VNPT SmartReader cho OCR minh chứng; xây adapter mock fallback.
 5. Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt, hỏi đáp RAG và gợi ý hoạt động theo tiêu chí còn thiếu.
@@ -518,23 +518,23 @@ Kế hoạch triển khai kỹ thuật:
 
 | Vai trò | Nhiệm vụ |
 |---|---|
-| Product/Research | Chốt flow nghiệp vụ 4 cấp, mô hình cây tổ chức, nội dung proposal và pitch |
-| Backend | Thiết kế database, NestJS API, phân quyền theo đơn vị, tích hợp AI/API |
-| Frontend/UI/UX | Xây giao diện sinh viên, dashboard cán bộ, admin console |
-| AI/Data/Prompt | Thiết kế prompt phân loại minh chứng, RAG theo bộ điều kiện, RAG gợi ý hoạt động từ nguồn Hội Sinh viên/trường/khoa/CLB, kịch bản OCR |
-| QA/Demo/Pitch | Tạo dữ liệu demo, kiểm thử luồng 4 cấp, chuẩn bị video/thuyết trình |
+| Product/Research | Phân tích nghiệp vụ xét duyệt các cấp, xây dựng mô hình tổ chức, khảo sát yêu cầu người dùng, hoàn thiện proposal và pitch. |
+| Backend | Thiết kế cơ sở dữ liệu PostgreSQL, phát triển API bằng Node.js + Express.js + TypeScript, xây dựng cơ chế phân quyền và tích hợp các dịch vụ AI/API của VNPT. |
+| Frontend/UI/UX | Phát triển giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên bằng React + Vite + TypeScript; tối ưu trải nghiệm người dùng và khả năng sử dụng trên nhiều thiết bị. |
+| AI/Data/Prompt | Thiết kế prompt, xây dựng RAG, xử lý OCR, phân loại minh chứng, gợi ý hoạt động và đánh giá chất lượng phản hồi của hệ thống AI. |
+| QA/Demo/Pitch | Xây dựng dữ liệu kiểm thử, thực hiện kiểm thử chức năng và phân quyền, chuẩn bị kịch bản demo, video giới thiệu và bài thuyết trình. |
 
 ### 7.6. Ước tính chi phí hạ tầng và vận hành
 
 | Hạng mục | MVP Vòng 2 dự kiến | Full product/pilot thực tế | Ghi chú |
 |---|---:|---:|---|
-| Frontend hosting | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Vercel/Netlify/free tier cho demo; production cần domain, môi trường ổn định |
-| Backend server | 200.000 - 800.000 VNĐ/tháng | 1.000.000 - 5.000.000 VNĐ/tháng | MVP dùng VPS nhỏ/Docker Compose; full product cần tách môi trường và backup |
-| Database | 0 - 500.000 VNĐ/tháng | 1.000.000 - 4.000.000 VNĐ/tháng | PostgreSQL/SQL Server managed hoặc self-host có backup |
-| Redis | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Cache session/role, criteria, OCR/AI result |
+| Frontend hosting | 0 VNĐ/tháng | 300.000 - 1.000.000 VNĐ/tháng | MVP có thể triển khai trên Leapcell hoặc các nền tảng miễn phí. Khi vận hành thực tế cần môi trường ổn định và tên miền riêng. |
+| Backend server | 0 - 500.000 VNĐ/tháng | 1.000.000 - 5.000.000 VNĐ/tháng | MVP triển khai bằng Docker Compose hoặc dịch vụ cloud phù hợp quy mô thử nghiệm. Giai đoạn pilot cần khả năng mở rộng, sao lưu và giám sát hệ thống. |
+| Database | 0 - 500.000 VNĐ/tháng | 500.000 - 3.000.000 VNĐ/tháng | Có thể sử dụng dịch vụ miễn phí hoặc triển khai cùng máy chủ MVP. Khi mở rộng nên tách riêng cơ sở dữ liệu và thực hiện sao lưu định kỳ. |
+| Redis | 0 - 200.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Sử dụng cho cache phân quyền, dữ liệu OCR/AI tạm thời và tối ưu hiệu năng hệ thống. |
 | Object Storage | 0 - 300.000 VNĐ/tháng | Theo dung lượng minh chứng | Cần signed URL và phân quyền truy cập file |
-| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Theo số lượt OCR, hỏi đáp, phân tích | Cần cache, rate limit và fallback để kiểm soát chi phí |
-| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Full product cần logging, monitoring, alert |
+| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Bao gồm OCR, phân loại minh chứng, hỏi đáp và các chức năng AI hỗ trợ đánh giá hồ sơ. Cần cơ chế cache và fallback để kiểm soát chi phí. |
+| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Khi triển khai thực tế cần bổ sung monitoring, cảnh báo và theo dõi vận hành. |
 
 ### 7.7. An toàn, bảo mật và pháp lý
 
