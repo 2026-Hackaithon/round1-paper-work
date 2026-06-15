@@ -488,14 +488,14 @@ Phần có thể mô phỏng:
 
 | Thành phần | Công nghệ đề xuất | Ghi chú |
 |---|---|---|
-| Frontend | ReactJS | Giao diện sinh viên, dashboard cán bộ, admin console, màn hình CV/portfolio |
+| Frontend | React + Vite + TypeScript | Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. React phù hợp với dashboard nhiều trạng thái, Vite giúp build nhanh và tối ưu trải nghiệm phát triển |
 | Backend | Node.js | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Evidence Vault/Retention, Review, Award, Portfolio |
-| Reverse Proxy/Routing | Leapcell Routing / Reverse Proxy | Routing frontend/backend, quản lý domain/SSL và cấu hình deploy |
-| Database | PostgreSQL hoặc SQL Server | Lưu dữ liệu quan hệ: tổ chức, tiêu chí, hồ sơ, award, audit log |
+| Reverse Proxy | Nginx | Định tuyến request giữa frontend và backend, cấu hình SSL, gzip, caching và hỗ trợ triển khai production. |
+| Database | PostgreSQL | Lưu trữ dữ liệu quan hệ như người dùng, tổ chức, tiêu chí xét duyệt, hồ sơ ứng tuyển, kết quả đánh giá, audit log và portfolio. Hỗ trợ transaction và truy vấn phức tạp tốt. |
 | Cache | Redis | Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời |
-| File Storage | S3-compatible Object Storage | Lưu minh chứng, văn bản, danh sách xuất; hỗ trợ chính sách dọn dẹp file minh chứng hết hạn |
-| AI/API Adapter | Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX | Dễ mock khi API lỗi hoặc demo offline |
-| Deploy | Leapcell cho cả ReactJS frontend và Node.js backend | MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường |
+| File Storage | S3-compatible Storage |Lưu trữ minh chứng, tài liệu PDF, ảnh chứng nhận và file xuất báo cáo. Hỗ trợ phân quyền truy cập và chính sách tự động xóa dữ liệu hết hạn. |
+| AI/API Adapter | Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX | Tách biệt business logic khỏi nhà cung cấp AI. Cho phép mock dữ liệu khi demo hoặc thay thế nhà cung cấp mà không ảnh hưởng hệ thống. |
+| Deploy | Leapcell | MVP triển khai bằng Docker Compose trên một máy chủ duy nhất. Khi mở rộng có thể tách môi trường Staging và Production. |
 
 Kế hoạch triển khai kỹ thuật:
 
