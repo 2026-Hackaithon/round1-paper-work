@@ -194,7 +194,7 @@ flowchart TB
         AD(["Admin hệ thống"])
     end
 
-    subgraph Frontend ["Frontend Web App"]
+    subgraph Frontend ["Frontend ReactJS Web App"]
         direction TB
         FE_S["Không gian Sinh viên\nHồ sơ, minh chứng, trạng thái, danh hiệu"]
         FE_O["Dashboard Cán bộ theo cấp\nKhoa / Trường / Thành phố-Tỉnh / Trung ương"]
@@ -203,12 +203,12 @@ flowchart TB
 
     subgraph Entry ["Lớp API vào hệ thống"]
         direction TB
-        Nginx{"Nginx Reverse Proxy"}
+        Router{"Leapcell Routing / Reverse Proxy"}
         API("API Gateway & Core Logic")
-        Nginx <--> API
+        Router <--> API
     end
 
-    subgraph Backend ["Hệ thống Backend (Node.js + NestJS)"]
+    subgraph Backend ["Hệ thống Backend (Node.js)"]
         direction TB
         Auth("Auth & Role-based Access\norganization_id / level / scope")
 
@@ -262,9 +262,9 @@ flowchart TB
     OZ --> FE_O
     AD --> FE_A
 
-    FE_S <-->|"REST API"| Nginx
-    FE_O <-->|"REST API"| Nginx
-    FE_A <-->|"REST API"| Nginx
+    FE_S <-->|"REST API"| Router
+    FE_O <-->|"REST API"| Router
+    FE_A <-->|"REST API"| Router
 
     API <--> Auth
     Auth <--> Org
@@ -381,7 +381,7 @@ flowchart TB
 | VNPT eKYC | Xác thực danh tính sinh viên khi tạo hồ sơ hoặc trước khi nộp cấp cao | Có thể demo hoặc đưa vào mở rộng |
 | VNPT SmartVoice | Hỏi đáp bằng giọng nói cho sinh viên/cán bộ | Mở rộng nếu còn thời gian |
 | VNPT SmartUX | Phân tích hành vi sử dụng, phát hiện bước sinh viên hay bỏ dở | Mở rộng sau MVP |
-| Object Storage API | Lưu minh chứng gốc, file văn bản đề nghị, danh sách xuất, CV/portfolio PDF; hỗ trợ lifecycle/cleanup cho minh chứng hết hạn | Core MVP |
+| Object Storage API | Lưu minh chứng gốc, CV/portfolio PDF trong MVP; bản thực tế mở rộng thêm file văn bản đề nghị, danh sách xuất và lifecycle/cleanup cho minh chứng hết hạn | Core MVP |
 | Activity Source Connector | Thu thập bài đăng/sự kiện từ website Hội Sinh viên, fanpage Hội Sinh viên, trang hoạt động trường/khoa/CLB bằng nguồn công khai hoặc nguồn được cấp quyền | MVP dùng dữ liệu mẫu hoặc nhập tay để tránh phụ thuộc quyền truy cập |
 | Notification API | Gửi email/thông báo deadline và yêu cầu bổ sung | Mô phỏng trong MVP |
 
@@ -403,7 +403,7 @@ flowchart TB
 
 ## 7. Phương hướng triển khai
 
-Theo thể lệ Bảng B - Challenger, **Vòng 1** yêu cầu đội thi nộp bản miêu tả ý tưởng, trong đó có phần **phương hướng triển khai** để chứng minh tính khả thi. MVP có thể trình diễn và kiểm thử là trọng tâm của **Vòng 2** sau khi ý tưởng được chọn. Vì vậy, phần này trình bày theo 2 lớp: hướng triển khai **full product thực tế** nếu áp dụng vào hệ thống phong trào Sinh viên 5 tốt và phạm vi **MVP Vòng 2** để demo trong thời gian HackAIthon.
+Theo thể lệ Bảng B - Challenger, **Vòng 1** yêu cầu đội thi nộp bản miêu tả ý tưởng, trong đó có phần **phương hướng triển khai** để chứng minh tính khả thi. MVP có thể trình diễn và kiểm thử là trọng tâm của **Vòng 2** sau khi ý tưởng được chọn. Vì vậy, phần này trình bày theo 2 lớp: hướng triển khai **sản phẩm thực tế** nếu áp dụng vào hệ thống phong trào Sinh viên 5 tốt và phạm vi **MVP Vòng 2** để demo trong thời gian HackAIthon.
 
 ### 7.1. Định hướng triển khai theo yêu cầu Vòng 1
 
@@ -415,9 +415,9 @@ Trong Vòng 1, 5-Star Eco chưa cần chứng minh bằng một sản phẩm ho�
 - Có phương án triển khai khả thi về nhân sự, kỹ thuật, chi phí, bảo mật, pháp lý và lộ trình sau cuộc thi.
 - Có phạm vi MVP Vòng 2 đủ nhỏ để demo được trong thời gian 26/6 - 03/7/2026, nhưng vẫn chứng minh được khác biệt cốt lõi của hệ sinh thái liên cấp.
 
-### 7.2. Triển khai full product thực tế
+### 7.2. Triển khai sản phẩm thực tế
 
-Full product của 5-Star Eco hướng tới một nền tảng multi-tenant dùng được cho nhiều đơn vị triển khai phong trào Sinh viên 5 tốt trên toàn quốc. Hệ thống vận hành theo cây tổ chức:
+Sản phẩm thực tế của 5-Star Eco hướng tới một nền tảng multi-tenant dùng được cho nhiều đơn vị triển khai phong trào Sinh viên 5 tốt trên toàn quốc. Hệ thống vận hành theo cây tổ chức:
 
 ```text
 Trung ương Hội Sinh viên Việt Nam
@@ -428,7 +428,7 @@ Trung ương Hội Sinh viên Việt Nam
 
 Ở bản triển khai thực tế, mỗi đơn vị có tài khoản cán bộ, bộ điều kiện đạt, biểu mẫu, deadline và phạm vi dữ liệu riêng. Trung ương quản lý khung chung và cấp Trung ương; thành phố/tỉnh triển khai theo địa bàn; trường triển khai theo trường; khoa/viện/bộ môn triển khai cấp cơ sở gần sinh viên nhất.
 
-Các năng lực full product cần có:
+Các năng lực sản phẩm thực tế cần có:
 
 - **Quản trị tổ chức liên cấp:** tạo/sửa cây tổ chức, gán cán bộ theo `organization_id`, `parent_id`, `level`, `scope`, giới hạn dữ liệu theo đúng đơn vị.
 - **Quản lý chu kỳ xét hằng năm:** tạo 4 đợt xét khoa -> trường -> thành phố/tỉnh -> Trung ương, cấu hình thời gian mở cổng, deadline, trạng thái khóa/mở, điều kiện chuyển cấp.
@@ -444,18 +444,18 @@ Các năng lực full product cần có:
 - **Audit log và báo cáo:** ghi nhận thao tác nộp, sửa, khóa/mở cổng, duyệt, từ chối, yêu cầu bổ sung; hỗ trợ báo cáo theo cấp, đơn vị, mùa xét, nhóm tiêu chí.
 - **Tích hợp mở rộng:** eKYC để xác thực danh tính sinh viên, SmartVoice cho giao diện giọng nói, SmartUX để phân tích hành vi sử dụng và tối ưu quy trình.
 
-Lộ trình full product thực tế:
+Lộ trình sản phẩm thực tế:
 
 | Giai đoạn | Mục tiêu | Đầu ra chính |
 |---|---|---|
-| Pilot đơn vị nhỏ | Kiểm chứng tại 1 khoa/trường hoặc một cây tổ chức mẫu | Luồng nộp/duyệt 4 cấp, OCR/AI cơ bản, dashboard sinh viên và cán bộ |
+| Pilot đơn vị nhỏ | Kiểm chứng tại 1 khoa/trường hoặc một cây tổ chức mẫu | Luồng nộp/duyệt 2 cấp khoa -> trường, OCR/AI cơ bản, dashboard sinh viên và cán bộ |
 | Mở rộng trong trường/thành phố | Triển khai nhiều khoa hoặc nhiều trường trong một địa bàn | Phân quyền đa đơn vị, cấu hình tiêu chí riêng, báo cáo tổng hợp |
 | Chuẩn hóa cấp thành phố/tỉnh | Hỗ trợ gói hồ sơ gửi cấp cao hơn | Danh sách chính thức, văn bản đề nghị, lịch sử xét duyệt liên cấp |
 | Hướng tới toàn quốc | Mở rộng multi-tenant cho nhiều tỉnh/thành và trường | Hạ tầng ổn định, tài liệu vận hành, bảo mật và audit hoàn chỉnh |
 
 ### 7.3. Sản phẩm Vòng 2 - MVP trình diễn
 
-MVP Vòng 2 tập trung chứng minh logic liên cấp và năng lực AI cốt lõi, không triển khai đầy đủ mọi nghiệp vụ hành chính ở quy mô toàn quốc. Demo đề xuất dùng một cây tổ chức mẫu:
+MVP Vòng 2 tập trung chứng minh logic liên cấp và năng lực AI cốt lõi ở phạm vi đủ nhỏ để hoàn thiện trong thời gian HackAIthon. Demo đề xuất dùng một nhánh tổ chức mẫu để giữ đúng ngữ cảnh cây tổ chức, nhưng chỉ kích hoạt 2 cấp xét đầu tiên là **cấp khoa** và **cấp trường**:
 
 ```text
 Trung ương Hội Sinh viên Việt Nam
@@ -466,24 +466,20 @@ Trung ương Hội Sinh viên Việt Nam
 
 MVP Vòng 2 cần có:
 
-- Đăng nhập giả lập theo vai trò: sinh viên, cán bộ khoa, cán bộ trường, cán bộ thành phố/tỉnh, cán bộ Trung ương, admin.
+- Đăng nhập giả lập theo vai trò: sinh viên, cán bộ khoa, cán bộ trường.
 - Mỗi cán bộ chỉ thấy dữ liệu trong đúng phạm vi đơn vị của mình.
-- Tạo 1 chu kỳ xét với 4 đợt: khoa, trường, thành phố/tỉnh, Trung ương.
-- Tạo bộ điều kiện đạt mẫu khác nhau cho từng cấp/đơn vị nhưng cùng bám 5 nhóm tốt cố định.
+- Tạo 1 chu kỳ xét với **2 đợt MVP**: cấp khoa và cấp trường; chưa triển khai xét cấp thành phố/tỉnh và cấp Trung ương trong Vòng 2.
+- Tạo bộ điều kiện đạt mẫu khác nhau cho cấp khoa và cấp trường nhưng cùng bám 5 nhóm tốt cố định.
 - Admin cấu hình khoảng thời gian minh chứng hợp lệ cho chu kỳ xét; hệ thống đánh dấu minh chứng ngoài khoảng thời gian này là hết hạn.
 - Sinh viên cập nhật thành tích/minh chứng vào kho cá nhân trước khi nộp; khi đợt cấp khoa mở, sinh viên chọn minh chứng còn hiệu lực để tạo hồ sơ nộp chính thức, nhận phân tích AI và nhận gợi ý hoạt động phù hợp với tiêu chí còn thiếu.
-- Sinh viên xem trước và xuất CV/portfolio từ các minh chứng/danh hiệu đã được duyệt trong dữ liệu demo.
 - Tạo dữ liệu hoạt động mẫu từ website/fanpage Hội Sinh viên hoặc trang hoạt động của trường/khoa/CLB để demo RAG gợi ý hoạt động.
 - Cổng hồ sơ khóa sau deadline.
 - Cán bộ cấp khoa duyệt; nếu đạt, hệ thống tạo danh hiệu cấp khoa và mở quyền nộp cấp trường.
-- Lặp lại luồng nộp/bổ sung/duyệt ở cấp trường và thành phố/tỉnh.
-- Cấp Trung ương xem hồ sơ đã đạt cấp thành phố/tỉnh, lịch sử xét duyệt liên cấp và duyệt cuối.
-- Có màn hình trạng thái danh hiệu đã đạt của sinh viên theo 4 cấp.
+- Cán bộ cấp trường duyệt; nếu đạt, hệ thống tạo danh hiệu cấp trường và hiển thị trạng thái "đủ điều kiện xét cấp thành phố/tỉnh" như một bước mở rộng sau MVP.
+- Có màn hình trạng thái danh hiệu đã đạt của sinh viên theo 2 cấp.
 
 Phần có thể mô phỏng:
 
-- Văn bản đề nghị gửi Trung ương.
-- Danh sách chính thức cấp thành phố/tỉnh gửi Trung ương.
 - Chứng nhận/danh hiệu cấp cũ dạng file.
 - CSDL đối chiếu minh chứng bên ngoài.
 - Kết nối tự động tới Facebook/web thật; MVP có thể dùng dữ liệu mẫu hoặc dữ liệu đã được đơn vị cho phép thu thập.
@@ -492,25 +488,25 @@ Phần có thể mô phỏng:
 
 | Thành phần | Công nghệ đề xuất | Ghi chú |
 |---|---|---|
-| Frontend | React/Next.js hoặc Vite + React | Giao diện sinh viên, dashboard cán bộ, admin console, màn hình CV/portfolio |
-| Backend | Node.js + NestJS | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Evidence Vault/Retention, Review, Award, Portfolio |
-| Reverse Proxy | Nginx | Routing API, cấu hình deploy |
+| Frontend | ReactJS | Giao diện sinh viên, dashboard cán bộ, admin console, màn hình CV/portfolio |
+| Backend | Node.js | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Evidence Vault/Retention, Review, Award, Portfolio |
+| Reverse Proxy/Routing | Leapcell Routing / Reverse Proxy | Routing frontend/backend, quản lý domain/SSL và cấu hình deploy |
 | Database | PostgreSQL hoặc SQL Server | Lưu dữ liệu quan hệ: tổ chức, tiêu chí, hồ sơ, award, audit log |
 | Cache | Redis | Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời |
 | File Storage | S3-compatible Object Storage | Lưu minh chứng, văn bản, danh sách xuất; hỗ trợ chính sách dọn dẹp file minh chứng hết hạn |
 | AI/API Adapter | Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX | Dễ mock khi API lỗi hoặc demo offline |
-| Deploy | Vercel cho frontend; VPS/Cloud VM/Docker cho backend | MVP Vòng 2 có thể chạy bằng Docker Compose; full product tách môi trường staging/production |
+| Deploy | Leapcell cho cả ReactJS frontend và Node.js backend | MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường |
 
 Kế hoạch triển khai kỹ thuật:
 
 1. Thiết kế database cho `Organization`, `User`, `Role`, `ReviewCycle`, `ReviewRound`, `CriteriaSet`, `Application`, `Evidence`, `EvidenceRetentionPolicy`, `Award`, `Portfolio`, `ReviewDecision`, `AuditLog`.
-2. Xây backend NestJS với guard phân quyền theo `organization_id`, `level`, `scope`.
-3. Xây frontend 3 không gian chính: sinh viên, cán bộ, admin.
+2. Xây backend Node.js với middleware/guard phân quyền theo `organization_id`, `level`, `scope`.
+3. Xây frontend ReactJS cho 3 không gian chính: sinh viên, cán bộ, admin.
 4. Tích hợp VNPT SmartReader cho OCR minh chứng; xây adapter mock fallback.
 5. Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt, hỏi đáp RAG và gợi ý hoạt động theo tiêu chí còn thiếu.
 6. Xây Activity/RAG Source Service với dữ liệu hoạt động mẫu; bản mở rộng hỗ trợ connector tới website/fanpage được phép sử dụng.
 7. Xây Portfolio/CV Service để render CV/portfolio từ dữ liệu đã duyệt và xuất PDF/link chia sẻ trong demo.
-8. Hoàn thiện flow demo 4 cấp với dữ liệu mẫu cho Vòng 2.
+8. Hoàn thiện flow demo 2 cấp khoa -> trường với dữ liệu mẫu cho Vòng 2.
 9. Kiểm thử phân quyền, khóa deadline, điều kiện chuyển cấp, thời gian minh chứng hợp lệ, dọn dẹp minh chứng hết hạn, gợi ý hoạt động, xuất CV/portfolio và người duyệt cuối.
 10. Sau Vòng 2, mở rộng dần từ dữ liệu demo sang dữ liệu được đơn vị cho phép, tăng cường bảo mật, logging, báo cáo và khả năng vận hành nhiều đơn vị.
 
@@ -518,23 +514,23 @@ Kế hoạch triển khai kỹ thuật:
 
 | Vai trò | Nhiệm vụ |
 |---|---|
-| Product/Research | Chốt flow nghiệp vụ 4 cấp, mô hình cây tổ chức, nội dung proposal và pitch |
-| Backend | Thiết kế database, NestJS API, phân quyền theo đơn vị, tích hợp AI/API |
+| Product/Research | Chốt flow sản phẩm thực tế 4 cấp, phạm vi MVP 2 cấp khoa -> trường, mô hình cây tổ chức, nội dung proposal và pitch |
+| Backend | Thiết kế database, Node.js API, phân quyền theo đơn vị, tích hợp AI/API |
 | Frontend/UI/UX | Xây giao diện sinh viên, dashboard cán bộ, admin console |
 | AI/Data/Prompt | Thiết kế prompt phân loại minh chứng, RAG theo bộ điều kiện, RAG gợi ý hoạt động từ nguồn Hội Sinh viên/trường/khoa/CLB, kịch bản OCR |
-| QA/Demo/Pitch | Tạo dữ liệu demo, kiểm thử luồng 4 cấp, chuẩn bị video/thuyết trình |
+| QA/Demo/Pitch | Tạo dữ liệu demo, kiểm thử luồng 2 cấp khoa -> trường, chuẩn bị video/thuyết trình |
 
 ### 7.6. Ước tính chi phí hạ tầng và vận hành
 
-| Hạng mục | MVP Vòng 2 dự kiến | Full product/pilot thực tế | Ghi chú |
+| Hạng mục | MVP Vòng 2 dự kiến | Sản phẩm thực tế/pilot thực tế | Ghi chú |
 |---|---:|---:|---|
-| Frontend hosting | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Vercel/Netlify/free tier cho demo; production cần domain, môi trường ổn định |
-| Backend server | 200.000 - 800.000 VNĐ/tháng | 1.000.000 - 5.000.000 VNĐ/tháng | MVP dùng VPS nhỏ/Docker Compose; full product cần tách môi trường và backup |
+| Frontend hosting | Theo free tier/quota Leapcell hoặc 0 - 300.000 VNĐ/tháng | Theo gói Leapcell phù hợp traffic | Deploy ReactJS frontend trên Leapcell; production cần domain, SSL, logging và môi trường ổn định |
+| Backend server | Theo free tier/quota Leapcell hoặc 200.000 - 800.000 VNĐ/tháng | Theo gói Leapcell phù hợp tải hệ thống | Deploy Node.js backend trên Leapcell; sản phẩm thực tế cần tách staging/production, backup và monitoring |
 | Database | 0 - 500.000 VNĐ/tháng | 1.000.000 - 4.000.000 VNĐ/tháng | PostgreSQL/SQL Server managed hoặc self-host có backup |
 | Redis | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Cache session/role, criteria, OCR/AI result |
 | Object Storage | 0 - 300.000 VNĐ/tháng | Theo dung lượng minh chứng | Cần signed URL và phân quyền truy cập file |
 | VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Theo số lượt OCR, hỏi đáp, phân tích | Cần cache, rate limit và fallback để kiểm soát chi phí |
-| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Full product cần logging, monitoring, alert |
+| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Sản phẩm thực tế cần logging, monitoring, alert |
 
 ### 7.7. An toàn, bảo mật và pháp lý
 
@@ -564,7 +560,7 @@ Nguyên tắc thiết kế:
 
 | Giai đoạn | Thời gian | Mục tiêu | Đầu ra |
 |---|---|---|---|
-| Pilot | 0-3 tháng | Kiểm chứng MVP tại 1 khoa/trường hoặc cây tổ chức mẫu | Luồng 4 cấp demo, dashboard cán bộ, OCR/AI cơ bản, feedback người dùng |
+| Pilot | 0-3 tháng | Kiểm chứng MVP tại 1 khoa/trường hoặc cây tổ chức mẫu | Luồng 2 cấp khoa -> trường, dashboard cán bộ, OCR/AI cơ bản, feedback người dùng |
 | Mở rộng ban đầu | 3-6 tháng | Triển khai cho nhiều khoa trong một trường hoặc nhiều trường trong một thành phố | Quản lý nhiều đơn vị, cấu hình tiêu chí theo đơn vị, báo cáo tổng hợp |
 | Tối ưu sản phẩm | 6-9 tháng | Bổ sung văn bản đề nghị, danh sách chính thức, audit nâng cao, SmartUX | Quy trình gửi hồ sơ cấp thành phố/tỉnh lên Trung ương rõ ràng hơn |
 | Triển khai rộng | 9-12 tháng | Hướng tới mô hình hệ sinh thái dùng cho nhiều tỉnh/thành và trường | Hệ thống multi-tenant, phân quyền mạnh, tài liệu vận hành và gói triển khai |
@@ -588,7 +584,7 @@ Nguyên tắc thiết kế:
 |---|---|---:|---|
 | TAM | Toàn bộ sinh viên đại học/cao đẳng, cán bộ Đoàn - Hội và đơn vị triển khai phong trào Sinh viên 5 tốt trên toàn quốc | 2.000.000+ sinh viên; hàng trăm trường/đơn vị | Phong trào có thể triển khai ở nhiều cấp: khoa, trường, thành phố/tỉnh, Trung ương |
 | SAM | Nhóm có thể tiếp cận trong 1-2 năm đầu: trường/khoa/tỉnh thành có nhu cầu số hóa xét duyệt | 100.000-300.000 sinh viên; 20-50 đơn vị | Ưu tiên nơi đang xử lý bằng Google Form/Excel và có lượng hồ sơ lớn |
-| SOM | Phần có thể đạt sau cuộc thi: pilot tại 1-3 khoa/trường hoặc một cụm đơn vị nhỏ | 500-3.000 sinh viên; 300-1.000 hồ sơ/mùa xét | Phù hợp kiểm chứng MVP, OCR, dashboard và luồng liên cấp |
+| SOM | Phần có thể đạt sau cuộc thi: pilot tại 1-3 khoa/trường hoặc một cụm đơn vị nhỏ | 500-3.000 sinh viên; 300-1.000 hồ sơ/mùa xét | Phù hợp kiểm chứng MVP 2 cấp khoa -> trường, OCR, dashboard và luồng liên cấp |
 
 ### 8.3. Ưu thế cạnh tranh
 
@@ -599,7 +595,7 @@ Nguyên tắc thiết kế:
 - **Chủ động giúp sinh viên hoàn thiện tiêu chí:** hệ thống không chỉ báo "thiếu" mà còn gợi ý hoạt động đang mở từ nguồn Hội Sinh viên/trường/khoa/CLB để sinh viên kịp bổ sung trước deadline.
 - **Tích lũy thành tích từ sớm:** sinh viên không cần chờ tới mùa xét mới gom hồ sơ; kho thành tích giúp lưu minh chứng liên tục, còn hệ thống tự lọc minh chứng hợp lệ theo chu kỳ xét.
 - **Tạo giá trị sau khi xét duyệt:** CV/portfolio được tạo từ dữ liệu đã xác nhận giúp danh hiệu và minh chứng không chỉ nằm trong hồ sơ xét, mà trở thành tài sản năng lực của sinh viên.
-- **Dễ mở rộng:** MVP có thể demo một cây tổ chức nhỏ, sau đó mở rộng nhiều trường, nhiều tỉnh/thành và cấp Trung ương.
+- **Dễ mở rộng:** MVP demo 2 cấp khoa -> trường trong một cây tổ chức nhỏ, sau đó mở rộng dần lên cấp thành phố/tỉnh và cấp Trung ương.
 - **Minh bạch và truy vết:** có audit log, lịch sử duyệt, danh hiệu đã đạt và gói hồ sơ gửi cấp trên.
 
 ### 8.4. Mô hình doanh thu hoặc giá trị mang lại
@@ -624,9 +620,9 @@ Nguyên tắc thiết kế:
 | Hồ sơ cấp cao thiếu minh chứng/danh hiệu cấp cũ | Cao | Kiểm tra `Award` cấp dưới trước khi mở quyền nộp cấp trên; AI cảnh báo thiếu file quyết định/chứng nhận |
 | Xóa nhầm minh chứng còn cần dùng hoặc còn giá trị truy vết | Cao | Không xóa ngay dữ liệu đã gắn với hồ sơ đã nộp, quyết định duyệt hoặc audit log; dùng trạng thái hết hạn, thông báo trước cho sinh viên, soft delete và retention window trước khi xóa vật lý khỏi Object Storage |
 | Sinh viên muốn sửa sau deadline | Trung bình | Khóa hồ sơ theo đợt; chỉ cán bộ/admin có quyền mở lại trong trường hợp đặc biệt và có audit log |
-| Gói hồ sơ gửi Trung ương chưa đủ nghiệp vụ hành chính | Trung bình | MVP mô phỏng danh sách/văn bản; roadmap bổ sung mẫu biểu, số văn bản, ký số hoặc upload văn bản chính thức |
+| Gói hồ sơ gửi Trung ương chưa đủ nghiệp vụ hành chính | Trung bình | Không đưa vào phạm vi MVP Vòng 2; roadmap sau MVP bổ sung mẫu biểu, số văn bản, ký số hoặc upload văn bản chính thức |
 | Dữ liệu cá nhân nhạy cảm | Cao | Consent, phân quyền, signed URL, không public bucket, ẩn/xóa dữ liệu demo, tuân thủ quy định bảo vệ dữ liệu |
-| MVP quá rộng | Trung bình | Demo một cây tổ chức mẫu, một sinh viên, một chu kỳ xét với 4 đợt; các phần SmartVoice, SmartUX, CSDL đối chiếu để mở rộng |
+| MVP quá rộng | Trung bình | Demo một cây tổ chức mẫu, một sinh viên, một chu kỳ xét với 2 đợt cấp khoa và cấp trường; cấp thành phố/tỉnh, cấp Trung ương, SmartVoice, SmartUX và CSDL đối chiếu để mở rộng |
 | Người dùng chưa tin AI | Trung bình | Trình bày AI là trợ lý, không thay thế cán bộ; mọi quyết định quan trọng đều có người xác nhận |
 
 ## 10. Video thuyết minh
@@ -648,64 +644,18 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 
 ### 11.1. Wireframe/Figma
 
-- Link Figma: `<Dán link>`
-- Các trang website cần thiết:
-
-**Trang chung**
-
-1. Trang đăng nhập
-2. Trang chọn vai trò/đơn vị sau đăng nhập
-3. Trang lỗi ngoài phạm vi quyền truy cập
-
-**Sinh viên**
-
-1. Dashboard sinh viên
-2. Trang hồ sơ cá nhân sinh viên
-3. Trang kho thành tích/minh chứng cá nhân
-4. Trang upload minh chứng
-5. Trang chi tiết minh chứng và kết quả OCR/AI
-6. Trang trợ lý AI hỏi đáp/RAG
-7. Trang gợi ý hoạt động bù tiêu chí
-8. Trang tạo hồ sơ xét danh hiệu
-9. Trang kiểm tra hồ sơ trước khi nộp
-10. Trang theo dõi trạng thái hồ sơ sau khi nộp
-11. Trang kết quả và danh hiệu đã đạt
-12. Trang CV/portfolio Sinh viên 5 tốt
-
-**Cán bộ các cấp**
-
-1. Dashboard cán bộ theo đơn vị
-2. Trang danh sách hồ sơ cần xét
-3. Trang chi tiết hồ sơ kiểm duyệt
-4. Trang sàng lọc/phân tích hồ sơ bằng AI
-5. Trang duyệt/từ chối/yêu cầu bổ sung hồ sơ
-6. Trang chốt danh sách danh hiệu cấp hiện tại
-7. Trang gói hồ sơ gửi cấp trên
-
-**Admin**
-
-1. Dashboard admin hệ thống
-2. Trang quản lý cây tổ chức
-3. Trang quản lý tài khoản và phân quyền
-4. Trang cấu hình bộ điều kiện đạt
-5. Trang quản lý chu kỳ/đợt xét
-6. Trang cấu hình thời gian minh chứng khả dụng
-7. Trang quản lý nguồn RAG hoạt động
-8. Trang chính sách lưu trữ/dọn dẹp minh chứng
-9. Trang báo cáo/thống kê và SmartUX
+- Link Figma: `https://www.figma.com/proto/uimFVFCPtYtQmqPRpul42o/HackAIthon?node-id=0-1&t=AgbEiCEMHeAsLhvF-1`
 
 ### 11.2. Sơ đồ kiến trúc
 
-- Link ảnh/sơ đồ: `<Dán link hoặc chèn ảnh khi xuất PDF>`
-- Sơ đồ Mermaid ở mục 6.1 có thể render thành PNG/SVG để đưa vào bản PDF.
+- Link draw.io: `https://drive.google.com/file/d/10gtvkepq9IST2qeV1Jd22DffTj2ASqeh/view?usp=sharing`
+- Ảnh sơ đồ:
 
 ### 11.3. Tài liệu tham khảo
 
 - Thông báo số 1 HackAIthon 2026: `hackaithon-2026-thong-bao-so-1_1780034931.pdf`
 - Trang Bảng B - Challenger: `https://hackaithon.vsds.vn/bang-b-challenger/`
 - Thể lệ Bảng B: `https://hackaithon.vsds.vn/the-le-bang-b/`
-- Kế hoạch ý tưởng nội bộ: `hst-sv5t.md`
-- Báo cáo rà soát proposal và flow xét duyệt: `bao-cao.md`
 
 ## 12. Checklist tự đánh giá trước khi nộp
 
@@ -728,7 +678,7 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 
 - [x] Nguồn dữ liệu hợp pháp, MVP dùng dữ liệu mẫu/ẩn danh.
 - [x] Nhân lực triển khai phù hợp.
-- [x] Kỹ thuật build/deploy khả thi với Node.js + NestJS, web frontend, PostgreSQL/SQL Server, Redis, Object Storage.
+- [x] Kỹ thuật build/deploy khả thi với ReactJS, Node.js, Leapcell, PostgreSQL/SQL Server, Redis, Object Storage.
 - [x] Có ước tính chi phí hạ tầng và vận hành.
 - [x] Có phương án bảo mật và pháp lý.
 - [x] Có chính sách thời gian minh chứng khả dụng và vòng đời lưu trữ minh chứng.
@@ -745,6 +695,6 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 
 - [x] Proposal trình bày logic, dễ đọc.
 - [x] Có sơ đồ kiến trúc.
-- [ ] Có wireframe hoặc hình minh họa sản phẩm.
+- [x] Có wireframe hoặc hình minh họa sản phẩm.
 - [x] Ngôn ngữ rõ ràng, hạn chế lỗi chính tả.
 - [ ] File cuối được xuất PDF đúng định dạng.
