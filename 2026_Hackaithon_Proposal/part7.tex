@@ -1,0 +1,405 @@
+\section{Phương hướng triển khai}
+
+\subsection{Định hướng triển khai theo yêu cầu Vòng 1}
+
+Trong Vòng 1, 5-Star Eco chưa cần chứng minh bằng một sản phẩm hoàn chỉnh, nhưng cần thể hiện rõ \cite{hackaithon-thong-bao-2026,hackaithon-bang-b,hackaithon-the-le-bang-b}:
+
+\begin{itemize}
+    \item Ý tưởng bám đúng đề bài: dùng AI và hệ sinh thái API của Ban Tổ chức để hỗ trợ công tác Hội, phong trào sinh viên và tối ưu quy trình quản lý, đánh giá, xét chọn danh hiệu Sinh viên 5 tốt.
+    \item Có kiến trúc tổng quan, module chính, dữ liệu sử dụng và luồng nghiệp vụ rõ ràng.
+    \item Có lý do ``vì sao AI'' cho từng điểm nghẽn: OCR minh chứng, hỏi đáp theo tiêu chí, RAG gợi ý hoạt động, phân tích/sàng lọc hồ sơ, tóm tắt cho cán bộ.
+    \item Có phương án triển khai khả thi về nhân sự, kỹ thuật, chi phí, bảo mật, pháp lý và lộ trình sau cuộc thi.
+    \item Có phạm vi MVP Vòng 2 đủ nhỏ để demo được trong thời gian 26/6 - 03/7/2026, nhưng vẫn chứng minh được khác biệt cốt lõi của hệ sinh thái liên cấp.
+\end{itemize}
+
+\subsection{Triển khai sản phẩm thực tế}
+
+Sản phẩm thực tế của 5-Star Eco hướng tới một nền tảng multi-tenant dùng được cho nhiều đơn vị triển khai phong trào Sinh viên 5 tốt trên toàn quốc. Hệ thống vận hành theo cây tổ chức:
+
+\begin{verbatim}
+Trung ương Hội Sinh viên Việt Nam
+-> Hội Sinh viên Thành phố/Tỉnh
+-> Trường đại học/Cao đẳng/Học viện
+-> Khoa/Viện/Bộ môn
+\end{verbatim}
+
+\noindent Ở bản triển khai thực tế, mỗi đơn vị có tài khoản cán bộ, bộ điều kiện đạt, biểu mẫu, deadline và phạm vi dữ liệu riêng. Trung ương quản lý khung chung và cấp Trung ương; thành phố/tỉnh triển khai theo địa bàn; trường triển khai theo trường; khoa/viện/bộ môn triển khai cấp cơ sở gần sinh viên nhất.
+
+\noindent Để đưa sản phẩm ra thực tế sau MVP, nhóm xác định 5-Star Eco cần được triển khai theo mô hình \textbf{đồng hành với Hội Sinh viên/Đoàn - Hội} thay vì chỉ bàn giao một phần mềm độc lập. Hội Sinh viên ở từng cấp sẽ là đơn vị xác nhận nghiệp vụ, cung cấp kế hoạch xét danh hiệu, bộ điều kiện đạt, biểu mẫu, quy trình duyệt, nguồn hoạt động được phép sử dụng cho RAG và đầu mối cán bộ tham gia thí điểm. Nhóm phát triển chịu trách nhiệm số hóa quy trình, cấu hình hệ thống, đào tạo sử dụng, hỗ trợ vận hành mùa xét đầu tiên và thu thập phản hồi để điều chỉnh sản phẩm theo thực tế.
+
+\noindent Trong giai đoạn sau MVP, việc phối hợp với Hội Sinh viên cần đi theo từng bước: chọn một khoa/trường làm đơn vị thí điểm, ký thống nhất phạm vi dữ liệu và quyền truy cập, nhập bộ tiêu chí thật của đơn vị, chạy thử một mùa xét với cán bộ thật, đo thời gian xử lý/hồ sơ và tỷ lệ hồ sơ bị trả bổ sung, sau đó mới mở rộng sang nhiều khoa, nhiều trường hoặc cấp thành phố/tỉnh. Cách triển khai này giúp sản phẩm bám sát quy chế phong trào, tránh xây tính năng xa rời nghiệp vụ và tạo niềm tin cho cán bộ vì AI chỉ đóng vai trò hỗ trợ, còn quyết định cuối cùng vẫn thuộc về người phụ trách.
+
+\noindent Các năng lực sản phẩm thực tế cần có:
+
+\begin{itemize}
+    \item \textbf{Quản trị tổ chức liên cấp:} tạo/sửa cây tổ chức, gán cán bộ theo \texttt{organization\_id}, \texttt{parent\_id}, \texttt{level}, \texttt{scope}, giới hạn dữ liệu theo đúng đơn vị.
+    \item \textbf{Quản lý chu kỳ xét hằng năm:} tạo 4 đợt xét khoa -{}> trường -{}> thành phố/tỉnh -{}> Trung ương, cấu hình thời gian mở cổng, deadline, trạng thái khóa/mở, điều kiện chuyển cấp.
+    \item \textbf{Quản lý bộ điều kiện đạt linh hoạt:} giữ 5 nhóm tốt cố định nhưng cho phép mỗi cấp/đơn vị cấu hình điều kiện, minh chứng, ngưỡng đạt, biểu mẫu và hoạt động được công nhận riêng.
+    \item \textbf{Hồ sơ sinh viên xuyên suốt:} sinh viên có một hồ sơ nền, tái sử dụng minh chứng đã nộp, bổ sung minh chứng mới khi xét cấp cao hơn, lưu lịch sử danh hiệu đã đạt.
+    \item \textbf{Kho thành tích/minh chứng cập nhật quanh năm:} sinh viên có thể upload và phân loại minh chứng từ sớm; khi đợt xét mở, hệ thống lọc các minh chứng còn nằm trong khoảng thời gian hợp lệ để đưa vào hồ sơ.
+    \item \textbf{Quản lý vòng đời minh chứng:} admin cấu hình thời gian minh chứng khả dụng khi mở đợt xét đầu tiên; hệ thống đánh dấu hết hạn, nhắc sinh viên thay thế nếu cần và dọn dẹp/xóa minh chứng cũ không thể sử dụng theo chính sách lưu trữ.
+    \item \textbf{CV/portfolio Sinh viên 5 tốt:} tự tạo hồ sơ năng lực từ dữ liệu đã được xác nhận, có thể xuất PDF/link chia sẻ; bản xem trước có thể hiển thị mục chờ duyệt nhưng bản chính thức chỉ dùng minh chứng/danh hiệu đã đạt.
+    \item \textbf{AI hỗ trợ sinh viên:} Smartbot/LLM trả lời câu hỏi theo đúng cấp/đơn vị/năm xét; RAG gợi ý hoạt động phù hợp với tiêu chí còn thiếu từ website/fanpage/nguồn hoạt động được phép sử dụng.
+    \item \textbf{AI hỗ trợ cán bộ:} SmartReader OCR minh chứng, Smartbot/LLM phân loại minh chứng, tóm tắt hồ sơ, chỉ ra tiêu chí thiếu, cảnh báo hồ sơ cần kiểm tra kỹ và giải thích lý do gợi ý.
+    \item \textbf{Quy trình duyệt có người chịu trách nhiệm:} AI chỉ đưa ra gợi ý; cán bộ đúng cấp/đúng đơn vị là người duyệt, từ chối hoặc yêu cầu bổ sung.
+    \item \textbf{Gói hồ sơ chính thức:} khi chuyển cấp, hệ thống tạo danh sách đề nghị, văn bản/gói hồ sơ, lịch sử xét duyệt, danh hiệu cấp cũ và minh chứng đi kèm.
+    \item \textbf{Cổng phối hợp triển khai với Hội Sinh viên:} cho phép đầu mối Hội Sinh viên/Đoàn - Hội cấu hình kế hoạch xét, xác nhận bộ tiêu chí, quản lý nguồn hoạt động được dùng cho RAG, theo dõi phản hồi người dùng và xuất báo cáo sau mỗi mùa xét.
+    \item \textbf{Audit log và báo cáo:} ghi nhận thao tác nộp, sửa, khóa/mở cổng, duyệt, từ chối, yêu cầu bổ sung; hỗ trợ báo cáo theo cấp, đơn vị, mùa xét, nhóm tiêu chí.
+    \item \textbf{Tích hợp mở rộng:} eKYC để xác thực danh tính sinh viên, SmartVoice cho giao diện giọng nói, SmartUX để phân tích hành vi sử dụng và tối ưu quy trình.
+\end{itemize}
+
+\noindent Lộ trình sản phẩm thực tế:
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.32\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.33\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.27\textwidth}|}{\textbf{Giai đoạn}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.32\textwidth}|}{\textbf{Mục tiêu}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.33\textwidth}|}{\textbf{Đầu ra chính}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.27\textwidth}|}{\textbf{Giai đoạn}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.32\textwidth}|}{\textbf{Mục tiêu}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.33\textwidth}|}{\textbf{Đầu ra chính}} \\ \hline
+\endhead
+
+Thí điểm cùng Hội Sinh viên cấp khoa/trường &
+Kiểm chứng tại 1 khoa/trường có cán bộ Hội Sinh viên/Đoàn - Hội tham gia thật &
+Luồng nộp/duyệt 2 cấp khoa -{}> trường, bộ tiêu chí thật của đơn vị, OCR/AI cơ bản, dashboard sinh viên và cán bộ, báo cáo phản hồi sau mùa xét \\ \hline
+
+Mở rộng trong trường/thành phố &
+Phối hợp với Hội Sinh viên trường hoặc Hội Sinh viên thành phố/tỉnh để triển khai nhiều khoa hoặc nhiều trường trong một địa bàn &
+Phân quyền đa đơn vị, cấu hình tiêu chí riêng, nguồn hoạt động được xác nhận cho RAG, tài liệu hướng dẫn cán bộ \\ \hline
+
+Chuẩn hóa cấp thành phố/tỉnh &
+Làm việc với đầu mối Hội Sinh viên cấp thành phố/tỉnh để chuẩn hóa gói hồ sơ gửi cấp cao hơn &
+Danh sách chính thức, văn bản đề nghị, lịch sử xét duyệt liên cấp, quy trình kiểm tra và bàn giao dữ liệu \\ \hline
+
+Hướng tới toàn quốc &
+Mở rộng multi-tenant với sự tham gia của các cấp Hội Sinh viên &
+Hạ tầng ổn định, tài liệu vận hành, quy trình đào tạo, bảo mật, audit và bộ chỉ số đánh giá hiệu quả triển khai \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{Sản phẩm Vòng 2 - MVP trình diễn}
+
+MVP Vòng 2 tập trung chứng minh logic liên cấp và năng lực AI cốt lõi ở phạm vi đủ nhỏ để hoàn thiện trong thời gian HackAIthon. Demo đề xuất dùng một nhánh tổ chức mẫu để giữ đúng ngữ cảnh cây tổ chức, nhưng chỉ kích hoạt 2 cấp xét đầu tiên là \textbf{cấp khoa} và \textbf{cấp trường}:
+
+\begin{verbatim}
+Trung ương Hội Sinh viên Việt Nam
+-> Hội Sinh viên Thành phố Hồ Chí Minh
+-> Trường Đại học Khoa học Tự nhiên
+-> Khoa Công nghệ thông tin
+\end{verbatim}
+
+\noindent MVP Vòng 2 cần có:
+
+\begin{itemize}
+    \item Đăng nhập giả lập theo vai trò: sinh viên, cán bộ khoa, cán bộ trường.
+    \item Mỗi cán bộ chỉ thấy dữ liệu trong đúng phạm vi đơn vị của mình.
+    \item Tạo 1 chu kỳ xét với \textbf{2 đợt MVP}: cấp khoa và cấp trường; chưa triển khai xét cấp thành phố/tỉnh và cấp Trung ương trong Vòng 2.
+    \item Tạo bộ điều kiện đạt mẫu khác nhau cho cấp khoa và cấp trường nhưng cùng bám 5 nhóm tốt cố định.
+    \item Admin cấu hình khoảng thời gian minh chứng hợp lệ cho chu kỳ xét; hệ thống đánh dấu minh chứng ngoài khoảng thời gian này là hết hạn.
+    \item Sinh viên cập nhật thành tích/minh chứng vào kho cá nhân trước khi nộp; khi đợt cấp khoa mở, sinh viên chọn minh chứng còn hiệu lực để tạo hồ sơ nộp chính thức, nhận phân tích AI và nhận gợi ý hoạt động phù hợp với tiêu chí còn thiếu.
+    \item Tạo dữ liệu hoạt động mẫu từ website/fanpage Hội Sinh viên hoặc trang hoạt động của trường/khoa/CLB để demo RAG gợi ý hoạt động.
+    \item Cổng hồ sơ khóa sau deadline.
+    \item Cán bộ cấp khoa duyệt; nếu đạt, hệ thống tạo danh hiệu cấp khoa và mở quyền nộp cấp trường.
+    \item Cán bộ cấp trường duyệt; nếu đạt, hệ thống tạo danh hiệu cấp trường và hiển thị trạng thái ``đủ điều kiện xét cấp thành phố/tỉnh'' như một bước mở rộng sau MVP.
+    \item Có màn hình trạng thái danh hiệu đã đạt của sinh viên theo 2 cấp.
+\end{itemize}
+
+\noindent Phần có thể mô phỏng:
+
+\begin{itemize}
+    \item Chứng nhận/danh hiệu cấp cũ dạng file.
+    \item CSDL đối chiếu minh chứng bên ngoài.
+    \item Kết nối tự động tới Facebook/web thật; MVP có thể dùng dữ liệu mẫu hoặc dữ liệu đã được đơn vị cho phép thu thập.
+\end{itemize}
+
+\subsection{Kế hoạch kỹ thuật build/deploy}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.30\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.40\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Thành phần}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.30\textwidth}|}{\textbf{Công nghệ đề xuất}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.40\textwidth}|}{\textbf{Ghi chú}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Thành phần}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.30\textwidth}|}{\textbf{Công nghệ đề xuất}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.40\textwidth}|}{\textbf{Ghi chú}} \\ \hline
+\endhead
+
+Front-end &
+ReactJS + TypeScript &
+Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. ReactJS phù hợp với dashboard nhiều trạng thái, nhiều vai trò; TypeScript giúp giảm lỗi khi mở rộng UI và luồng dữ liệu phức tạp \\ \hline
+
+Back-end &
+Node.js + Express.js + TypeScript &
+Xây dựng REST API cho các module Auth, Organization, Criteria, Application, Evidence, Review, Award và Portfolio. Express đơn giản, dễ học và phù hợp phát triển MVP nhanh. TypeScript giúp tăng tính an toàn khi phát triển và bảo trì mã nguồn. \\ \hline
+
+Reverse Proxy/Routing &
+Leapcell Routing / Reverse Proxy &
+Định tuyến request giữa Front-end và Back-end, hỗ trợ domain/SSL, cấu hình môi trường và triển khai production \\ \hline
+
+Database &
+PostgreSQL hoặc SQL Server &
+Lưu dữ liệu quan hệ: tổ chức, tiêu chí, hồ sơ, award, audit log, portfolio; hỗ trợ transaction và truy vấn phức tạp \\ \hline
+
+Cache &
+Redis &
+Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời \\ \hline
+
+File Storage &
+S3-compatible Object Storage &
+Lưu minh chứng, văn bản, danh sách xuất, CV/portfolio PDF; hỗ trợ phân quyền truy cập, signed URL và chính sách dọn dẹp file minh chứng hết hạn \\ \hline
+
+AI/API Adapter &
+Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX &
+Tách biệt business logic khỏi nhà cung cấp AI. Cho phép mock dữ liệu khi demo hoặc thay thế nhà cung cấp mà không ảnh hưởng hệ thống. \\ \hline
+
+Deploy &
+Leapcell cho cả ReactJS + TypeScript Front-end và Node.js + Express.js + TypeScript Back-end &
+MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường \\ \hline
+
+\end{longtable}
+\endgroup
+
+\noindent Kế hoạch triển khai kỹ thuật:
+
+\begin{enumerate}
+    \item Thiết kế database cho \texttt{Organization}, \texttt{User}, \texttt{Role}, \texttt{ReviewCycle}, \texttt{ReviewRound}, \texttt{CriteriaSet}, \texttt{Application}, \texttt{Evidence}, \texttt{EvidenceRetentionPolicy}, \texttt{Award}, \texttt{Portfolio}, \texttt{ReviewDecision}, \texttt{AuditLog}.
+    \item Xây dựng Back-end Node.js + Express.js + TypeScript, tổ chức theo các module nghiệp vụ; triển khai cơ chế xác thực JWT và phân quyền theo organization\_id, level, scope.
+    \item Xây Front-end 3 không gian chính: sinh viên, cán bộ, admin.
+    \item Tích hợp VNPT SmartReader cho OCR minh chứng; xây adapter mock fallback.
+    \item Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt, hỏi đáp RAG và gợi ý hoạt động theo tiêu chí còn thiếu.
+    \item Xây Activity/RAG Source Service với dữ liệu hoạt động mẫu; bản mở rộng hỗ trợ connector tới website/fanpage được phép sử dụng.
+    \item Xây Portfolio/CV Service để render CV/portfolio từ dữ liệu đã duyệt và xuất PDF/link chia sẻ trong demo.
+    \item Hoàn thiện flow demo 2 cấp khoa -{}> trường với dữ liệu mẫu cho Vòng 2.
+    \item Kiểm thử phân quyền, khóa deadline, điều kiện chuyển cấp, thời gian minh chứng hợp lệ, dọn dẹp minh chứng hết hạn, gợi ý hoạt động, xuất CV/portfolio và người duyệt cuối.
+    \item Sau Vòng 2, mở rộng dần từ dữ liệu demo sang dữ liệu được đơn vị cho phép, tăng cường bảo mật, logging, báo cáo và khả năng vận hành nhiều đơn vị.
+\end{enumerate}
+
+\subsection{Nguồn lực nhân sự}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.68\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.24\textwidth}|}{\textbf{Vai trò}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.68\textwidth}|}{\textbf{Nhiệm vụ}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.24\textwidth}|}{\textbf{Vai trò}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.68\textwidth}|}{\textbf{Nhiệm vụ}} \\ \hline
+\endhead
+
+Product/Research &
+Phân tích nghiệp vụ xét duyệt các cấp, xây dựng mô hình tổ chức, khảo sát yêu cầu người dùng, làm việc với đầu mối Hội Sinh viên/Đoàn - Hội khi thí điểm, hoàn thiện proposal và pitch. \\ \hline
+
+Backend &
+Thiết kế cơ sở dữ liệu PostgreSQL, phát triển API bằng Node.js + Express.js + TypeScript, xây dựng cơ chế phân quyền và tích hợp các dịch vụ AI/API của VNPT. \\ \hline
+
+Frontend/UI/UX &
+Phát triển giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên bằng ReactJS + TypeScript; tối ưu trải nghiệm người dùng và khả năng sử dụng trên nhiều thiết bị. \\ \hline
+
+AI/Data/Prompt &
+Thiết kế prompt, xây dựng RAG, xử lý OCR, phân loại minh chứng, gợi ý hoạt động và đánh giá chất lượng phản hồi của hệ thống AI. \\ \hline
+
+QA/Demo/Pitch &
+Xây dựng dữ liệu kiểm thử, thực hiện kiểm thử chức năng và phân quyền, chuẩn bị kịch bản demo, video giới thiệu và bài thuyết trình. \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{Ước tính chi phí hạ tầng và vận hành}
+
+Ước tính dưới đây dựa trên bảng giá công khai của Leapcell \cite{leapcell-pricing}, hệ sinh thái VNPT AI \cite{vnpt-ai} và mô hình lưu trữ object storage trả theo dung lượng tham khảo từ Amazon S3 \cite{aws-s3-pricing}. Quy đổi tham khảo dùng \texttt{1 USD \textasciitilde= 26.000 VNĐ}, chưa bao gồm VAT, phí thanh toán quốc tế và báo giá riêng của các API VNPT AI khi triển khai thương mại.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.25\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.14\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.16\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.20\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.17\textwidth}|}{\textbf{Hạng mục}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.25\textwidth}|}{\textbf{Cơ sở tham khảo}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.14\textwidth}|}{\textbf{MVP Vòng 2 dự kiến}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.16\textwidth}|}{\textbf{Sản phẩm thực tế/thí điểm thực tế}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Ghi chú kiểm soát chi phí}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.17\textwidth}|}{\textbf{Hạng mục}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.25\textwidth}|}{\textbf{Cơ sở tham khảo}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.14\textwidth}|}{\textbf{MVP Vòng 2 dự kiến}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.16\textwidth}|}{\textbf{Sản phẩm thực tế/thí điểm thực tế}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Ghi chú kiểm soát chi phí}} \\ \hline
+\endhead
+
+Frontend ReactJS + TypeScript &
+Leapcell Hobby có gói miễn phí; Plus khoảng 12,9 USD/seat/tháng; Pro khoảng 29,9 USD/seat/tháng &
+0 - 335.000 VNĐ/tháng &
+335.000 - 780.000 VNĐ/tháng/seat &
+MVP có thể dùng Hobby/Plus; sản phẩm thật nên tách môi trường staging/production và giới hạn số seat quản trị \\ \hline
+
+Backend Node.js + Express.js + TypeScript &
+Leapcell serverless có quota miễn phí; persistent server từ khoảng 7 - 28 USD/tháng cho cấu hình nhỏ đến vừa &
+0 - 730.000 VNĐ/tháng &
+730.000 - 2.300.000 VNĐ/tháng &
+Ưu tiên serverless/persistent nhỏ cho thí điểm; chỉ nâng cấu hình khi có tải thật \\ \hline
+
+Routing, domain, SSL, CDN &
+Leapcell hỗ trợ custom domain, SSL/TLS và CDN trong gói nền tảng &
+0 - 300.000 VNĐ/năm &
+300.000 - 1.000.000 VNĐ/năm &
+SSL có thể dùng của Leapcell; chi phí chủ yếu là tên miền riêng nếu cần \\ \hline
+
+Database PostgreSQL &
+Leapcell có 1 PostgreSQL miễn phí ở Hobby; dedicated PostgreSQL từ khoảng 9 - 36 USD/tháng &
+0 - 235.000 VNĐ/tháng &
+470.000 - 940.000 VNĐ/tháng &
+MVP dùng database miễn phí/nhỏ; thí điểm cần backup định kỳ và tách môi trường production \\ \hline
+
+Redis Cache &
+Leapcell Redis có quota lệnh/tháng; vượt quota tính theo lượng command và bandwidth &
+0 - 200.000 VNĐ/tháng &
+200.000 - 1.000.000 VNĐ/tháng &
+Cache session/role, criteria set, kết quả OCR/AI tạm thời; đặt TTL để tránh phình dữ liệu \\ \hline
+
+Object Storage cho minh chứng &
+S3-compatible storage tính theo dung lượng lưu trữ, request và data transfer &
+0 - 300.000 VNĐ/tháng &
+300.000 - 2.000.000 VNĐ/tháng &
+Cần signed URL, phân quyền file, lifecycle rule và xóa/archival minh chứng hết hạn \\ \hline
+
+VNPT SmartReader OCR &
+API/dịch vụ VNPT AI; trong cuộc thi dự kiến dùng quota/tài khoản được cấp &
+Theo quota cuộc thi hoặc mock fallback &
+Theo quota/báo giá VNPT &
+Cache OCR text, chỉ OCR lại khi file thay đổi, giới hạn kích thước/tần suất upload \\ \hline
+
+VNPT Smartbot/LLM, RAG &
+API/dịch vụ VNPT AI; phục vụ hỏi đáp, phân tích hồ sơ, gợi ý hoạt động &
+Theo quota cuộc thi hoặc mock fallback &
+Theo quota/báo giá VNPT &
+RAG theo bộ tiêu chí đúng đơn vị, cache câu hỏi phổ biến, giới hạn số lượt hỏi mỗi phiên \\ \hline
+
+VNPT eKYC, SmartVoice, SmartUX &
+Dịch vụ VNPT AI mở rộng &
+Không bắt buộc trong MVP &
+Theo quota/báo giá VNPT &
+Đưa vào khi có nhu cầu xác thực danh tính, giọng nói hoặc phân tích UX ở quy mô thật \\ \hline
+
+Logging, monitoring, backup &
+Leapcell có logs/metrics theo quota; vượt quota tính thêm theo dung lượng log &
+0 - 300.000 VNĐ/tháng &
+500.000 - 2.000.000 VNĐ/tháng &
+Log có retention hợp lý, không ghi dữ liệu nhạy cảm, backup database theo chu kỳ \\ \hline
+
+\end{longtable}
+\endgroup
+
+\textbf{Tổng ước tính:} MVP Vòng 2 có thể vận hành trong khoảng \textbf{0 - 1,5 triệu VNĐ/tháng} nếu tận dụng free tier/quota cuộc thi và dữ liệu demo. Thí điểm thực tế cho một cụm đơn vị cấp khoa -{}> cấp trường dự kiến khoảng \textbf{2 - 7 triệu VNĐ/tháng}, chưa bao gồm chi phí VNPT AI thương mại nếu vượt quota được cấp. Khi mở rộng toàn quốc, chi phí sẽ phụ thuộc mạnh vào số hồ sơ, số file minh chứng, số lượt OCR/LLM và chính sách lưu trữ minh chứng.
+
+\subsection{An toàn, bảo mật và pháp lý}
+
+Nguyên tắc thiết kế:
+
+\begin{itemize}
+    \item Thu thập dữ liệu cá nhân có mục đích rõ ràng và có sự đồng ý của sinh viên.
+    \item Phân quyền theo vai trò và đơn vị triển khai; cán bộ chỉ xem dữ liệu trong phạm vi được giao.
+    \item Không public file minh chứng; sử dụng signed URL hoặc cơ chế truy cập có thời hạn.
+    \item Có chính sách vòng đời dữ liệu minh chứng: minh chứng hết thời gian khả dụng được đánh dấu hết hạn, thông báo cho sinh viên và dọn dẹp/xóa theo rule do admin cấu hình; các dữ liệu đã gắn với quyết định xét duyệt hoặc audit log được xử lý theo chính sách lưu trữ riêng.
+    \item Không lưu API key/token trong mã nguồn; dùng biến môi trường hoặc secret manager.
+    \item Ghi audit log cho thao tác nộp, sửa, khóa/mở cổng, duyệt, từ chối và yêu cầu bổ sung.
+    \item AI chỉ đưa ra gợi ý; quyết định danh hiệu là của cán bộ phụ trách.
+    \item Dữ liệu demo được ẩn thông tin nhạy cảm hoặc xóa sau cuộc thi.
+    \item Khi triển khai thật, tuân thủ quy định hiện hành tại Việt Nam về bảo vệ dữ liệu cá nhân.
+\end{itemize}
+
+\textbf{Cam kết thiết kế:}
+
+\begin{itemize}
+    \item  Không commit API key/token thật lên repo.
+    \item  Có phân quyền theo vai trò và đơn vị.
+    \item  Có log thao tác xét duyệt liên cấp.
+    \item  Không công khai file/dữ liệu nhạy cảm.
+    \item  Có cơ chế khóa hồ sơ sau deadline.
+    \item  Có cơ chế kiểm soát thời gian minh chứng khả dụng và dọn dẹp minh chứng hết hạn.
+    \item  AI không tự quyết định kết quả cuối cùng.
+\end{itemize}
+
+\subsection{Roadmap sau cuộc thi / GTM}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.20\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.14\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.31\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.27\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Giai đoạn}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.14\textwidth}|}{\textbf{Thời gian}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.31\textwidth}|}{\textbf{Mục tiêu}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.27\textwidth}|}{\textbf{Đầu ra}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Giai đoạn}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.14\textwidth}|}{\textbf{Thời gian}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.31\textwidth}|}{\textbf{Mục tiêu}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.27\textwidth}|}{\textbf{Đầu ra}} \\ \hline
+\endhead
+
+Thí điểm cùng Hội Sinh viên &
+0-3 tháng &
+Kiểm chứng MVP tại 1 khoa/trường có đầu mối Hội Sinh viên/Đoàn - Hội tham gia thật &
+Luồng 2 cấp khoa -{}> trường, dashboard cán bộ, OCR/AI cơ bản, bộ tiêu chí thật, dữ liệu hoạt động được phép sử dụng, phản hồi người dùng \\ \hline
+
+Mở rộng ban đầu &
+3-6 tháng &
+Phối hợp với Hội Sinh viên trường hoặc Hội Sinh viên thành phố/tỉnh để triển khai cho nhiều khoa trong một trường hoặc nhiều trường trong một địa bàn &
+Quản lý nhiều đơn vị, cấu hình tiêu chí theo đơn vị, tài liệu hướng dẫn cán bộ, báo cáo tổng hợp sau mùa xét \\ \hline
+
+Tối ưu sản phẩm &
+6-9 tháng &
+Đồng thiết kế với cán bộ Hội Sinh viên các cấp để bổ sung văn bản đề nghị, danh sách chính thức, audit nâng cao, SmartUX &
+Quy trình gửi hồ sơ cấp thành phố/tỉnh lên Trung ương rõ ràng hơn, có checklist nghiệp vụ và mẫu báo cáo chuẩn \\ \hline
+
+Triển khai rộng &
+9-12 tháng &
+Hướng tới mô hình hệ sinh thái dùng cho nhiều tỉnh/thành và trường, có cơ chế đào tạo và hỗ trợ vận hành cho các cấp Hội Sinh viên &
+Hệ thống multi-tenant, phân quyền mạnh, tài liệu vận hành, quy trình onboarding đơn vị mới và gói triển khai \\ \hline
+
+\end{longtable}
+\endgroup

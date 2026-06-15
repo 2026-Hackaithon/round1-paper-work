@@ -1,0 +1,122 @@
+\section{Tính đổi mới và khác biệt}
+
+\subsection{Giải pháp hiện có}
+
+Các đơn vị hiện thường sử dụng một hoặc kết hợp nhiều cách sau:
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.25\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.33\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.25\textwidth}|}{\textbf{Giải pháp hiện có}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.33\textwidth}|}{\textbf{Cách vận hành}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.34\textwidth}|}{\textbf{Hạn chế}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.25\textwidth}|}{\textbf{Giải pháp hiện có}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.33\textwidth}|}{\textbf{Cách vận hành}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.34\textwidth}|}{\textbf{Hạn chế}} \\ \hline
+\endhead
+
+Google Form/Microsoft Form &
+Sinh viên điền form, upload file; cán bộ tải về xét &
+Dữ liệu rời rạc, khó theo dõi liên cấp, khó phân quyền theo cây tổ chức \\ \hline
+
+Excel/Google Sheet &
+Cán bộ tổng hợp danh sách và trạng thái xét duyệt &
+Dễ sai khi nhiều người cùng thao tác, thiếu audit log, khó xử lý file minh chứng \\ \hline
+
+Email/Fanpage/Zalo &
+Sinh viên hỏi đáp và gửi bổ sung qua kênh chat &
+Thông tin phân tán, dễ nhầm deadline, không có dữ liệu chuẩn \\ \hline
+
+Phần mềm quản lý hồ sơ chung &
+Lưu hồ sơ và file đính kèm &
+Thường không mô hình hóa quy trình 4 cấp và bộ điều kiện đạt khác nhau theo đơn vị \\ \hline
+
+Chatbot hỏi đáp đơn lẻ &
+Trả lời câu hỏi quy chế chung &
+Không gắn với hồ sơ, minh chứng, trạng thái xét và cây tổ chức \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{So sánh khác biệt}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.25\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.29\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.20\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.18\textwidth}|}{\textbf{Tiêu chí}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.25\textwidth}|}{\textbf{Cách làm hiện tại}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.29\textwidth}|}{\textbf{5-Star Eco}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Khác biệt}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.18\textwidth}|}{\textbf{Tiêu chí}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.25\textwidth}|}{\textbf{Cách làm hiện tại}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.29\textwidth}|}{\textbf{5-Star Eco}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Khác biệt}} \\ \hline
+\endhead
+
+Mô hình tổ chức &
+Thường theo từng trường/khoa riêng lẻ &
+Cây tổ chức Trung ương -{}> tỉnh/thành -{}> trường -{}> khoa &
+Phù hợp vận hành liên cấp \\ \hline
+
+Quy trình xét &
+Chủ yếu thu hồ sơ cuối kỳ &
+4 đợt xét theo cấp, có mở/khóa cổng, trạng thái và audit log &
+Theo đúng hành trình danh hiệu \\ \hline
+
+Tiêu chí &
+Dễ hard-code hoặc ghi trong văn bản rời &
+5 nhóm tốt cố định, bộ điều kiện đạt cấu hình theo cấp/đơn vị/năm &
+Linh hoạt với thực tế triển khai \\ \hline
+
+Hồ sơ sinh viên &
+Nộp lại nhiều lần &
+Hồ sơ nền được tái sử dụng, bổ sung theo cấp &
+Giảm rườm rà \\ \hline
+
+Điều kiện lên cấp &
+Kiểm tra thủ công &
+Tạo \texttt{Award} khi đạt cấp dưới và tự kiểm tra trước khi nộp cấp trên &
+Giảm sai sót chuyển cấp \\ \hline
+
+AI &
+Nếu có thì thường chỉ OCR hoặc chatbot riêng lẻ &
+OCR, RAG, tóm tắt, phân loại, cảnh báo thiếu minh chứng, eKYC mở rộng &
+AI gắn vào workflow thật \\ \hline
+
+Hồ sơ gửi Trung ương &
+Tổng hợp thủ công &
+Gói hồ sơ số hóa, danh sách chính thức, văn bản đề nghị, lịch sử xét duyệt &
+Hỗ trợ cấp Trung ương tốt hơn \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{Điểm mới nổi bật}
+
+\begin{itemize}
+    \item \textbf{Mô hình hóa đúng quy trình liên cấp:} không chỉ là nơi nộp file, mà là hệ sinh thái xét danh hiệu qua khoa, trường, thành phố/tỉnh và Trung ương.
+    \item \textbf{Phân quyền theo đơn vị triển khai:} cán bộ đăng nhập theo đúng đơn vị; dữ liệu được lọc theo cây tổ chức và phạm vi quyền.
+    \item \textbf{Bộ điều kiện đạt có kế thừa:} Trung ương ban hành khung, thành phố/tỉnh, trường và khoa có thể triển khai chi tiết riêng nhưng vẫn bám 5 nhóm tốt cố định.
+    \item \textbf{Hồ sơ tái sử dụng qua các cấp:} sinh viên không phải nộp lại từ đầu, chỉ bổ sung phần còn thiếu hoặc minh chứng cấp cũ.
+    \item \textbf{AI hỗ trợ đúng điểm nghẽn:} đọc minh chứng, phân loại, hỏi đáp, tóm tắt, cảnh báo thiếu sót, nhưng không thay thế cán bộ duyệt cuối.
+    \item \textbf{Truy vết minh bạch:} mọi quyết định, thời điểm khóa/mở cổng, yêu cầu bổ sung và kết quả đều có log.
+\end{itemize}

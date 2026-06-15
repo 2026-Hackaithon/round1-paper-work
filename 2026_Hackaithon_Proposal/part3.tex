@@ -1,0 +1,112 @@
+\section{Đặt vấn đề}
+
+\subsection{Bối cảnh}
+
+Phong trào \textbf{Sinh viên 5 tốt} là một trong những phong trào quan trọng của sinh viên Việt Nam, khuyến khích sinh viên phát triển toàn diện ở 5 nhóm tốt: đạo đức, học tập, thể lực, tình nguyện và hội nhập. Trên thực tế, quy trình xét danh hiệu không chỉ diễn ra ở một cấp. Sinh viên thường phải đi qua hành trình nhiều tầng: xét cấp khoa, đạt cấp khoa mới xét cấp trường, đạt cấp trường mới xét cấp thành phố/tỉnh, đạt cấp thành phố/tỉnh mới xét cấp Trung ương.
+
+\noindent Quy trình này trở nên rườm rà vì mỗi cấp có thời gian mở cổng, biểu mẫu, cách nhận minh chứng và điều kiện đạt khác nhau. Một sinh viên có thể đã nộp hồ sơ ở cấp khoa nhưng khi xét cấp trường hoặc cấp thành phố/tỉnh vẫn phải bổ sung thêm minh chứng, nộp lại quyết định/danh hiệu cấp cũ, theo dõi deadline mới và kiểm tra xem bộ điều kiện của cấp mới có khác gì so với cấp trước. Nếu không có nơi lưu thành tích từ sớm, sinh viên thường chỉ gom minh chứng sát deadline, dễ thiếu file, mất giấy tờ hoặc nộp nhầm minh chứng đã quá thời gian được công nhận.
+
+\noindent Ở phía cán bộ Đoàn -- Hội, áp lực cũng tăng theo từng cấp. Cán bộ cấp khoa xử lý hồ sơ của sinh viên trong khoa; cán bộ cấp trường tổng hợp hồ sơ từ nhiều khoa; cán bộ cấp thành phố/tỉnh nhận hồ sơ từ nhiều trường; cán bộ Trung ương tiếp nhận danh sách và hồ sơ từ nhiều tỉnh/thành hoặc đơn vị trực thuộc. Nếu vẫn dùng Google Form, Excel và file rời, quá trình đối chiếu minh chứng, tổng hợp danh sách, trả hồ sơ bổ sung và lưu lịch sử xét duyệt dễ phát sinh sai sót.
+
+\noindent Bài toán này phù hợp để ứng dụng AI vì dữ liệu đầu vào có nhiều dạng phi cấu trúc: ảnh giấy khen, chứng chỉ PDF, bảng điểm, quyết định công nhận danh hiệu cấp cũ, văn bản quy chế và bộ điều kiện theo từng đơn vị. Việc kết hợp \textbf{VNPT SmartReader}, \textbf{VNPT Smartbot/LLM}, \textbf{VNPT eKYC}, \textbf{VNPT SmartVoice} và \textbf{VNPT SmartUX} giúp biến quy trình thủ công thành một hệ sinh thái minh bạch, có khả năng tự động hỗ trợ nhưng vẫn giữ quyền quyết định cuối cùng cho con người.
+
+\subsection{Khách hàng mục tiêu và người dùng cuối}
+
+\begingroup
+\small
+\begin{longtable}{|p{0.20\textwidth}|p{0.24\textwidth}|p{0.25\textwidth}|p{0.23\textwidth}|}
+\hline
+\centering\arraybackslash\textbf{Nhóm} &
+\centering\arraybackslash\textbf{Mô tả} &
+\centering\arraybackslash\textbf{Pain-point chính} &
+\centering\arraybackslash\textbf{Nhu cầu} \\ \hline
+\endfirsthead
+
+\hline
+\centering\arraybackslash\textbf{Nhóm} &
+\centering\arraybackslash\textbf{Mô tả} &
+\centering\arraybackslash\textbf{Pain-point chính} &
+\centering\arraybackslash\textbf{Nhu cầu} \\ \hline
+\endhead
+
+Đơn vị triển khai phong trào &
+Trung ương Hội Sinh viên Việt Nam, Hội Sinh viên cấp thành phố/tỉnh, trường, khoa/viện/bộ môn &
+Quy trình xét duyệt phân tán, khó chuẩn hóa, khó theo dõi trạng thái liên cấp &
+Nền tảng quản lý tập trung, phân quyền theo cây tổ chức, cấu hình được bộ điều kiện theo từng đơn vị \\ \hline
+
+Sinh viên &
+Người phấn đấu danh hiệu Sinh viên 5 tốt &
+Không biết mình đủ điều kiện cấp nào, thiếu minh chứng gì, deadline nào đang mở; khó lưu trữ thành tích từ sớm &
+Cổng hồ sơ thống nhất, kho thành tích/minh chứng cá nhân, gợi ý bổ sung, tái sử dụng hồ sơ cấp cũ, theo dõi danh hiệu đã đạt \\ \hline
+
+Cán bộ cấp khoa &
+Cán bộ phụ trách phong trào tại khoa/viện/bộ môn &
+Xét hồ sơ ban đầu với nhiều minh chứng rời rạc, dễ sót minh chứng hoặc sai biểu mẫu &
+Dashboard theo khoa, AI đọc minh chứng, lọc hồ sơ thiếu/đủ và chốt danh sách cấp khoa \\ \hline
+
+Cán bộ cấp trường &
+Hội Sinh viên trường hoặc Đoàn trường nếu chưa có Hội Sinh viên &
+Tổng hợp hồ sơ từ nhiều khoa, kiểm tra điều kiện đã đạt cấp khoa &
+Dashboard theo trường, kiểm tra điều kiện đầu vào, xét cấp trường, gửi danh sách lên thành phố/tỉnh \\ \hline
+
+Cán bộ cấp thành phố/tỉnh &
+Hội Sinh viên cấp thành phố/tỉnh &
+Nhận hồ sơ từ nhiều trường, tiêu chí địa phương có thể khác nhau, cần chốt danh sách lên Trung ương &
+Dashboard theo địa bàn, tổng hợp danh sách chính thức, quản lý hồ sơ đủ điều kiện xét Trung ương \\ \hline
+
+Cán bộ Trung ương &
+Cán bộ Trung ương Hội Sinh viên Việt Nam &
+Tiếp nhận hồ sơ từ nhiều tỉnh/thành, cần lịch sử xét duyệt rõ ràng và danh sách chính thức &
+Dashboard Trung ương, xem lịch sử liên cấp, duyệt cuối, chốt danh hiệu cấp Trung ương \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{Pain-point có số liệu chứng minh}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.26\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.31\textwidth}|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Pain-point}} &
+\multicolumn{1}{c|}{\textbf{Số liệu/dẫn chứng sơ bộ}} &
+\multicolumn{1}{c|}{\textbf{Hậu quả nếu không giải quyết}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|c|}{\textbf{Pain-point}} &
+\multicolumn{1}{c|}{\textbf{Số liệu/dẫn chứng sơ bộ}} &
+\multicolumn{1}{c|}{\textbf{Hậu quả nếu không giải quyết}} \\ \hline
+\endhead
+
+Hồ sơ rời rạc và nộp lặp lại nhiều lần &
+Một sinh viên có thể phải nộp/bổ sung hồ sơ qua 4 cấp trong cùng một chu kỳ xét &
+Mất thời gian, dễ thất lạc minh chứng, sinh viên không biết hồ sơ cấp cũ còn dùng được hay không \\ \hline
+
+Không có kho lưu thành tích từ sớm &
+Sinh viên thường tham gia hoạt động rải rác trong năm nhưng chỉ gom minh chứng khi cổng xét mở &
+Dễ quên hoạt động đã tham gia, thiếu file minh chứng, nộp trễ hoặc nộp minh chứng đã quá thời gian hợp lệ \\ \hline
+
+Cán bộ quá tải khi xét duyệt thủ công &
+Với trường quy mô 20.000 sinh viên, mỗi mùa xét có thể cần hàng chục cán bộ xử lý hồ sơ trong nhiều tuần &
+Dễ duyệt nhầm, sót hồ sơ, chậm công bố kết quả, khó truy vết trách nhiệm \\ \hline
+
+Tiêu chí triển khai khác nhau theo đơn vị &
+Cùng 5 nhóm tốt nhưng mỗi khoa/trường/tỉnh có thể có ngưỡng điểm, minh chứng, deadline, biểu mẫu riêng &
+Nếu hard-code một bộ tiêu chí chung, hệ thống không phản ánh đúng thực tế vận hành \\ \hline
+
+Thiếu minh bạch khi chuyển hồ sơ lên cấp cao hơn &
+Hồ sơ cấp thành phố/tỉnh gửi lên Trung ương cần danh sách chính thức, văn bản đề nghị và lịch sử xét duyệt &
+Nếu thiếu audit log và gói hồ sơ chuẩn, việc kiểm tra lại rất tốn công \\ \hline
+
+Dữ liệu minh chứng phi cấu trúc &
+Giấy khen, chứng chỉ, bảng điểm, quyết định công nhận thường ở dạng ảnh/PDF &
+Cán bộ phải đọc thủ công, nhập lại dữ liệu và phân loại bằng mắt thường \\ \hline
+\end{longtable}
+
+\endgroup

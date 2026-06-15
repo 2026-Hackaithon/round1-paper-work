@@ -1,0 +1,226 @@
+\section{Thiết kế tổng quan}
+
+\subsection{Kiến trúc hệ thống}
+
+% Thêm ảnh diagram kiến trúc tại đây sau.
+% Ví dụ:
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{Images/architecture-diagram.png}
+%     \caption{Sơ đồ kiến trúc hệ thống 5-Star Eco}
+% \end{figure}
+
+\subsection{Các module chính}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.36\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.32\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.24\textwidth}|}{\textbf{Module}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.36\textwidth}|}{\textbf{Chức năng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.32\textwidth}|}{\textbf{Ghi chú triển khai}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.24\textwidth}|}{\textbf{Module}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.36\textwidth}|}{\textbf{Chức năng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.32\textwidth}|}{\textbf{Ghi chú triển khai}} \\ \hline
+\endhead
+
+Auth \& Role-based Access &
+Đăng nhập, phân quyền theo vai trò và đơn vị &
+Dùng \texttt{organization\_id}, \texttt{level}, \texttt{scope}, JWT/session \\ \hline
+
+Organization Service &
+Quản lý cây Trung ương -{}> tỉnh/thành -{}> trường -{}> khoa &
+Có \texttt{parent\_id} để truy vấn phạm vi cấp dưới \\ \hline
+
+Review Cycle/Round Service &
+Quản lý năm xét, 4 đợt xét, thời gian mở/khóa cổng và khoảng thời gian minh chứng hợp lệ &
+Trạng thái: upcoming, open, locked, reviewing, completed; có \texttt{evidence\_valid\_from}, \texttt{evidence\_valid\_to} \\ \hline
+
+Criteria Set Inheritance Service &
+Quản lý 5 nhóm tốt cố định và bộ điều kiện đạt theo cấp/đơn vị/năm &
+Cho phép kế thừa từ cấp trên và bổ sung điều kiện riêng \\ \hline
+
+Profile Service &
+Quản lý thông tin sinh viên, trường, khoa, lớp, liên hệ &
+Gắn sinh viên với khoa/trường cụ thể \\ \hline
+
+Application Service &
+Quản lý hồ sơ nộp theo từng đợt/cấp &
+Có \texttt{source\_application\_id}, \texttt{previous\_award\_id} để tái sử dụng hồ sơ \\ \hline
+
+Evidence Service &
+Upload minh chứng, lưu file, OCR text, metadata &
+Tích hợp Object Storage và VNPT SmartReader \\ \hline
+
+Evidence Vault \& Retention Service &
+Quản lý kho thành tích/minh chứng cá nhân, lọc minh chứng còn hiệu lực theo chu kỳ xét, đánh dấu hết hạn và dọn dẹp minh chứng cũ &
+Giúp sinh viên lưu từ sớm nhưng vẫn kiểm soát dung lượng và tính hợp lệ của minh chứng \\ \hline
+
+AI Evaluation Service &
+Phân loại minh chứng, tóm tắt hồ sơ, phát hiện thiếu sót &
+Tích hợp VNPT Smartbot/LLM, cache kết quả AI \\ \hline
+
+Activity/RAG Source Service &
+Thu thập, lập chỉ mục và truy xuất thông tin hoạt động từ nguồn được phép sử dụng; gợi ý hoạt động phù hợp với tiêu chí còn thiếu &
+MVP có thể dùng dữ liệu mẫu/nhập tay; bản mở rộng dùng crawl/API/RSS hoặc quyền truy cập fanpage hợp lệ \\ \hline
+
+Review Workflow Service &
+Duyệt, từ chối, yêu cầu bổ sung, khóa hồ sơ &
+Cán bộ là người quyết định cuối \\ \hline
+
+Award Service &
+Ghi nhận danh hiệu đã đạt theo cấp &
+Dùng để mở quyền xét cấp tiếp theo \\ \hline
+
+Portfolio/CV Service &
+Render CV/portfolio từ hồ sơ sinh viên, minh chứng đã duyệt, danh hiệu và hoạt động nổi bật &
+Chỉ đưa vào bản chính thức các dữ liệu đã được xác nhận; MVP có thể xuất PDF hoặc link chia sẻ \\ \hline
+
+Official Document/Submission Package Service &
+Tạo danh sách chính thức, văn bản đề nghị, gói hồ sơ gửi cấp trên &
+Đặc biệt quan trọng cho cấp thành phố/tỉnh gửi Trung ương \\ \hline
+
+Notification Service &
+Nhắc deadline, thông báo yêu cầu bổ sung, kết quả &
+Có thể mở rộng SMS/email/Zalo \\ \hline
+
+Audit Log Service &
+Ghi log thao tác, quyết định, thời điểm, người thực hiện &
+Tăng minh bạch và truy vết \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{API/AI dự kiến sử dụng}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.46\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.24\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Dịch vụ/API}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.46\textwidth}|}{\textbf{Cách sử dụng trong 5-Star Eco}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.24\textwidth}|}{\textbf{Phạm vi MVP}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Dịch vụ/API}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.46\textwidth}|}{\textbf{Cách sử dụng trong 5-Star Eco}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.24\textwidth}|}{\textbf{Phạm vi MVP}} \\ \hline
+\endhead
+
+VNPT SmartReader \cite{vnpt-ai} &
+OCR giấy khen, chứng chỉ, bảng điểm, quyết định công nhận danh hiệu cấp cũ &
+Core MVP \\ \hline
+
+VNPT Smartbot/LLM \cite{vnpt-ai} &
+RAG hỏi đáp theo bộ điều kiện đúng đơn vị; phân tích, tóm tắt hồ sơ; gợi ý hoạt động phù hợp với tiêu chí còn thiếu &
+Core MVP \\ \hline
+
+VNPT eKYC \cite{vnpt-ai} &
+Xác thực danh tính sinh viên khi tạo hồ sơ hoặc trước khi nộp cấp cao &
+Có thể demo hoặc đưa vào mở rộng \\ \hline
+
+VNPT SmartVoice \cite{vnpt-ai} &
+Hỏi đáp bằng giọng nói cho sinh viên/cán bộ &
+Mở rộng nếu còn thời gian \\ \hline
+
+VNPT SmartUX \cite{vnpt-ai} &
+Phân tích hành vi sử dụng, phát hiện bước sinh viên hay bỏ dở &
+Mở rộng sau MVP \\ \hline
+
+Object Storage API \cite{aws-s3-pricing} &
+Lưu minh chứng gốc, CV/portfolio PDF trong MVP; bản thực tế mở rộng thêm file văn bản đề nghị, danh sách xuất và lifecycle/cleanup cho minh chứng hết hạn &
+Core MVP \\ \hline
+
+Activity Source Connector &
+Thu thập bài đăng/sự kiện từ website Hội Sinh viên, fanpage Hội Sinh viên, trang hoạt động trường/khoa/CLB bằng nguồn công khai hoặc nguồn được cấp quyền &
+MVP dùng dữ liệu mẫu hoặc nhập tay để tránh phụ thuộc quyền truy cập \\ \hline
+
+Notification API &
+Gửi email/thông báo deadline và yêu cầu bổ sung &
+Mô phỏng trong MVP \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{Dữ liệu sử dụng}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.36\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.34\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Nhóm dữ liệu}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.36\textwidth}|}{\textbf{Nội dung}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.34\textwidth}|}{\textbf{Nguồn hợp pháp/dự kiến}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Nhóm dữ liệu}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.36\textwidth}|}{\textbf{Nội dung}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.34\textwidth}|}{\textbf{Nguồn hợp pháp/dự kiến}} \\ \hline
+\endhead
+
+Hồ sơ sinh viên &
+MSSV, họ tên, khoa, trường, lớp, email, số điện thoại &
+Sinh viên tự cung cấp hoặc dữ liệu demo đã ẩn thông tin \\ \hline
+
+Cây tổ chức &
+Trung ương, thành phố/tỉnh, trường, khoa, quan hệ cha-con &
+Tạo dữ liệu mẫu cho demo; khi triển khai lấy từ đơn vị vận hành \\ \hline
+
+Bộ điều kiện đạt &
+5 nhóm tốt, ngưỡng đạt, minh chứng yêu cầu, deadline, biểu mẫu &
+Nhập từ kế hoạch/quy chế của từng cấp, từng đơn vị \\ \hline
+
+Nguồn hoạt động &
+Tên hoạt động, đơn vị tổ chức, thời gian, deadline đăng ký, link nguồn, nhóm tốt liên quan, loại minh chứng sau khi tham gia &
+Website/fanpage Hội Sinh viên, Đoàn - Hội, trường, khoa, CLB; MVP dùng dữ liệu mẫu hoặc nguồn được đơn vị cho phép \\ \hline
+
+Minh chứng &
+Giấy khen, chứng chỉ, bảng điểm, ảnh/PDF hoạt động, quyết định đạt cấp cũ, thời điểm phát sinh, trạng thái còn hiệu lực/hết hạn &
+Sinh viên upload với sự đồng ý; MVP dùng file mẫu \\ \hline
+
+Chính sách thời gian minh chứng &
+\texttt{evidence\_valid\_from}, \texttt{evidence\_valid\_to}, rule đánh dấu hết hạn, rule dọn dẹp/xóa file cũ &
+Admin cấu hình khi mở đợt xét đầu tiên của chu kỳ; hệ thống tự áp dụng \\ \hline
+
+Kết quả AI &
+OCR text, metadata, nhóm tốt được gợi ý, confidence, tóm tắt &
+Sinh ra từ VNPT SmartReader/Smartbot \\ \hline
+
+Quyết định xét duyệt &
+Duyệt, từ chối, yêu cầu bổ sung, lý do, người duyệt, thời gian &
+Cán bộ nhập trên dashboard \\ \hline
+
+Danh hiệu/Award &
+Cấp đạt, đơn vị cấp, thời điểm, quyết định/chứng nhận &
+Tạo khi cán bộ duyệt đạt \\ \hline
+
+CV/portfolio &
+Mẫu hiển thị, dữ liệu đã xác nhận, file PDF/link chia sẻ, thời điểm render &
+Sinh ra từ Profile, Evidence, Application và Award đã được duyệt \\ \hline
+
+Audit log &
+Lịch sử đăng nhập, nộp hồ sơ, khóa/mở cổng, duyệt/từ chối &
+Hệ thống tự ghi \\ \hline
+
+\end{longtable}
+\endgroup

@@ -1,0 +1,206 @@
+\section{Cách giải quyết}
+
+\subsection{Giải pháp đề xuất}
+
+5-Star Eco đề xuất một nền tảng Web App liên cấp, trong đó mỗi sinh viên có một hồ sơ nền xuyên suốt quá trình phấn đấu Sinh viên 5 tốt. Hồ sơ này không chỉ dùng khi đến mùa xét, mà còn là \textbf{kho thành tích/minh chứng cá nhân} để sinh viên cập nhật giấy khen, chứng chỉ, hoạt động, điểm rèn luyện, hoạt động tình nguyện hoặc hội nhập ngay khi phát sinh. Khi một đợt xét mở ra, sinh viên chọn các minh chứng còn hiệu lực từ kho cá nhân để đưa vào hồ sơ nộp chính thức, tái sử dụng hồ sơ cấp cũ và bổ sung minh chứng mới khi lên cấp cao hơn thay vì phải nộp lại từ đầu. Từ các minh chứng và danh hiệu đã được duyệt, hệ thống có thể tự tạo CV/portfolio Sinh viên 5 tốt theo mẫu chuẩn, giúp sinh viên biến quá trình tham gia phong trào thành hồ sơ năng lực có thể chia sẻ.
+
+\noindent Hệ thống quản lý cây tổ chức với gốc là Trung ương, dưới đó là các thành phố/tỉnh, dưới mỗi thành phố/tỉnh là các trường, dưới mỗi trường là các khoa/viện/bộ môn. Mỗi tài khoản cán bộ được gắn với một đơn vị cụ thể và chỉ nhìn thấy hồ sơ trong phạm vi được phân quyền. Ví dụ, cán bộ cấp thành phố Hồ Chí Minh nhìn thấy hồ sơ từ các trường thuộc TP.HCM; cán bộ Trường Đại học Khoa học Tự nhiên nhìn thấy hồ sơ thuộc trường; cán bộ Khoa Công nghệ thông tin của trường đó chỉ nhìn thấy sinh viên thuộc khoa mình.
+
+\noindent Mỗi năm, admin hoặc đơn vị có thẩm quyền tạo chu kỳ xét gồm 4 đợt: cấp khoa, cấp trường, cấp thành phố/tỉnh và cấp Trung ương. Mỗi đợt có thời gian mở cổng, deadline, bộ điều kiện đạt, biểu mẫu và phạm vi đơn vị riêng. Khi đợt xét đầu tiên của năm mở ở cấp khoa, admin cấu hình thêm khoảng thời gian minh chứng khả dụng, ví dụ \texttt{evidence\_valid\_from} và \texttt{evidence\_valid\_to}. Hệ thống chỉ cho phép đưa các minh chứng nằm trong khoảng thời gian này vào hồ sơ xét; các minh chứng cũ không còn khả dụng sẽ được đánh dấu hết hạn và đưa vào cơ chế dọn dẹp/xóa tự động theo chính sách lưu trữ để giảm dung lượng Object Storage. Khi cổng mở, sinh viên đủ điều kiện được nộp hoặc bổ sung hồ sơ. Khi cổng khóa, sinh viên không thể tự chỉnh sửa, trừ trường hợp cán bộ/admin mở lại theo quy trình đặc biệt.
+
+\noindent AI đóng vai trò trợ lý xử lý hồ sơ và trợ lý đồng hành trước khi nộp: OCR minh chứng, trích xuất thông tin, phân loại minh chứng vào 5 nhóm tốt, so sánh với bộ điều kiện đúng cấp/đúng đơn vị/đúng năm, tóm tắt hồ sơ cho cán bộ, cảnh báo trường hợp thiếu minh chứng cấp cũ và gợi ý hoạt động phù hợp để sinh viên bù tiêu chí còn thiếu. Tuy nhiên, AI không tự cấp danh hiệu. Mọi quyết định duyệt, từ chối hoặc yêu cầu bổ sung đều do cán bộ phụ trách xác nhận và được lưu audit log.
+
+\subsection{Nhóm chức năng chính}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.20\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.15\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.35\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Nhóm chức năng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.15\textwidth}|}{\textbf{Người dùng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.35\textwidth}|}{\textbf{Mô tả}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Giá trị mang lại}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.20\textwidth}|}{\textbf{Nhóm chức năng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.15\textwidth}|}{\textbf{Người dùng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.35\textwidth}|}{\textbf{Mô tả}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.22\textwidth}|}{\textbf{Giá trị mang lại}} \\ \hline
+\endhead
+
+Quản lý cây tổ chức &
+Admin, cán bộ các cấp &
+Tạo cấu trúc Trung ương -{}> thành phố/tỉnh -{}> trường -{}> khoa; gắn tài khoản cán bộ với \texttt{organization\_id}, \texttt{level}, \texttt{scope} &
+Phân quyền rõ ràng, tránh cán bộ xem nhầm hồ sơ ngoài phạm vi \\ \hline
+
+Quản lý chu kỳ và đợt xét &
+Admin, cán bộ có thẩm quyền &
+Tạo năm xét, 4 đợt xét, thời gian mở/khóa cổng, trạng thái từng đợt &
+Chuẩn hóa quy trình xét danh hiệu theo từng năm \\ \hline
+
+Bộ điều kiện đạt phân cấp &
+Admin, cán bộ các cấp &
+Quản lý 5 nhóm tốt cố định và bộ điều kiện đạt thay đổi theo cấp/đơn vị/năm &
+Phản ánh đúng thực tế mỗi đơn vị triển khai khác nhau \\ \hline
+
+Hồ sơ sinh viên liên cấp &
+Sinh viên &
+Tạo hồ sơ nền, upload minh chứng, tái sử dụng hồ sơ cấp cũ, bổ sung minh chứng khi lên cấp cao hơn &
+Giảm nộp lặp lại, giúp sinh viên theo dõi hành trình rõ ràng \\ \hline
+
+Kho thành tích/minh chứng cá nhân &
+Sinh viên, admin &
+Sinh viên cập nhật thành tích quanh năm; admin cấu hình thời gian minh chứng khả dụng khi mở đợt xét đầu tiên; hệ thống đánh dấu hết hạn và dọn dẹp minh chứng cũ không thể sử dụng &
+Giúp sinh viên chuẩn bị từ sớm, giảm thất lạc minh chứng và tối ưu dung lượng lưu trữ \\ \hline
+
+Tạo CV/portfolio Sinh viên 5 tốt &
+Sinh viên &
+Render CV/portfolio từ thông tin cá nhân, minh chứng đã duyệt, danh hiệu đạt được theo từng cấp và các hoạt động nổi bật &
+Tạo đầu ra hữu ích cho sinh viên sau quá trình phấn đấu; hạn chế tự khai thiếu kiểm chứng \\ \hline
+
+Xử lý minh chứng bằng AI &
+Sinh viên, cán bộ &
+VNPT SmartReader OCR ảnh/PDF, trích xuất metadata, gợi ý nhóm tốt, confidence score &
+Giảm thời gian nhập liệu và phân loại thủ công \\ \hline
+
+Trợ lý hỏi đáp/RAG &
+Sinh viên, cán bộ &
+VNPT Smartbot/LLM trả lời theo bộ điều kiện đúng cấp, đúng đơn vị, đúng năm &
+Giảm nhầm lẫn khi tiêu chí mỗi đơn vị khác nhau \\ \hline
+
+Gợi ý hoạt động bù tiêu chí &
+Sinh viên &
+RAG thu thập, lập chỉ mục và truy xuất thông tin từ các nguồn hoạt động được phép sử dụng như website Hội Sinh viên, fanpage Hội Sinh viên, fanpage hoạt động của trường/khoa/CLB; sau đó gợi ý hoạt động phù hợp với nhóm tốt sinh viên còn thiếu &
+Giúp sinh viên biết nên tham gia hoạt động nào trước deadline thay vì chỉ biết hồ sơ còn thiếu \\ \hline
+
+Dashboard xét duyệt theo cấp &
+Cán bộ khoa, trường, thành phố/tỉnh, Trung ương &
+Lọc hồ sơ theo trạng thái, đơn vị, nhóm tốt thiếu/đủ; duyệt, từ chối, yêu cầu bổ sung &
+Tăng tốc độ xét duyệt và giữ người duyệt cuối là cán bộ \\ \hline
+
+Cấp danh hiệu và mở khóa cấp tiếp theo &
+Cán bộ, hệ thống &
+Khi hồ sơ được duyệt, hệ thống tạo \texttt{Award} cấp hiện tại và mở quyền nộp cấp cao hơn &
+Đảm bảo sinh viên đạt cấp dưới mới được xét cấp trên \\ \hline
+
+Gói hồ sơ và danh sách chính thức &
+Cán bộ thành phố/tỉnh, Trung ương &
+Tổng hợp hồ sơ số hóa, danh sách chính thức, văn bản đề nghị, lịch sử xét duyệt &
+Phù hợp quy trình gửi hồ sơ lên cấp Trung ương \\ \hline
+
+Audit log và thông báo &
+Tất cả vai trò &
+Ghi nhận thao tác duyệt/sửa/khóa/mở cổng; thông báo deadline, yêu cầu bổ sung, kết quả &
+Tăng minh bạch và truy vết \\ \hline
+
+\end{longtable}
+\endgroup
+
+\subsection{Luồng sử dụng chính}
+
+\begin{enumerate}
+    \item \textbf{Khởi tạo chu kỳ:} Admin tạo năm xét và cây tổ chức mẫu gồm Trung ương, TP.HCM, Trường Đại học Khoa học Tự nhiên, Khoa Công nghệ thông tin.
+
+    \item \textbf{Cấu hình điều kiện và thời gian minh chứng hợp lệ:} Mỗi cấp cấu hình bộ điều kiện đạt cho 5 nhóm tốt theo phạm vi đơn vị mình. Khi mở đợt xét đầu tiên ở cấp khoa, admin cấu hình khoảng thời gian minh chứng khả dụng cho chu kỳ xét; hệ thống dùng mốc này để lọc minh chứng được phép đưa vào hồ sơ và dọn dẹp minh chứng cũ không còn sử dụng.
+
+    \item \textbf{Sinh viên tích lũy thành tích quanh năm:} Sinh viên có thể đăng nhập bất cứ lúc nào để cập nhật thành tích, upload minh chứng vào kho cá nhân, xem OCR/AI phân loại sơ bộ và lưu lại để dùng khi cổng xét mở.
+
+    \item \textbf{Mở đợt cấp khoa:} Sinh viên thuộc khoa đăng nhập, xem bộ điều kiện cấp khoa, thời gian mở/khóa cổng, khoảng thời gian minh chứng hợp lệ và trạng thái hồ sơ của mình.
+
+    \item \textbf{Sinh viên hỏi đáp với AI:} Sinh viên dùng VNPT Smartbot/LLM để hỏi các câu như ``em còn thiếu gì để đạt cấp khoa?'', ``minh chứng này thuộc nhóm tốt nào?'', ``điều kiện Học tập tốt của khoa em là gì?''. Chatbot trả lời dựa trên bộ điều kiện đúng cấp, đúng đơn vị, đúng năm xét.
+
+    \item \textbf{AI gợi ý hoạt động phù hợp:} Khi phát hiện sinh viên còn thiếu tiêu chí, hệ thống dùng RAG để truy xuất dữ liệu từ các nguồn hoạt động được phép sử dụng như website Hội Sinh viên, fanpage Hội Sinh viên, fanpage hoạt động của trường/khoa/CLB. AI gợi ý các hoạt động đang mở hoặc sắp diễn ra, giải thích hoạt động đó có thể hỗ trợ nhóm tốt nào, deadline đăng ký ra sao và minh chứng cần lưu lại sau khi tham gia.
+
+    \item \textbf{Sinh viên chọn minh chứng và tự kiểm tra hồ sơ:} Sinh viên chọn minh chứng còn hiệu lực từ kho cá nhân hoặc upload bổ sung; VNPT SmartReader OCR ảnh/PDF, trích xuất thông tin và hệ thống gợi ý minh chứng đang đáp ứng nhóm tốt nào, còn thiếu điều kiện nào trước khi bấm nộp.
+
+    \item \textbf{Sinh viên xem trước CV/portfolio:} Từ thông tin cá nhân, minh chứng đã duyệt ở các đợt trước và minh chứng đang chờ xét, hệ thống tạo bản xem trước CV/portfolio Sinh viên 5 tốt; các mục chưa được cán bộ duyệt được đánh dấu rõ là ``chờ xác nhận'' để tránh tự khai sai.
+
+    \item \textbf{AI xử lý sơ bộ sau khi nộp:} Smartbot/LLM phân loại minh chứng vào 5 nhóm tốt, so sánh với \texttt{CriteriaSet} của cấp/đơn vị, kiểm tra thời gian minh chứng khả dụng, tạo tóm tắt hồ sơ, confidence score, danh sách minh chứng thiếu và các điểm cần cán bộ kiểm tra kỹ.
+
+    \item \textbf{Hệ thống sàng lọc cho cán bộ:} Dashboard cán bộ tự động gom hồ sơ theo trạng thái như đủ điều kiện sơ bộ, thiếu minh chứng, minh chứng hết hạn, nghi ngờ sai thông tin, cần kiểm tra thủ công. Cán bộ có thể lọc theo nhóm tốt, mức độ thiếu, confidence score hoặc cảnh báo AI.
+
+    \item \textbf{Cán bộ dùng AI để phân tích/kiểm duyệt:} Cán bộ Khoa Công nghệ thông tin của đúng trường đăng nhập, xem hồ sơ trong phạm vi khoa, đọc tóm tắt AI, đối chiếu OCR text với file gốc, yêu cầu AI giải thích lý do gợi ý đạt/chưa đạt, sau đó duyệt/từ chối/yêu cầu bổ sung. Quyết định cuối cùng vẫn do cán bộ xác nhận.
+
+    \item \textbf{Mở quyền cấp trường:} Nếu đạt cấp khoa, hệ thống tạo danh hiệu cấp khoa và cho phép sinh viên nộp cấp trường khi đợt trường mở.
+
+    \item \textbf{Lặp lại ở cấp trường và thành phố/tỉnh:} Sinh viên tái sử dụng hồ sơ cấp cũ, hỏi AI về bộ điều kiện cấp mới, nhận gợi ý hoạt động phù hợp để bù tiêu chí còn thiếu, bổ sung minh chứng mới; cán bộ đúng đơn vị dùng dashboard và AI để sàng lọc, phân tích, xét duyệt.
+
+    \item \textbf{Xét cấp Trung ương:} Chỉ hồ sơ đã đạt cấp thành phố/tỉnh được nộp cấp Trung ương. AI hỗ trợ kiểm tra lịch sử liên cấp, minh chứng danh hiệu cấp cũ, danh sách chính thức và tóm tắt hồ sơ; cán bộ Trung ương xem xét và quyết định cuối.
+
+    \item \textbf{Công bố kết quả và xuất CV/portfolio:} Sinh viên xem danh hiệu đã đạt theo từng cấp. Nếu không đạt cấp cao hơn, sinh viên vẫn giữ danh hiệu cấp thấp đã đạt trong chu kỳ đó. Sinh viên có thể xuất CV/portfolio bản PDF hoặc link chia sẻ, chỉ hiển thị các minh chứng/danh hiệu đã được xác nhận.
+\end{enumerate}
+
+\subsection{Vì sao cần AI?}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.23\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.31\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.20\textwidth}|}
+\hline
+\textbf{Tác vụ} &
+\textbf{Nếu không dùng AI} &
+\textbf{Khi dùng AI/API của cuộc thi} &
+\textbf{Giá trị tạo ra} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Tác vụ} &
+\textbf{Nếu không dùng AI} &
+\textbf{Khi dùng AI/API của cuộc thi} &
+\textbf{Giá trị tạo ra} \\ \hline
+\endhead
+
+Đọc minh chứng &
+Cán bộ phải mở từng ảnh/PDF, đọc và nhập lại thông tin &
+VNPT SmartReader OCR giấy khen, chứng chỉ, bảng điểm, quyết định công nhận &
+Giảm thời gian nhập liệu, chuẩn hóa dữ liệu đầu vào \\ \hline
+
+Phân loại minh chứng &
+Cán bộ tự xác định minh chứng thuộc nhóm tốt nào &
+LLM gợi ý minh chứng thuộc Đạo đức tốt, Học tập tốt, Thể lực tốt, Tình nguyện tốt hoặc Hội nhập tốt &
+Tăng tốc độ kiểm tra, giảm bỏ sót \\ \hline
+
+Hỏi đáp quy định &
+Sinh viên đọc nhiều văn bản, dễ nhầm bộ điều kiện của đơn vị khác &
+VNPT Smartbot/RAG trả lời theo đúng \texttt{criteria\_set} của cấp, đơn vị và năm xét &
+Hướng dẫn cá nhân hóa theo bối cảnh thật \\ \hline
+
+Gợi ý hoạt động phù hợp &
+Sinh viên tự theo dõi nhiều fanpage/website, dễ bỏ lỡ hoạt động đúng tiêu chí hoặc đăng ký quá trễ &
+RAG truy xuất các bài đăng/sự kiện từ website Hội Sinh viên, fanpage Hội Sinh viên và trang hoạt động của trường/khoa/CLB để gợi ý hoạt động theo tiêu chí còn thiếu &
+Chuyển hệ thống từ ``chờ nộp hồ sơ'' sang đồng hành giúp sinh viên hoàn thiện tiêu chí trước deadline \\ \hline
+
+Kiểm tra hồ sơ cấp cao &
+Cán bộ phải tự kiểm tra sinh viên đã đạt cấp dưới chưa &
+Hệ thống kiểm tra \texttt{Award} cấp cũ và AI cảnh báo thiếu minh chứng danh hiệu cấp dưới &
+Đảm bảo đúng quy tắc chuyển cấp \\ \hline
+
+Tóm tắt cho cán bộ &
+Cán bộ đọc toàn bộ hồ sơ dài và nhiều file &
+LLM tóm tắt điểm mạnh, điểm thiếu, minh chứng cần xem kỹ &
+Giảm tải nhưng vẫn giữ cán bộ duyệt cuối \\ \hline
+
+Xác thực danh tính &
+Kiểm tra thủ công thẻ sinh viên/CCCD nếu cần &
+VNPT eKYC hỗ trợ xác thực danh tính sinh viên ở các bước nhạy cảm &
+Tăng độ tin cậy, giảm rủi ro giả mạo \\ \hline
+
+Cải thiện trải nghiệm &
+Khó biết sinh viên hay vướng ở bước nào &
+VNPT SmartUX theo dõi hành vi sử dụng ở mức phù hợp &
+Tối ưu giao diện, giảm tỉ lệ bỏ dở hồ sơ \\ \hline
+
+\end{longtable}
+\endgroup

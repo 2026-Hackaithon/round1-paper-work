@@ -1,0 +1,76 @@
+\section{Rủi ro và phương án giảm thiểu}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.30\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.15\textwidth}|
+                  >{\raggedright\arraybackslash}p{0.47\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.30\textwidth}|}{\textbf{Rủi ro}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.15\textwidth}|}{\textbf{Mức độ ảnh hưởng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.47\textwidth}|}{\textbf{Phương án giảm thiểu}} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}p{0.30\textwidth}|}{\textbf{Rủi ro}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.15\textwidth}|}{\textbf{Mức độ ảnh hưởng}} &
+\multicolumn{1}{>{\centering\arraybackslash}p{0.47\textwidth}|}{\textbf{Phương án giảm thiểu}} \\ \hline
+\endhead
+
+Phân quyền sai đơn vị, cán bộ thấy hồ sơ ngoài phạm vi &
+Cao &
+Thiết kế cây tổ chức rõ ràng, dùng \texttt{organization\_id}, \texttt{parent\_id}, \texttt{level}, \texttt{scope}; kiểm thử role-based access theo nhiều ví dụ \\ \hline
+
+Bộ điều kiện đạt khác nhau giữa các cấp/đơn vị &
+Cao &
+Dùng \texttt{CriteriaSet} cấu hình theo cấp, đơn vị, năm; 5 nhóm tốt cố định nhưng điều kiện đạt linh hoạt \\ \hline
+
+OCR hoặc AI phân loại sai &
+Cao &
+Hiển thị OCR text, confidence, lý do gợi ý; cán bộ duyệt cuối; cho phép chỉnh sửa và ghi nhận phản hồi \\ \hline
+
+SmartReader/ Smartbot/ eKYC lỗi hoặc chậm khi demo &
+Cao &
+Có adapter, timeout, retry, cache kết quả và dữ liệu mock fallback \\ \hline
+
+Nguồn hoạt động từ fanpage/website thiếu ổn định hoặc chưa có quyền sử dụng &
+Trung bình &
+MVP dùng dữ liệu mẫu hoặc dữ liệu được đơn vị cho phép; khi triển khai thật ưu tiên nguồn công khai, API/RSS hợp lệ, hoặc cơ chế nhập tay từ cán bộ phụ trách; lưu link nguồn và thời điểm thu thập để truy vết \\ \hline
+
+Hồ sơ cấp cao thiếu minh chứng/danh hiệu cấp cũ &
+Cao &
+Kiểm tra \texttt{Award} cấp dưới trước khi mở quyền nộp cấp trên; AI cảnh báo thiếu file quyết định/chứng nhận \\ \hline
+
+Xóa nhầm minh chứng còn cần dùng hoặc còn giá trị truy vết &
+Cao &
+Không xóa ngay dữ liệu đã gắn với hồ sơ đã nộp, quyết định duyệt hoặc audit log; dùng trạng thái hết hạn, thông báo trước cho sinh viên, soft delete và retention window trước khi xóa vật lý khỏi Object Storage \\ \hline
+
+Sinh viên muốn sửa sau deadline &
+Trung bình &
+Khóa hồ sơ theo đợt; chỉ cán bộ/admin có quyền mở lại trong trường hợp đặc biệt và có audit log \\ \hline
+
+Gói hồ sơ gửi Trung ương chưa đủ nghiệp vụ hành chính &
+Trung bình &
+Không đưa vào phạm vi MVP Vòng 2; roadmap sau MVP bổ sung mẫu biểu, số văn bản, ký số hoặc upload văn bản chính thức \\ \hline
+
+Thiếu sự phối hợp hoặc xác nhận nghiệp vụ từ Hội Sinh viên khi triển khai thật &
+Cao &
+Chọn đơn vị thí điểm có đầu mối phụ trách rõ ràng; thống nhất phạm vi dữ liệu, bộ tiêu chí, nguồn hoạt động được phép dùng cho RAG và quy trình phản hồi trước khi mở cổng cho sinh viên \\ \hline
+
+Dữ liệu cá nhân nhạy cảm &
+Cao &
+Consent, phân quyền, signed URL, không public bucket, ẩn/xóa dữ liệu demo, tuân thủ quy định bảo vệ dữ liệu \\ \hline
+
+MVP quá rộng &
+Trung bình &
+Demo một cây tổ chức mẫu, một sinh viên, một chu kỳ xét với 2 đợt cấp khoa và cấp trường; cấp thành phố/tỉnh, cấp Trung ương, SmartVoice, SmartUX và CSDL đối chiếu để mở rộng \\ \hline
+
+Người dùng chưa tin AI &
+Trung bình &
+Trình bày AI là trợ lý, không thay thế cán bộ; mọi quyết định quan trọng đều có người xác nhận \\ \hline
+
+\end{longtable}
+\endgroup

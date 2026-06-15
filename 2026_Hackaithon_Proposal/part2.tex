@@ -1,0 +1,28 @@
+\section{Tóm tắt ý tưởng}
+
+\textbf{5-Star Eco - Hệ sinh thái phong trào Sinh viên 5 tốt} là nền tảng số hóa hành trình phấn đấu, nộp hồ sơ, bổ sung minh chứng và xét duyệt danh hiệu \textbf{Sinh viên 5 tốt} theo mô hình liên cấp. Thay vì sinh viên phải tự gom hồ sơ rời rạc, nộp lại nhiều lần qua từng cấp và cán bộ phải xử lý thủ công bằng Google Form, Excel, file PDF hoặc bản cứng, hệ thống tạo một quy trình thống nhất qua 4 cấp danh hiệu:
+\begin{enumerate}
+    \item Cấp khoa/viện/bộ môn
+    \item Cấp trường
+    \item Cấp thành phố/tỉnh
+    \item Cấp Trung ương
+\end{enumerate}
+Mỗi năm, hệ thống mở 4 đợt xét tương ứng với 4 cấp: khoa $\rightarrow$ trường $\rightarrow$ thành phố/tỉnh $\rightarrow$ Trung ương. Ở mỗi đợt, sinh viên đủ điều kiện được nộp, chỉnh sửa hoặc bổ sung hồ sơ trong thời gian cho phép. Khi đến deadline, cổng hồ sơ khóa lại; cán bộ cấp tương ứng đăng nhập theo đúng đơn vị triển khai để xét duyệt. Ngoài thời gian nộp hồ sơ, sinh viên vẫn có thể cập nhật thành tích và lưu minh chứng vào kho cá nhân từ sớm để khi đến mùa xét chỉ cần chọn minh chứng còn hiệu lực đưa vào hồ sơ. AI hỗ trợ đọc minh chứng, phân loại theo 5 nhóm tốt, phát hiện thiếu sót, tóm tắt hồ sơ, gợi ý trạng thái và đề xuất hoạt động phù hợp với tiêu chí sinh viên còn thiếu, nhưng \textbf{quyết định cuối cùng vẫn thuộc về cán bộ phụ trách}. Sau khi có minh chứng/danh hiệu được duyệt, sinh viên có thể tạo \textbf{CV/portfolio Sinh viên 5 tốt} từ dữ liệu đã xác thực để phục vụ ứng tuyển, học bổng, trao đổi quốc tế hoặc giới thiệu hành trình phấn đấu cá nhân.
+
+\noindent Điểm cốt lõi của 5-Star Eco là mô hình tổ chức dạng cây:
+
+\begin{center}
+\begin{tabular}{c}
+\textbf{Trung ương} \\
+$\downarrow$ \\
+\textbf{Thành phố/Tỉnh} \\
+$\downarrow$ \\
+\textbf{Trường đại học} \\
+$\downarrow$ \\
+\textbf{Khoa/Viện/Bộ môn}
+\end{tabular}
+\end{center}
+
+\noindent Cán bộ cấp thành phố Hồ Chí Minh chỉ xử lý hồ sơ thuộc TP.HCM; cán bộ Trường Đại học Khoa học Tự nhiên chỉ xử lý hồ sơ thuộc trường đó; cán bộ Khoa Công nghệ thông tin của Trường Đại học Khoa học Tự nhiên khác với cán bộ Khoa Công nghệ thông tin của Trường Đại học Công nghệ Thông tin. Hệ thống dùng \texttt{organization\_id}, \texttt{parent\_id}, \texttt{level} và \texttt{scope} để xác định phạm vi đăng nhập, phân quyền và dữ liệu được truy cập.
+
+\noindent 5 nhóm tốt của danh hiệu luôn cố định: \textbf{Đạo đức tốt, Học tập tốt, Thể lực tốt, Tình nguyện tốt, Hội nhập tốt}. Tuy nhiên, \textbf{bộ điều kiện đạt} cho từng nhóm tốt có thể khác nhau theo cấp và theo đơn vị triển khai. Trung ương có khung chung; mỗi thành phố/tỉnh, trường và khoa có thể có ngưỡng đạt, minh chứng, biểu mẫu, deadline và hoạt động được công nhận riêng theo kế hoạch được phân cấp.
