@@ -523,15 +523,22 @@ Kế hoạch triển khai kỹ thuật:
 
 ### 7.6. Ước tính chi phí hạ tầng và vận hành
 
-| Hạng mục | MVP Vòng 2 dự kiến | Sản phẩm thực tế/pilot thực tế | Ghi chú |
-|---|---:|---:|---|
-| Frontend hosting | Theo free tier/quota Leapcell hoặc 0 - 300.000 VNĐ/tháng | Theo gói Leapcell phù hợp traffic | Deploy ReactJS + TypeScript frontend trên Leapcell; production cần domain, SSL, logging và môi trường ổn định |
-| Backend server | Theo free tier/quota Leapcell hoặc 200.000 - 800.000 VNĐ/tháng | Theo gói Leapcell phù hợp tải hệ thống | Deploy Node.js + Express.js + TypeScript backend trên Leapcell; sản phẩm thực tế cần tách staging/production, backup và monitoring |
-| Database | 0 - 500.000 VNĐ/tháng | 500.000 - 3.000.000 VNĐ/tháng | Có thể sử dụng dịch vụ miễn phí hoặc triển khai cùng máy chủ MVP. Khi mở rộng nên tách riêng cơ sở dữ liệu và thực hiện sao lưu định kỳ. |
-| Redis | 0 - 200.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Sử dụng cho cache phân quyền, dữ liệu OCR/AI tạm thời và tối ưu hiệu năng hệ thống. |
-| Object Storage | 0 - 300.000 VNĐ/tháng | Theo dung lượng minh chứng | Cần signed URL và phân quyền truy cập file |
-| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Bao gồm OCR, phân loại minh chứng, hỏi đáp và các chức năng AI hỗ trợ đánh giá hồ sơ. Cần cơ chế cache và fallback để kiểm soát chi phí. |
-| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Khi triển khai thực tế cần bổ sung monitoring, cảnh báo và theo dõi vận hành. |
+Ước tính dưới đây dựa trên bảng giá công khai của Leapcell và mô hình lưu trữ object storage trả theo dung lượng. Quy đổi tham khảo dùng `1 USD ~= 26.000 VNĐ`, chưa bao gồm VAT, phí thanh toán quốc tế và báo giá riêng của các API VNPT AI khi triển khai thương mại.
+
+| Hạng mục | Cơ sở tham khảo | MVP Vòng 2 dự kiến | Sản phẩm thực tế/pilot thực tế | Ghi chú kiểm soát chi phí |
+|---|---|---:|---:|---|
+| Frontend ReactJS + TypeScript | Leapcell Hobby có gói miễn phí; Plus khoảng 12,9 USD/seat/tháng; Pro khoảng 29,9 USD/seat/tháng | 0 - 335.000 VNĐ/tháng | 335.000 - 780.000 VNĐ/tháng/seat | MVP có thể dùng Hobby/Plus; sản phẩm thật nên tách môi trường staging/production và giới hạn số seat quản trị |
+| Backend Node.js + Express.js + TypeScript | Leapcell serverless có quota miễn phí; persistent server từ khoảng 7 - 28 USD/tháng cho cấu hình nhỏ đến vừa | 0 - 730.000 VNĐ/tháng | 730.000 - 2.300.000 VNĐ/tháng | Ưu tiên serverless/persistent nhỏ cho pilot; chỉ nâng cấu hình khi có tải thật |
+| Routing, domain, SSL, CDN | Leapcell hỗ trợ custom domain, SSL/TLS và CDN trong gói nền tảng | 0 - 300.000 VNĐ/năm | 300.000 - 1.000.000 VNĐ/năm | SSL có thể dùng của Leapcell; chi phí chủ yếu là tên miền riêng nếu cần |
+| Database PostgreSQL | Leapcell có 1 PostgreSQL miễn phí ở Hobby; dedicated PostgreSQL từ khoảng 9 - 36 USD/tháng | 0 - 235.000 VNĐ/tháng | 470.000 - 940.000 VNĐ/tháng | MVP dùng database miễn phí/nhỏ; pilot cần backup định kỳ và tách môi trường production |
+| Redis Cache | Leapcell Redis có quota lệnh/tháng; vượt quota tính theo lượng command và bandwidth | 0 - 200.000 VNĐ/tháng | 200.000 - 1.000.000 VNĐ/tháng | Cache session/role, criteria set, kết quả OCR/AI tạm thời; đặt TTL để tránh phình dữ liệu |
+| Object Storage cho minh chứng | S3-compatible storage tính theo dung lượng lưu trữ, request và data transfer | 0 - 300.000 VNĐ/tháng | 300.000 - 2.000.000 VNĐ/tháng | Cần signed URL, phân quyền file, lifecycle rule và xóa/archival minh chứng hết hạn |
+| VNPT SmartReader OCR | API/dịch vụ VNPT AI; trong cuộc thi dự kiến dùng quota/tài khoản được cấp | Theo quota cuộc thi hoặc mock fallback | Theo quota/báo giá VNPT | Cache OCR text, chỉ OCR lại khi file thay đổi, giới hạn kích thước/tần suất upload |
+| VNPT Smartbot/LLM, RAG | API/dịch vụ VNPT AI; phục vụ hỏi đáp, phân tích hồ sơ, gợi ý hoạt động | Theo quota cuộc thi hoặc mock fallback | Theo quota/báo giá VNPT | RAG theo bộ tiêu chí đúng đơn vị, cache câu hỏi phổ biến, giới hạn số lượt hỏi mỗi phiên |
+| VNPT eKYC, SmartVoice, SmartUX | Dịch vụ VNPT AI mở rộng | Không bắt buộc trong MVP | Theo quota/báo giá VNPT | Đưa vào khi có nhu cầu xác thực danh tính, giọng nói hoặc phân tích UX ở quy mô thật |
+| Logging, monitoring, backup | Leapcell có logs/metrics theo quota; vượt quota tính thêm theo dung lượng log | 0 - 300.000 VNĐ/tháng | 500.000 - 2.000.000 VNĐ/tháng | Log có retention hợp lý, không ghi dữ liệu nhạy cảm, backup database theo chu kỳ |
+
+**Tổng ước tính:** MVP Vòng 2 có thể vận hành trong khoảng **0 - 1,5 triệu VNĐ/tháng** nếu tận dụng free tier/quota cuộc thi và dữ liệu demo. Pilot thực tế cho một cụm đơn vị cấp khoa -> cấp trường dự kiến khoảng **2 - 7 triệu VNĐ/tháng**, chưa bao gồm chi phí VNPT AI thương mại nếu vượt quota được cấp. Khi mở rộng toàn quốc, chi phí sẽ phụ thuộc mạnh vào số hồ sơ, số file minh chứng, số lượt OCR/LLM và chính sách lưu trữ minh chứng.
 
 ### 7.7. An toàn, bảo mật và pháp lý
 
@@ -657,6 +664,9 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 - Thông báo số 1 HackAIthon 2026: `hackaithon-2026-thong-bao-so-1_1780034931.pdf`
 - Trang Bảng B - Challenger: `https://hackaithon.vsds.vn/bang-b-challenger/`
 - Thể lệ Bảng B: `https://hackaithon.vsds.vn/the-le-bang-b/`
+- Leapcell Pricing, tham khảo chi phí hosting, serverless/persistent server, PostgreSQL, Redis, log và quota nền tảng, truy cập ngày 15/6/2026: `https://leapcell.io/pricing`
+- VNPT AI, tham khảo hệ sinh thái dịch vụ SmartReader, Smartbot, eKYC, SmartVoice, SmartUX, truy cập ngày 15/6/2026: `https://vnptai.io/`
+- Amazon S3 Pricing, tham khảo mô hình object storage trả theo dung lượng, request và data transfer cho phương án S3-compatible storage, truy cập ngày 15/6/2026: `https://aws.amazon.com/s3/pricing/`
 
 ## 12. Checklist tự đánh giá trước khi nộp
 
