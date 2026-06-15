@@ -7,22 +7,23 @@
 - **Tên sản phẩm/dự án:** Hệ sinh thái phong trào Sinh viên 5 tốt
 - **Tên tiếng Anh:** 5-Star Eco
 - **Bảng thi:** Bảng B - Challenger
+- **ID đội:** 239
 - **Hướng đề tài:** Ứng dụng AI tối ưu hóa quy trình quản lý, xét duyệt và phát triển phong trào Sinh viên 5 tốt
-- **Tên đội:** `<Tên đội>`
-- **Trường/Đơn vị:** `<Tên trường/đơn vị>`
-- **Ngày nộp:** `<dd/mm/yyyy>`
+- **Tên đội:** BDKTN
+- **Trường/Đơn vị:** Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh
+- **Ngày nộp:** 16/6/2026
 
 ## 1. Thông tin đội thi
 
 | STT | Họ tên | Trường/Lớp/Khoa | Vai trò trong đội | Email | Số điện thoại |
 |---:|---|---|---|---|---|
-| 1 |  |  | Trưởng nhóm/Product |  |  |
-| 2 |  |  | Kỹ thuật/Backend |  |  |
-| 3 |  |  | Frontend/UI/UX |  |  |
-| 4 |  |  | AI/Data/Prompt |  |  |
-| 5 |  |  | Research/Pitch |  |  |
+| 1 | Lê Trung Kiên | Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh | Lead, Full stack dev, UI/UX | letrungkienthd@gmail.com | 0356988346 |
+| 2 | Mai Thị Kim Duyên | Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh | Full stack dev | thiduyen310@gmail.com | 0981869301 |
+| 3 | Lê Mai Hoài Bảo | Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh | Full stack dev, UI/UX | hoaichaobai@gmail.com | 0943802900 |
+| 4 | Nguyễn Hữu Anh Trí | Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh | AI/Data, UI/UX | nguyenhuuanhtri866@gmail.com | 0947570902 |
+| 5 | Trần Hoài Thiện Nhân | Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh | AI/Data | nhan100405@gmail.com | 0814313940 |
 
-**Người đại diện liên hệ:** `<Họ tên - SĐT - Email>`
+**Người đại diện liên hệ:** Lê Trung Kiên - 0356988346 - letrungkienthd@gmail.com
 
 ## 2. Tóm tắt ý tưởng
 
@@ -194,7 +195,7 @@ flowchart TB
         AD(["Admin hệ thống"])
     end
 
-    subgraph Frontend ["Frontend ReactJS Web App"]
+    subgraph Frontend ["Frontend ReactJS + TypeScript Web App"]
         direction TB
         FE_S["Không gian Sinh viên\nHồ sơ, minh chứng, trạng thái, danh hiệu"]
         FE_O["Dashboard Cán bộ theo cấp\nKhoa / Trường / Thành phố-Tỉnh / Trung ương"]
@@ -208,7 +209,7 @@ flowchart TB
         Router <--> API
     end
 
-    subgraph Backend ["Hệ thống Backend (Node.js)"]
+    subgraph Backend ["Hệ thống Backend (Node.js + Express.js + TypeScript)"]
         direction TB
         Auth("Auth & Role-based Access\norganization_id / level / scope")
 
@@ -488,20 +489,20 @@ Phần có thể mô phỏng:
 
 | Thành phần | Công nghệ đề xuất | Ghi chú |
 |---|---|---|
-| Frontend | ReactJS | Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. ReactJS phù hợp với dashboard nhiều trạng thái, nhiều vai trò và nhiều trạng thái hồ sơ |
-| Backend | Node.js | Module hóa theo Auth, Organization, Criteria, Application, Evidence, Evidence Vault/Retention, Review, Award, Portfolio |
+| Frontend | ReactJS + TypeScript | Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. ReactJS phù hợp với dashboard nhiều trạng thái, nhiều vai trò; TypeScript giúp giảm lỗi khi mở rộng UI và luồng dữ liệu phức tạp |
+| Backend | Node.js + Express.js + TypeScript | Xây dựng REST API cho các module Auth, Organization, Criteria, Application, Evidence, Review, Award và Portfolio. Express đơn giản, dễ học và phù hợp phát triển MVP nhanh. TypeScript giúp tăng tính an toàn khi phát triển và bảo trì mã nguồn. |
 | Reverse Proxy/Routing | Leapcell Routing / Reverse Proxy | Định tuyến request giữa frontend và backend, hỗ trợ domain/SSL, cấu hình môi trường và triển khai production |
 | Database | PostgreSQL hoặc SQL Server | Lưu dữ liệu quan hệ: tổ chức, tiêu chí, hồ sơ, award, audit log, portfolio; hỗ trợ transaction và truy vấn phức tạp |
 | Cache | Redis | Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời |
 | File Storage | S3-compatible Object Storage | Lưu minh chứng, văn bản, danh sách xuất, CV/portfolio PDF; hỗ trợ phân quyền truy cập, signed URL và chính sách dọn dẹp file minh chứng hết hạn |
 | AI/API Adapter | Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX | Tách biệt business logic khỏi nhà cung cấp AI. Cho phép mock dữ liệu khi demo hoặc thay thế nhà cung cấp mà không ảnh hưởng hệ thống. |
-| Deploy | Leapcell cho cả ReactJS frontend và Node.js backend | MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường |
+| Deploy | Leapcell cho cả ReactJS + TypeScript frontend và Node.js + Express.js + TypeScript backend | MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường |
 
 Kế hoạch triển khai kỹ thuật:
 
 1. Thiết kế database cho `Organization`, `User`, `Role`, `ReviewCycle`, `ReviewRound`, `CriteriaSet`, `Application`, `Evidence`, `EvidenceRetentionPolicy`, `Award`, `Portfolio`, `ReviewDecision`, `AuditLog`.
-2. Xây backend Node.js với middleware/guard phân quyền theo `organization_id`, `level`, `scope`.
-3. Xây frontend ReactJS cho 3 không gian chính: sinh viên, cán bộ, admin.
+2. Xây dựng backend Node.js + Express.js + TypeScript, tổ chức theo các module nghiệp vụ; triển khai cơ chế xác thực JWT và phân quyền theo organization_id, level, scope.
+3. Xây frontend 3 không gian chính: sinh viên, cán bộ, admin.
 4. Tích hợp VNPT SmartReader cho OCR minh chứng; xây adapter mock fallback.
 5. Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt, hỏi đáp RAG và gợi ý hoạt động theo tiêu chí còn thiếu.
 6. Xây Activity/RAG Source Service với dữ liệu hoạt động mẫu; bản mở rộng hỗ trợ connector tới website/fanpage được phép sử dụng.
@@ -514,23 +515,23 @@ Kế hoạch triển khai kỹ thuật:
 
 | Vai trò | Nhiệm vụ |
 |---|---|
-| Product/Research | Chốt flow sản phẩm thực tế 4 cấp, phạm vi MVP 2 cấp khoa -> trường, mô hình cây tổ chức, nội dung proposal và pitch |
-| Backend | Thiết kế database, Node.js API, phân quyền theo đơn vị, tích hợp AI/API |
-| Frontend/UI/UX | Xây giao diện sinh viên, dashboard cán bộ, admin console |
-| AI/Data/Prompt | Thiết kế prompt phân loại minh chứng, RAG theo bộ điều kiện, RAG gợi ý hoạt động từ nguồn Hội Sinh viên/trường/khoa/CLB, kịch bản OCR |
-| QA/Demo/Pitch | Tạo dữ liệu demo, kiểm thử luồng 2 cấp khoa -> trường, chuẩn bị video/thuyết trình |
+| Product/Research | Phân tích nghiệp vụ xét duyệt các cấp, xây dựng mô hình tổ chức, khảo sát yêu cầu người dùng, hoàn thiện proposal và pitch. |
+| Backend | Thiết kế cơ sở dữ liệu PostgreSQL, phát triển API bằng Node.js + Express.js + TypeScript, xây dựng cơ chế phân quyền và tích hợp các dịch vụ AI/API của VNPT. |
+| Frontend/UI/UX | Phát triển giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên bằng ReactJS + TypeScript; tối ưu trải nghiệm người dùng và khả năng sử dụng trên nhiều thiết bị. |
+| AI/Data/Prompt | Thiết kế prompt, xây dựng RAG, xử lý OCR, phân loại minh chứng, gợi ý hoạt động và đánh giá chất lượng phản hồi của hệ thống AI. |
+| QA/Demo/Pitch | Xây dựng dữ liệu kiểm thử, thực hiện kiểm thử chức năng và phân quyền, chuẩn bị kịch bản demo, video giới thiệu và bài thuyết trình. |
 
 ### 7.6. Ước tính chi phí hạ tầng và vận hành
 
 | Hạng mục | MVP Vòng 2 dự kiến | Sản phẩm thực tế/pilot thực tế | Ghi chú |
 |---|---:|---:|---|
-| Frontend hosting | Theo free tier/quota Leapcell hoặc 0 - 300.000 VNĐ/tháng | Theo gói Leapcell phù hợp traffic | Deploy ReactJS frontend trên Leapcell; production cần domain, SSL, logging và môi trường ổn định |
-| Backend server | Theo free tier/quota Leapcell hoặc 200.000 - 800.000 VNĐ/tháng | Theo gói Leapcell phù hợp tải hệ thống | Deploy Node.js backend trên Leapcell; sản phẩm thực tế cần tách staging/production, backup và monitoring |
-| Database | 0 - 500.000 VNĐ/tháng | 1.000.000 - 4.000.000 VNĐ/tháng | PostgreSQL/SQL Server managed hoặc self-host có backup |
-| Redis | 0 - 300.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Cache session/role, criteria, OCR/AI result |
+| Frontend hosting | Theo free tier/quota Leapcell hoặc 0 - 300.000 VNĐ/tháng | Theo gói Leapcell phù hợp traffic | Deploy ReactJS + TypeScript frontend trên Leapcell; production cần domain, SSL, logging và môi trường ổn định |
+| Backend server | Theo free tier/quota Leapcell hoặc 200.000 - 800.000 VNĐ/tháng | Theo gói Leapcell phù hợp tải hệ thống | Deploy Node.js + Express.js + TypeScript backend trên Leapcell; sản phẩm thực tế cần tách staging/production, backup và monitoring |
+| Database | 0 - 500.000 VNĐ/tháng | 500.000 - 3.000.000 VNĐ/tháng | Có thể sử dụng dịch vụ miễn phí hoặc triển khai cùng máy chủ MVP. Khi mở rộng nên tách riêng cơ sở dữ liệu và thực hiện sao lưu định kỳ. |
+| Redis | 0 - 200.000 VNĐ/tháng | 300.000 - 1.500.000 VNĐ/tháng | Sử dụng cho cache phân quyền, dữ liệu OCR/AI tạm thời và tối ưu hiệu năng hệ thống. |
 | Object Storage | 0 - 300.000 VNĐ/tháng | Theo dung lượng minh chứng | Cần signed URL và phân quyền truy cập file |
-| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Theo số lượt OCR, hỏi đáp, phân tích | Cần cache, rate limit và fallback để kiểm soát chi phí |
-| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Sản phẩm thực tế cần logging, monitoring, alert |
+| VNPT AI/API | Theo quota cuộc thi hoặc gói API được cấp | Bao gồm OCR, phân loại minh chứng, hỏi đáp và các chức năng AI hỗ trợ đánh giá hồ sơ. Cần cơ chế cache và fallback để kiểm soát chi phí. |
+| Domain/SSL/Monitoring | 0 - 300.000 VNĐ/năm | 500.000 - 2.000.000 VNĐ/năm trở lên | Khi triển khai thực tế cần bổ sung monitoring, cảnh báo và theo dõi vận hành. |
 
 ### 7.7. An toàn, bảo mật và pháp lý
 
@@ -678,7 +679,7 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 
 - [x] Nguồn dữ liệu hợp pháp, MVP dùng dữ liệu mẫu/ẩn danh.
 - [x] Nhân lực triển khai phù hợp.
-- [x] Kỹ thuật build/deploy khả thi với ReactJS, Node.js, Leapcell, PostgreSQL/SQL Server, Redis, Object Storage.
+- [x] Kỹ thuật build/deploy khả thi với ReactJS + TypeScript, Node.js + Express.js + TypeScript, Leapcell, PostgreSQL/SQL Server, Redis, Object Storage.
 - [x] Có ước tính chi phí hạ tầng và vận hành.
 - [x] Có phương án bảo mật và pháp lý.
 - [x] Có chính sách thời gian minh chứng khả dụng và vòng đời lưu trữ minh chứng.
