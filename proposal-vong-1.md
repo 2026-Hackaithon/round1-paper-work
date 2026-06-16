@@ -12,6 +12,7 @@
 - **Tên đội:** BDKTN
 - **Trường/Đơn vị:** Trường Đại học Khoa học Tự nhiên - Đại học Quốc gia Thành phố Hồ Chí Minh
 - **Ngày nộp:** 16/6/2026
+- **Thành viên đội thi:** Lê Trung Kiên - letrungkienthd@gmail.com; Mai Thị Kim Duyên - thiduyen310@gmail.com; Lê Mai Hoài Bảo - hoaichaobai@gmail.com; Nguyễn Hữu Anh Trí - nguyenhuuanhtri866@gmail.com; Trần Hoài Thiện Nhân - nhan100405@gmail.com
 
 ## 1. Thông tin đội thi
 
@@ -408,7 +409,7 @@ Theo thể lệ Bảng B - Challenger, **Vòng 1** yêu cầu đội thi nộp b
 
 ### 7.1. Định hướng triển khai theo yêu cầu Vòng 1
 
-Trong Vòng 1, 5-Star Eco chưa cần chứng minh bằng một sản phẩm hoàn chỉnh, nhưng cần thể hiện rõ:
+Trong Vòng 1, 5-Star Eco chưa cần chứng minh bằng một sản phẩm hoàn chỉnh, nhưng cần thể hiện rõ theo thông báo và thể lệ Bảng B - Challenger của cuộc thi:
 
 - Ý tưởng bám đúng đề bài: dùng AI và hệ sinh thái API của Ban Tổ chức để hỗ trợ công tác Hội, phong trào sinh viên và tối ưu quy trình quản lý, đánh giá, xét chọn danh hiệu Sinh viên 5 tốt.
 - Có kiến trúc tổng quan, module chính, dữ liệu sử dụng và luồng nghiệp vụ rõ ràng.
@@ -494,20 +495,20 @@ Phần có thể mô phỏng:
 
 | Thành phần | Công nghệ đề xuất | Ghi chú |
 |---|---|---|
-| Frontend | ReactJS + TypeScript | Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. ReactJS phù hợp với dashboard nhiều trạng thái, nhiều vai trò; TypeScript giúp giảm lỗi khi mở rộng UI và luồng dữ liệu phức tạp |
-| Backend | Node.js + Express.js + TypeScript | Xây dựng REST API cho các module Auth, Organization, Criteria, Application, Evidence, Review, Award và Portfolio. Express đơn giản, dễ học và phù hợp phát triển MVP nhanh. TypeScript giúp tăng tính an toàn khi phát triển và bảo trì mã nguồn. |
-| Reverse Proxy/Routing | Leapcell Routing / Reverse Proxy | Định tuyến request giữa frontend và backend, hỗ trợ domain/SSL, cấu hình môi trường và triển khai production |
+| Front-end | ReactJS + TypeScript | Xây dựng giao diện cho sinh viên, cán bộ xét duyệt và quản trị viên. ReactJS phù hợp với dashboard nhiều trạng thái, nhiều vai trò; TypeScript giúp giảm lỗi khi mở rộng UI và luồng dữ liệu phức tạp |
+| Back-end | Node.js + Express.js + TypeScript | Xây dựng REST API cho các module Auth, Organization, Criteria, Application, Evidence, Review, Award và Portfolio. Express đơn giản, dễ học và phù hợp phát triển MVP nhanh. TypeScript giúp tăng tính an toàn khi phát triển và bảo trì mã nguồn. |
+| Reverse Proxy/Routing | Leapcell Routing / Reverse Proxy | Định tuyến request giữa Front-end và Back-end, hỗ trợ domain/SSL, cấu hình môi trường và triển khai production |
 | Database | PostgreSQL hoặc SQL Server | Lưu dữ liệu quan hệ: tổ chức, tiêu chí, hồ sơ, award, audit log, portfolio; hỗ trợ transaction và truy vấn phức tạp |
 | Cache | Redis | Cache session/role/scope, bộ điều kiện, kết quả OCR/AI tạm thời |
 | File Storage | S3-compatible Object Storage | Lưu minh chứng, văn bản, danh sách xuất, CV/portfolio PDF; hỗ trợ phân quyền truy cập, signed URL và chính sách dọn dẹp file minh chứng hết hạn |
 | AI/API Adapter | Service adapter cho VNPT SmartReader, Smartbot, eKYC, SmartVoice, SmartUX | Tách biệt business logic khỏi nhà cung cấp AI. Cho phép mock dữ liệu khi demo hoặc thay thế nhà cung cấp mà không ảnh hưởng hệ thống. |
-| Deploy | Leapcell cho cả ReactJS + TypeScript frontend và Node.js + Express.js + TypeScript backend | MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường |
+| Deploy | Leapcell cho cả ReactJS + TypeScript Front-end và Node.js + Express.js + TypeScript Back-end | MVP Vòng 2 có thể deploy nhanh trên Leapcell; sản phẩm thực tế tách môi trường staging/production, cấu hình domain/SSL, logging và secret bằng biến môi trường |
 
 Kế hoạch triển khai kỹ thuật:
 
 1. Thiết kế database cho `Organization`, `User`, `Role`, `ReviewCycle`, `ReviewRound`, `CriteriaSet`, `Application`, `Evidence`, `EvidenceRetentionPolicy`, `Award`, `Portfolio`, `ReviewDecision`, `AuditLog`.
-2. Xây dựng backend Node.js + Express.js + TypeScript, tổ chức theo các module nghiệp vụ; triển khai cơ chế xác thực JWT và phân quyền theo organization_id, level, scope.
-3. Xây frontend 3 không gian chính: sinh viên, cán bộ, admin.
+2. Xây dựng Back-end Node.js + Express.js + TypeScript, tổ chức theo các module nghiệp vụ; triển khai cơ chế xác thực JWT và phân quyền theo organization_id, level, scope.
+3. Xây Front-end 3 không gian chính: sinh viên, cán bộ, admin.
 4. Tích hợp VNPT SmartReader cho OCR minh chứng; xây adapter mock fallback.
 5. Tích hợp VNPT Smartbot/LLM cho phân loại, tóm tắt, hỏi đáp RAG và gợi ý hoạt động theo tiêu chí còn thiếu.
 6. Xây Activity/RAG Source Service với dữ liệu hoạt động mẫu; bản mở rộng hỗ trợ connector tới website/fanpage được phép sử dụng.
@@ -528,7 +529,7 @@ Kế hoạch triển khai kỹ thuật:
 
 ### 7.6. Ước tính chi phí hạ tầng và vận hành
 
-Ước tính dưới đây dựa trên bảng giá công khai của Leapcell và mô hình lưu trữ object storage trả theo dung lượng. Quy đổi tham khảo dùng `1 USD ~= 26.000 VNĐ`, chưa bao gồm VAT, phí thanh toán quốc tế và báo giá riêng của các API VNPT AI khi triển khai thương mại.
+Ước tính dưới đây dựa trên bảng giá công khai của Leapcell, hệ sinh thái VNPT AI và mô hình lưu trữ object storage trả theo dung lượng tham khảo từ Amazon S3. Quy đổi tham khảo dùng `1 USD ~= 26.000 VNĐ`, chưa bao gồm VAT, phí thanh toán quốc tế và báo giá riêng của các API VNPT AI khi triển khai thương mại.
 
 | Hạng mục | Cơ sở tham khảo | MVP Vòng 2 dự kiến | Sản phẩm thực tế/thí điểm thực tế | Ghi chú kiểm soát chi phí |
 |---|---|---:|---:|---|
@@ -653,18 +654,20 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 5. Chỉ rõ VNPT SmartReader, Smartbot/LLM, eKYC, SmartVoice, SmartUX được dùng ở đâu.
 6. Nêu tác động: giảm tải cán bộ, minh bạch liên cấp, giữ người duyệt cuối là cán bộ.
 
-**Link video:** `<Dán link nếu có>`
+**Link YouTube:** `https://www.youtube.com/watch?v=P3TgK_ZpsrA`
 
 ## 11. Phụ lục
 
 ### 11.1. Wireframe/Figma
 
-- Link Figma: `https://www.figma.com/proto/uimFVFCPtYtQmqPRpul42o/HackAIthon?node-id=0-1&t=AgbEiCEMHeAsLhvF-1`
+- Link Figma: [Giao diện minh họa](https://www.figma.com/proto/uimFVFCPtYtQmqPRpul42o/HackAIthon?node-id=0-1&t=AgbEiCEMHeAsLhvF-1)
 
 ### 11.2. Sơ đồ kiến trúc
 
-- Link draw.io: `https://drive.google.com/file/d/10gtvkepq9IST2qeV1Jd22DffTj2ASqeh/view?usp=sharing`
+- Link draw.io: [2026-Hackaithon.drawio](https://drive.google.com/file/d/10gtvkepq9IST2qeV1Jd22DffTj2ASqeh/view?usp=sharing)
 - Ảnh sơ đồ:
+
+![Sơ đồ kiến trúc hệ thống 5-Star Eco](BDKTN/so-do-kien-truc.png)
 
 ### 11.3. Tài liệu tham khảo
 
