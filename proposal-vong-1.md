@@ -719,4 +719,4 @@ Video không bắt buộc, nhưng nếu có nên dài khoảng 2-3 phút.
 - [x] Có sơ đồ kiến trúc.
 - [x] Có wireframe hoặc hình minh họa sản phẩm.
 - [x] Ngôn ngữ rõ ràng, hạn chế lỗi chính tả.
-- [ ] File cuối được xuất PDF đúng định dạng.
+- [x] File cuối được xuất PDF đúng định dạng.
